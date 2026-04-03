@@ -8,11 +8,20 @@ import TopNav from '@/components/TopNav'
 import Footer from '@/components/Footer'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import WorkCard from '@/components/WorkCard'
-import Link from 'next/link'
 import TransitionLink from '@/components/TransitionLink'
 
 // Row Component for the Infinite Scroll
-const ImageRow = ({ images, speed = 20, reverse = false, delay = 0 }) => {
+const ImageRow = ({
+    images,
+    speed = 20,
+    reverse = false,
+    delay = 0,
+  }: {
+    images: string[];
+    speed?: number;
+    reverse?: boolean;
+    delay?: number;
+  }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.9 }}

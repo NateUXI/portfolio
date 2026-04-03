@@ -20,7 +20,9 @@ function horizontalLoop(items: any[], config: any) {
       repeat: config.repeat,
       paused: config.paused,
       defaults: { ease: "none" },
-      onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100)
+      onReverseComplete: () => {
+      tl.totalTime(tl.rawTime() + tl.duration() * 100);
+    }
     }),
     length = items.length,
     startX = items[0].offsetLeft,
@@ -56,7 +58,8 @@ function horizontalLoop(items: any[], config: any) {
 
   tl.progress(1, true).progress(0, true);
   if (config.reversed) {
-    tl.vars.onReverseComplete();
+    const onReverseComplete = tl.vars.onReverseComplete as (() => void) | undefined;
+    onReverseComplete?.();
     tl.reverse();
   }
   return tl;
@@ -91,7 +94,7 @@ export default function WorkCard({
 
     let loop: any;
     if (marqueeRef.current && talents.length > 0) {
-      const items = marqueeRef.current.children;
+      const items = Array.from(marqueeRef.current.children) as HTMLElement[];
       loop = horizontalLoop(items, {
         repeat: -1,
         speed: 0.8,

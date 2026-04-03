@@ -20,7 +20,9 @@ function horizontalLoop(items: any[], config: any) {
       repeat: config.repeat,
       paused: config.paused,
       defaults: { ease: "none" },
-      onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100)
+      onReverseComplete: () => {
+      tl.totalTime(tl.rawTime() + tl.duration() * 100);
+    }
     }),
     length = items.length,
     startX = items[0].offsetLeft,
@@ -55,16 +57,17 @@ function horizontalLoop(items: any[], config: any) {
   }
   tl.progress(1, true).progress(0, true);
   if (config.reversed) {
-    tl.vars.onReverseComplete();
+    const onReverseComplete = tl.vars.onReverseComplete as (() => void) | undefined;
+    onReverseComplete?.();
     tl.reverse();
   }
   return tl;
 }
 
-export default function ProjectPage({ params }) {
+export default function ProjectPage({ }) {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], [0, 800])
-  const marqueeRef = useRef(null)
+  const marqueeRef = useRef<HTMLDivElement | null>(null)
 
   const talents = [
     "Art Direction", "Packaging", "Illustration", "Concept Art", "UI", "UX",
@@ -80,7 +83,7 @@ export default function ProjectPage({ params }) {
 
     let loop: any;
     if (marqueeRef.current) {
-      const items = marqueeRef.current.children;
+      const items = Array.from(marqueeRef.current.children) as HTMLElement[];
       loop = horizontalLoop(items, {
         repeat: -1,
         speed: 1, 

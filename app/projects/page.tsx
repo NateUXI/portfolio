@@ -11,7 +11,17 @@ import WorkCard from '@/components/WorkCard'
 import Link from 'next/link'
 import ProjectCTA from '@/components/ProjectCTA'
 
-const ImageRow = ({ images, speed = 20, reverse = false, delay = 0 }) => {
+const ImageRow = ({
+    images,
+    speed = 20,
+    reverse = false,
+    delay = 0,
+  }: {
+    images: string[];
+    speed?: number;
+    reverse?: boolean;
+    delay?: number;
+  }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.9 }}
