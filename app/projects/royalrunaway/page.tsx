@@ -17,7 +17,7 @@ const mtgCards = [
   { src: '/art/Chapter6.jpg', alt: 'Chapter 6' },
   { src: '/art/Chapter7.png', alt: 'Chapter 7' },
   { src: '/art/RR_Poster.png', alt: 'RR Poster' },
-  { src: '/art/Pionta_Poster.png', alt: 'Pionta Poster' },
+  { src: '/art/Pionta_poster.png', alt: 'Pionta Poster' },
 ]
 
 export default function ProjectPage() {
@@ -39,8 +39,7 @@ export default function ProjectPage() {
     <main className="min-h-screen bg-portfolio-red overflow-x-hidden">
       <TopNav />
       <FloatingNav />
-
-      {/* Spacer */}
+      
       <div className="relative pt-[15vw] md:pt-[1vw] pb-[5vw] px-[5vw] flex flex-col items-center z-10" />
 
       <div className="relative w-full flex flex-col items-center z-20">
@@ -57,7 +56,7 @@ export default function ProjectPage() {
           />
         </div>
 
-        {/* white content section */}
+        {/* content section */}
         <div className="relative w-full md:w-[106vw] bg-white z-20 px-[4vw] md:px-[8vw] py-[8vw] md:py-[5vw]">
           
           {/* header */}

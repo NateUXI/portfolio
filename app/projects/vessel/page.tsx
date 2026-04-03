@@ -121,7 +121,7 @@ export default function ProjectPage({ }) {
           <div className="flex flex-col md:flex-row items-center gap-[8vw] md:gap-[4vw] mb-[6vw] md:mb-[3vw] -mt-[24vw] md:-mt-[25vw] md:ml-[2vw] relative z-40">
             {/* Logo Circle */}
             <div className="relative w-[45vw] md:w-[25vw] aspect-square rounded-full overflow-hidden border-[2vw] md:border-[1.5vw] border-portfolio-red shadow-xl bg-white">
-              <Image src="/art/Vessel_base.png" alt="Berkeleys Logo" fill className="object-cover p-0" />
+              <Image src="/art/Vessel_base.PNG" alt="Vessel Logo" fill className="object-cover p-0" />
             </div>
             
             <div className="flex-1 text-center md:text-left w-full">
@@ -152,7 +152,7 @@ export default function ProjectPage({ }) {
           {/* BRANDING ASSETS */}
           <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
              <Image 
-               src="/art/Game_Dev.png" 
+               src="/art/Game_Dev.PNG" 
                alt="Home View" 
                width={1200} height={800} 
                className="w-full h-auto"
@@ -161,7 +161,7 @@ export default function ProjectPage({ }) {
 
           <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black">
              <Image 
-               src="/art/Lanturn.png" 
+               src="/art/Lanturn.PNG" 
                alt="Colors View" 
                width={1200} height={800} 
                className="w-full h-auto"

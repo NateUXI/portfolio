@@ -62,7 +62,7 @@ export default function WorkPage() {
     return () => { lenis.destroy(); };
   }, []);
 
-  const row1 = ["/Tavern_Base.png", "/Reform_base.png", "/Berks_base.png", "/GRID_Base.png"];
+  const row1 = ["/Tavern_Base.PNG", "/Reform_base.png", "/Berks_base.png", "/GRID_base.png"];
   const row2 = ["/Reform_hover2.png", "/Tavern_Hover.png", "/GRID_hover.png", "/Berks_background.png"];
 
   return (
@@ -136,7 +136,7 @@ export default function WorkPage() {
                   category="RESTAURANT WEBSITE"
                   baseImg="/Berks_base.png"
                   hoverImg="/Berks_background.png"
-                  logoImg="/Berkeleys_logo.png"
+                  logoImg="/Berkeleys_Logo.png"
                   talents={["Figma", "UX", "UI", "Next.JS", "React", "Branding", "Character Design", "Art Direction", "Prototyping", "Wireframing", "User Flows", "Usability Testing", "Visual Design", "Interaction Design", "Information Architecture"]}
                 />
               </TransitionLink>
@@ -147,9 +147,9 @@ export default function WorkPage() {
                 <WorkCard
                   title="THE TAVERN"
                   category="BAR WEBSITE"
-                  baseImg="/Tavern_Base.png"
+                  baseImg="/Tavern_Base.PNG"
                   hoverImg="/Tavern_Hover.png"
-                  logoImg="/Tavern_logo2.png"
+                  logoImg="/Tavern_logo2.PNG"
                   talents={["UX", "UI", "Branding", "Product Design", "Art Direction", "User Research", "Prototyping", "wireframing", "Desktop Development"]}
                 />
               </TransitionLink>
@@ -160,7 +160,7 @@ export default function WorkPage() {
                 <WorkCard
                   title="GRID WAFFLES"
                   category="FAST FOOD WEBSITE"
-                  baseImg="/GRID_Base.png"
+                  baseImg="/GRID_base.png"
                   hoverImg="/GRID_hover.png"
                   logoImg="/GRID_Logo2.png"
                   talents={["UX", "UI", "Branding", "Product Design", "Art Direction", "User Research", "Prototyping", "wireframing", "Mobile Development, Figma"]}

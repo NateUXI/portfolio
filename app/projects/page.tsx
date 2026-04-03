@@ -243,7 +243,7 @@ export default function WorkPage() {
                         <Image src="/art/Vessel.svg" alt="Vessel" width={700} height={180} className="w-[38vw] md:w-[22vw] h-auto" />
                       </div>
                       <Link href="/projects/vessel">
-                        <WorkCard title="" category="" baseImg="/art/Vessel_base.png" hoverImg="/art/Vessel_hover.png" />
+                        <WorkCard title="" category="" baseImg="/art/Vessel_base.PNG" hoverImg="/art/Vessel_hover.PNG" />
                       </Link>
                       <div className="flex justify-center mt-[3vw] md:mt-[2vw]">
                         <ProjectCTA red text="VIEW PROJECT" href="/projects/vessel"/>
@@ -255,7 +255,7 @@ export default function WorkPage() {
                         <Image src="/art/Blender.svg" alt="Blender" width={700} height={180} className="w-[82vw] md:w-[26vw] h-auto" />
                       </div>
                       <Link href="/projects/blender">
-                        <WorkCard title="" category="" baseImg="/art/Blender_base.png" hoverImg="/art/Blender_hover.png" />
+                        <WorkCard title="" category="" baseImg="/art/Blender_base.png" hoverImg="/art/Blender_hover.PNG" />
                       </Link>
                       <div className="flex justify-center mt-[3vw] md:mt-[2vw]">
                         <ProjectCTA red text="VIEW ALL" href="/projects/blender"/>

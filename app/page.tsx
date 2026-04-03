@@ -8,7 +8,7 @@ import RevealOnScroll from '../components/RevealOnScroll'
 import Services from '../components/Services'
 import ProjectCTA from '../components/ProjectCTA'
 import Footer from '@/components/Footer'
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import Spline from '@splinetool/react-spline'
 import Lenis from 'lenis'
 import WorkCard from '@/components/WorkCard'
@@ -20,30 +20,37 @@ import TransitionLink from '@/components/TransitionLink'
 export default function Home() {
   const [useSmallHero, setUseSmallHero] = useState<boolean | null>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
+    }
+
+    window.scrollTo(0, 0)
+
     gsap.registerPlugin(ScrollTrigger)
     const lenis = new Lenis({ autoRaf: true, lerp: 0.1 })
 
     lenis.stop()
 
-    setTimeout(() => {
+    const unlockTimer = window.setTimeout(() => {
       lenis.start()
+      window.scrollTo(0, 0)
+      ScrollTrigger.refresh()
     }, 2750)
-
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual'
-    }
-    window.scrollTo(0, 0)
 
     const checkHeroSize = () => {
       const isSmall = window.innerWidth < 1586
       setUseSmallHero(isSmall)
-      setTimeout(() => { ScrollTrigger.refresh() }, 200)
+      window.setTimeout(() => {
+        ScrollTrigger.refresh()
+      }, 200)
     }
 
     checkHeroSize()
     window.addEventListener('resize', checkHeroSize)
+
     return () => {
+      window.clearTimeout(unlockTimer)
       lenis.destroy()
       window.removeEventListener('resize', checkHeroSize)
     }
@@ -74,7 +81,6 @@ export default function Home() {
         >
           <div className="w-full lg:w-1/2 flex flex-col gap-6 relative z-30 pt-[15vh] md:pt-20 lg:pt-[20vh] mb-12">
             <div className="flex flex-col gap-4">
-              
               {/* conditional title rendering */}
               {useSmallHero ? (
                 <h2 className="font-anton text-7xl md:text-8xl lg:text-[10rem] uppercase tracking-tight leading-none text-white opacity-100">
@@ -98,7 +104,7 @@ export default function Home() {
                   <ScrollFloat
                     animationDuration={2}
                     ease="expo.out"
-                    scrollStart="top 85%" 
+                    scrollStart="top 85%"
                     scrollEnd="top 30%"
                     stagger={0.03}
                     textClassName="font-overpass text-2xl md:text-4xl lg:text-6xl font-bold leading-tight italic text-white"
@@ -154,14 +160,14 @@ export default function Home() {
               <WorkCard
                 title="BERKELEYS"
                 category="RESTAURANT WEBSITE"
-                baseImg="/Berks_base.png"
-                hoverImg="/Berks_background.png"
-                logoImg="/Berkeleys_logo.png"
+                baseImg="/Berks_Base.PNG"
+                hoverImg="/Berks_Background.PNG"
+                logoImg="/berkeleys_Logo.png"
                 talents={["Figma", "UX", "UI", "Next.JS", "React", "Branding", "Character Design", "Art Direction", "Prototyping", "Wireframing", "User Flows", "Usability Testing", "Visual Design", "Interaction Design", "Information Architecture"]}
               />
             </TransitionLink>
           </div>
-          <ProjectCTA text = "ALL WORK"/>
+          <ProjectCTA text="ALL WORK" />
         </section>
 
         <section id="services" className="relative z-10">

@@ -9,25 +9,25 @@ const services = [
     id: '01',
     title: 'Visual Identity',
     description: "Defining strategic brand narratives through cohesive visual systems designed to elevate market presence and resonate with target audiences.",
-    image: '/Tavern.png', 
+    image: '/Tavern.PNG', 
   },
   {
     id: '02',
     title: 'Digital Design',
     description: "Engineering intuitive user interfaces that bridge the gap between high-fidelity art direction and functional technical architecture.",
-    image: '/Reform_Prototype.png',
+    image: '/Reform_Prototype.PNG',
   },
   {
     id: '03',
     title: 'Interactive 3D',
     description: "Building immersive, scroll-triggered 3D environments and interactive assets that bring depth and spatial storytelling to the modern browser.",
-    image: '/Spline.png',
+    image: '/Spline.PNG',
   },
   {
     id: '04',
     title: 'Creative Development',
     description: "Translating complex design systems into high-performance code, focusing on fluid animations, responsive layouts, and clean web architecture.",
-    image: '/Screen.png',
+    image: '/Screen.PNG',
   },
 ];
 

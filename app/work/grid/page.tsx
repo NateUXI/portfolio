@@ -166,7 +166,7 @@ export default function ProjectPage({ }) {
 
           <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black">
              <Image 
-               src="/GRID_colors.png" 
+               src="/GRID_colors.PNG" 
                alt="Branding Board" 
                width={1200} height={800} 
                className="w-full h-auto"
