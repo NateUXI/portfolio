@@ -134,9 +134,9 @@ export default function WorkPage() {
                 <WorkCard
                   title="BERKELEYS"
                   category="RESTAURANT WEBSITE"
-                  baseImg="/Berks_base.png"
-                  hoverImg="/Berks_background.png"
-                  logoImg="/Berkeleys_Logo.png"
+                  baseImg="/Berks_base.PNG"
+                  hoverImg="/Berks_Background.PNG"
+                  logoImg="/berkeleys_Logo.png"
                   talents={["Figma", "UX", "UI", "Next.JS", "React", "Branding", "Character Design", "Art Direction", "Prototyping", "Wireframing", "User Flows", "Usability Testing", "Visual Design", "Interaction Design", "Information Architecture"]}
                 />
               </TransitionLink>
