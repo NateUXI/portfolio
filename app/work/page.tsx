@@ -62,8 +62,8 @@ export default function WorkPage() {
     return () => { lenis.destroy(); };
   }, []);
 
-  const row1 = ["/Tavern_Base.PNG", "/Reform_base.png", "/Berks_base.png", "/GRID_base.png"];
-  const row2 = ["/Reform_hover2.png", "/Tavern_Hover.png", "/GRID_hover.png", "/Berks_background.png"];
+  const row1 = ["/Tavern_Base.PNG", "/Reform_base.png", "/Berks_Base.PNG", "/GRID_base.png"];
+  const row2 = ["/Reform_hover2.png", "/Tavern_Hover.png", "/GRID_hover.png", "/Berks_Background.PNG"];
 
   return (
     <main className="min-h-screen bg-portfolio-red overflow-x-hidden">
@@ -134,7 +134,7 @@ export default function WorkPage() {
                 <WorkCard
                   title="BERKELEYS"
                   category="RESTAURANT WEBSITE"
-                  baseImg="/Berks_base.PNG"
+                  baseImg="/Berks_Base.PNG"
                   hoverImg="/Berks_Background.PNG"
                   logoImg="/berkeleys_Logo.png"
                   talents={["Figma", "UX", "UI", "Next.JS", "React", "Branding", "Character Design", "Art Direction", "Prototyping", "Wireframing", "User Flows", "Usability Testing", "Visual Design", "Interaction Design", "Information Architecture"]}
