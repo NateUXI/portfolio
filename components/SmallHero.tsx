@@ -56,8 +56,8 @@ export default function SmallHero() {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, -90])
 
-  const row1 = ['/Tavern_Base.png', '/Reform_base.png', '/Berks_base.png', '/GRID_Base.png']
-  const row2 = ['/Reform_hover2.png', '/Tavern_Hover.png', '/GRID_hover.png', '/Berks_background.png']
+  const row1 = ["/Tavern_Base.PNG", "/Reform_base.png", "/Berks_Base.PNG", "/GRID_base.png"];
+  const row2 = ["/Reform_hover2.png", "/Tavern_Hover.png", "/GRID_hover.png", "/Berks_Background.PNG"];
 
   return (
     <section className="relative w-screen overflow-hidden bg-white">
