@@ -157,19 +157,42 @@ export default function ProjectPage({ }) {
 
           {/* ASSETS - Standardized rounded-4xl and margins */}
           <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
-             <Image src="/Tavern_top.png" alt="Tavern Top" width={1200} height={800} className="w-full h-auto" />
+             <Image 
+             src="/Tavern_top.png" 
+             alt="Tavern Top" 
+             width={1200} 
+             height={800} 
+             unoptimized
+             className="w-full h-auto" />
           </div>
 
           <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
-             <Image src="/Tavern_philosophy.png" alt="Philosophy" width={1200} height={800} className="w-full h-auto" />
+             <Image 
+             src="/Tavern_philosophy.png" 
+             alt="Philosophy" 
+             width={1200} 
+             height={800} 
+             unoptimized
+             className="w-full h-auto" />
           </div>
 
           <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
-             <Image src="/Tavern_menu.png" alt="Menu" width={1200} height={800} className="w-full h-auto" />
+             <Image src="/Tavern_menu.png" 
+             alt="Menu" 
+             width={1200} 
+             height={800} 
+             unoptimized 
+             className="w-full h-auto" />
           </div>
 
           <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl">
-             <Image src="/Tavern_colors.png" alt="Colors" width={1200} height={800} className="w-full h-auto" />
+             <Image 
+             src="/Tavern_colors.png" 
+             alt="Colors" 
+             width={1200} 
+             height={800} 
+             unoptimized 
+             className="w-full h-auto" />
           </div>
 
         </div>

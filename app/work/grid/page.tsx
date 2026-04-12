@@ -160,6 +160,7 @@ export default function ProjectPage({ }) {
                src="/GRID_app2.png" 
                alt="Branding Board" 
                width={1200} height={800} 
+               unoptimized
                className="w-full h-auto"
              />
           </div>
@@ -170,6 +171,7 @@ export default function ProjectPage({ }) {
                alt="Branding Board" 
                width={1200} height={800} 
                className="w-full h-auto"
+               unoptimized
              />
           </div>
 

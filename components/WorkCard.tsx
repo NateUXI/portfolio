@@ -4,65 +4,58 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 
-type WorkCardProps = {
-  title: string
-  category: string
-  baseImg: string
-  hoverImg?: string
-  logoImg?: string
-  talents?: string[]
-}
-
-function horizontalLoop(items: any[], config: any) {
-  items = gsap.utils.toArray(items);
-  config = config || {};
-  let tl = gsap.timeline({
-      repeat: config.repeat,
-      paused: config.paused,
-      defaults: { ease: "none" },
-      onReverseComplete: () => {
-      tl.totalTime(tl.rawTime() + tl.duration() * 100);
-    }
-    }),
-    length = items.length,
-    startX = items[0].offsetLeft,
-    times: number[] = [],
-    widths: number[] = [],
-    xPercents: number[] = [],
-    pixelsPerSecond = (config.speed || 1) * 100,
-    snap = config.snap === false ? (v: any) => v : gsap.utils.snap(config.snap || 1),
-    totalWidth: number, curX: number, distanceToStart: number, distanceToLoop: number, item: any, i: number;
-
+function horizontalLoop(items: HTMLElement[], config: any) {
+  const vars = config || {};
+  const tl = gsap.timeline({
+    repeat: vars.repeat,
+    paused: vars.paused,
+    defaults: { ease: "none" },
+    onReverseComplete: () => { tl.totalTime(tl.rawTime() + tl.duration() * 100); }
+  });
+  
+  const length = items.length;
+  const startX = items[0].offsetLeft;
+  const widths: number[] = [];
+  const xPercents: number[] = [];
+  const pixelsPerSecond = (vars.speed || 1) * 100;
+  
   gsap.set(items, {
     xPercent: (i, el) => {
-      let w = widths[i] = parseFloat(gsap.getProperty(el, "width", "px") as string);
-      xPercents[i] = snap(parseFloat(gsap.getProperty(el, "x", "px") as string) / w * 100 + (gsap.getProperty(el, "xPercent") as number));
+      const w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px") as string));
+      xPercents[i] = parseFloat(gsap.getProperty(el, "xPercent") as string) || 0;
       return xPercents[i];
     }
   });
 
   gsap.set(items, { x: 0 });
 
-  totalWidth = items[length - 1].offsetLeft + xPercents[length - 1] / 100 * widths[length - 1] - startX + items[length - 1].offsetWidth * (gsap.getProperty(items[length - 1], "scaleX") as number) + (parseFloat(config.paddingRight) || 0);
+  const totalWidth = items[length - 1].offsetLeft + (xPercents[length - 1] / 100) * widths[length - 1] - startX + items[length - 1].offsetWidth + (parseFloat(vars.paddingRight) || 0);
 
-  for (i = 0; i < length; i++) {
-    item = items[i];
-    curX = xPercents[i] / 100 * widths[i];
-    distanceToStart = item.offsetLeft + curX - startX;
-    distanceToLoop = distanceToStart + widths[i] * (gsap.getProperty(item, "scaleX") as number);
-    tl.to(item, { xPercent: snap((curX - distanceToLoop) / widths[i] * 100), duration: distanceToLoop / pixelsPerSecond }, 0)
-      .fromTo(item, { xPercent: snap((curX - distanceToLoop + totalWidth) / widths[i] * 100) }, { xPercent: xPercents[i], duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond, immediateRender: false }, distanceToLoop / pixelsPerSecond)
+  for (let i = 0; i < length; i++) {
+    const item = items[i];
+    const curX = (xPercents[i] / 100) * widths[i];
+    const distanceToStart = item.offsetLeft + curX - startX;
+    const distanceToLoop = distanceToStart + widths[i];
+    
+    tl.to(item, { xPercent: ((curX - distanceToLoop) / widths[i]) * 100, duration: distanceToLoop / pixelsPerSecond }, 0)
+      .fromTo(item, { xPercent: ((curX - distanceToLoop + totalWidth) / widths[i]) * 100 }, { xPercent: xPercents[i], duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond, immediateRender: false }, distanceToLoop / pixelsPerSecond)
       .add("label" + i, distanceToStart / pixelsPerSecond);
-    times[i] = distanceToStart / pixelsPerSecond;
   }
-
+  
   tl.progress(1, true).progress(0, true);
-  if (config.reversed) {
-    const onReverseComplete = tl.vars.onReverseComplete as (() => void) | undefined;
-    onReverseComplete?.();
-    tl.reverse();
-  }
+  if (vars.reversed) tl.reverse();
   return tl;
+}
+
+type WorkCardProps = {
+  title: string
+  category: string
+  baseImg: string
+  hoverImg?: string
+  logoImg?: string
+  logoWidth?: number
+  logoHeight?: number
+  talents?: string[]
 }
 
 export default function WorkCard({
@@ -71,62 +64,56 @@ export default function WorkCard({
   baseImg,
   hoverImg,
   logoImg,
+  logoWidth = 400,
+  logoHeight = 200,
   talents = []
 }: WorkCardProps) {
   const [isOverRed, setIsOverRed] = useState(false)
-  const cardRef = useRef<HTMLDivElement>(null)
   const marqueeRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target.id === 'red') {
-            setIsOverRed(entry.isIntersecting)
-          }
-        })
-      },
+      ([entry]) => setIsOverRed(entry.isIntersecting),
       { threshold: 0.2 }
     )
 
     const redSection = document.getElementById('red')
     if (redSection) observer.observe(redSection)
 
-    let loop: any;
+    let loop: gsap.core.Timeline | undefined;
     if (marqueeRef.current && talents.length > 0) {
       const items = Array.from(marqueeRef.current.children) as HTMLElement[];
       loop = horizontalLoop(items, {
         repeat: -1,
         speed: 0.8,
-        paddingRight: 0,
       });
     }
 
     return () => {
       observer.disconnect()
-      if (loop) loop.kill()
+      loop?.kill()
     }
   }, [talents])
 
-  const frameColor = isOverRed ? 'bg-white' : 'bg-portfolio-red'
-  const talentTextColor = isOverRed ? 'text-portfolio-red' : 'text-white'
-  
-  const shadowColor = isOverRed
-    ? 'shadow-[4px_4px_0px_rgba(250,0,0,0.3)] md:shadow-[0.8vw_0.8vw_0px_rgba(250,0,0,0.3)]'
-    : 'shadow-[4px_4px_0px_rgba(0,0,0,0.15)] md:shadow-[0.8vw_0.8vw_0px_rgba(0,0,0,0.15)]'
+  const theme = {
+    frame: isOverRed ? 'bg-white' : 'bg-portfolio-red',
+    text: isOverRed ? 'text-portfolio-red' : 'text-white',
+    shadow: isOverRed 
+      ? 'shadow-[4px_4px_0px_rgba(250,0,0,0.3)] md:shadow-[0.8vw_0.8vw_0px_rgba(250,0,0,0.3)]' 
+      : 'shadow-[4px_4px_0px_rgba(0,0,0,0.15)] md:shadow-[0.8vw_0.8vw_0px_rgba(0,0,0,0.15)]'
+  }
 
   return (
-    <div ref={cardRef} className="group relative w-full cursor-pointer font-overpass">
+    <div className="group relative w-full cursor-pointer font-overpass">
       <div className={`
-        ${frameColor} ${shadowColor}
+        ${theme.frame} ${theme.shadow}
         p-2 md:p-[0.8vw] rounded-3xl md:rounded-[2vw] 
         transition-all duration-500 ease-in-out
         hover:-translate-y-1 md:group-hover:-translate-y-[0.5vw]
         hover:shadow-[8px_8px_0px_rgba(0,0,0,0.2)] md:group-hover:shadow-[1.2vw_1.2vw_0px_rgba(0,0,0,0.2)]
-        relative flex flex-col
+        flex flex-col
       `}>
 
-        {/* Image Container */}
         <div className="relative aspect-16/10 rounded-[18px] md:rounded-[1.5vw] overflow-hidden bg-black">
           <Image 
             src={baseImg} 
@@ -135,6 +122,7 @@ export default function WorkCard({
             sizes="(max-width: 768px) 100vw, 50vw" 
             className="object-cover transition-opacity duration-300" 
           />
+          
           {hoverImg && (
             <Image 
               src={hoverImg} 
@@ -146,40 +134,36 @@ export default function WorkCard({
           )}
           
           {logoImg && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-4">
-              <div className="relative w-4/5 h-1/2">
+            <div className="absolute inset-0 flex items-center justify-center p-6 pointer-events-none">
+              <div className="relative" style={{ width: '80%', height: '50%' }}>
                 <Image 
                   src={logoImg} 
-                  alt={title} 
-                  fill 
-                  className="object-contain group-hover:scale-110 transition duration-300 drop-shadow-2xl" 
+                  alt={`${title} logo`}
+                  width={logoWidth}
+                  height={logoHeight}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl" 
                 />
               </div>
             </div>
           )}
 
-          {/* Overlay Text */}
-          <div className="absolute bottom-3 left-3 right-3 md:bottom-[1.5vw] md:left-[1.5vw] md:right-[1.5vw]">
-            <h3 className="font-anton text-[8vw] md:text-[2.5vw] text-white leading-none capitalize">
+          <div className="absolute bottom-4 left-4 right-4 md:bottom-[1.5vw] md:left-[1.5vw]">
+            <h3 className="font-anton text-[8vw] md:text-[2.5vw] text-white leading-[0.9] capitalize mb-1">
               {title}
             </h3>
-            <p className="text-[3vw] md:text-[1vw] text-white/80 uppercase tracking-wide">
+            <p className="text-[3vw] md:text-[0.9vw] text-white/90 uppercase tracking-widest font-bold">
               {category}
             </p>
           </div>
         </div>
 
-        {/* talents */}
         {talents.length > 0 && (
-          <div className="h-8 md:h-[2.5vw] mt-1 md:mt-[0.5vw] flex items-center overflow-hidden">
-            <div 
-              ref={marqueeRef} 
-              className="flex items-center will-change-transform"
-            >
+          <div className="h-10 md:h-[2.8vw] mt-1 flex items-center overflow-hidden">
+            <div ref={marqueeRef} className="flex items-center will-change-transform">
               {talents.map((talent, idx) => (
                 <span 
                   key={idx} 
-                  className={`text-[3.2vw] md:text-[0.9vw] uppercase font-bold whitespace-nowrap ${talentTextColor} transition-colors duration-500 pr-10 md:pr-[4vw]`}
+                  className={`text-[3.2vw] md:text-[0.85vw] uppercase font-black whitespace-nowrap ${theme.text} transition-colors duration-500 pr-12 md:pr-[4vw]`}
                 >
                   {talent}
                 </span>

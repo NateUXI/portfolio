@@ -167,6 +167,7 @@ export default function ProjectPage({ }) {
                src="/Berks_home.png" 
                alt="Home View" 
                width={1200} height={800} 
+               unoptimized
                className="w-full h-auto"
              />
           </div>
@@ -176,6 +177,7 @@ export default function ProjectPage({ }) {
                src="/Berks_colors.png" 
                alt="Colors View" 
                width={1200} height={800} 
+               unoptimized
                className="w-full h-auto"
              />
           </div>

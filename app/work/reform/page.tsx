@@ -131,7 +131,7 @@ export default function ProjectPage({ }) {
               <h3 className="font-bold text-[4vw] md:text-[1.8vw] uppercase mb-2 text-portfolio-red tracking-tight">Summary</h3>
               <div className="bg-portfolio-red text-white p-6 md:p-8 rounded-4xl md:rounded-3xl shadow-lg">
                 <p className="text-[3.8vw] md:text-[1.2vw] leading-snug">
-                  A character design focused image board app created to help writers design and create across platforms, enabling writing and reference both on the go and in the studio.
+                  A character design focused image board app created to help writers design and create across platforms, enabling writing and reference both on the go and in the studio. Currently being built with EXPO with releases for IOS, Android, and Web.
                 </p>
               </div>
             </div>
@@ -169,6 +169,7 @@ export default function ProjectPage({ }) {
                src="/Reform_promo.png" 
                alt="Branding Board" 
                width={1200} height={800} 
+               unoptimized
                className="w-full h-auto rounded-4xl"
              />
           </div>
@@ -178,6 +179,7 @@ export default function ProjectPage({ }) {
                src="/Colors.png" 
                alt="Branding Board" 
                width={1200} height={800} 
+               unoptimized
                className="w-full h-auto rounded-4xl"
              />
           </div>
