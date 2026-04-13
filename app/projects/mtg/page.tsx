@@ -36,7 +36,6 @@ export default function ProjectPage() {
   const modalRef = useRef<HTMLDivElement>(null)
   const cardContainerRef = useRef<HTMLDivElement>(null)
 
-  // Initialize Lenis
   useEffect(() => {
     const lenis = new Lenis({ autoRaf: true })
     setLenisRef(lenis)
@@ -45,12 +44,10 @@ export default function ProjectPage() {
     return () => lenis.destroy()
   }, [])
 
-  // Animation & Scroll Lock logic
   useEffect(() => {
     if (selectedCard) {
       lenisRef?.stop()
       
-      // Snappy fade and scale pop
       gsap.fromTo(modalRef.current, 
         { opacity: 0 }, 
         { opacity: 1, duration: 0.3, ease: 'power2.out' }
@@ -65,20 +62,17 @@ export default function ProjectPage() {
     }
   }, [selectedCard, lenisRef])
 
-  // Subtle 3D Tilt Effect
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardContainerRef.current) return
     
     const card = cardContainerRef.current
     const rect = card.getBoundingClientRect()
     
-    // Calculate mouse position relative to card center
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
     const centerX = rect.width / 2
     const centerY = rect.height / 2
     
-    // Limits the tilt to a subtle range
     const rotateX = (y - centerY) / 15
     const rotateY = (centerX - x) / 15
 
@@ -114,11 +108,10 @@ export default function ProjectPage() {
       <TopNav />
       <FloatingNav />
 
-      <div className="relative pt-[15vw] md:pt-0 pb-[5vw] px-[5vw] flex flex-col items-center z-10" />
+      <div id = "red2" className="relative pt-[15vw] md:pt-0 pb-[5vw] px-[5vw] flex flex-col items-center z-10" />
 
       <div className="relative w-full flex flex-col items-center z-20"></div>
 
-      {/* MODAL OVERLAY */}
       {selectedCard && (
         <div 
           ref={modalRef}
@@ -176,7 +169,7 @@ export default function ProjectPage() {
             {mtgCards.map((card, index) => (
               <div 
                 key={index} 
-                className="group relative aspect-[5/7] w-full cursor-zoom-in"
+                className="group relative aspect-5/7 w-full cursor-zoom-in"
                 onClick={() => setSelectedCard(card)}
               >
                 <div className="relative h-full w-full rounded-[1vw] overflow-hidden shadow-lg transition-all duration-500 ease-out group-hover:scale-105 group-hover:shadow-2xl">

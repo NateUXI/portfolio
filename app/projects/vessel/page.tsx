@@ -155,6 +155,7 @@ export default function ProjectPage({ }) {
                src="/art/Game_Dev.PNG" 
                alt="Home View" 
                width={1200} height={800} 
+               unoptimized
                className="w-full h-auto"
              />
           </div>
@@ -164,6 +165,7 @@ export default function ProjectPage({ }) {
                src="/art/Lanturn.PNG" 
                alt="Colors View" 
                width={1200} height={800} 
+               unoptimized
                className="w-full h-auto"
              />
           </div>

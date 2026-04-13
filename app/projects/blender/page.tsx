@@ -138,9 +138,21 @@ export default function ProjectPage({ }) {
           {/* branding asset */}
           <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
              <Image 
+               src="/art/Chrome.jpg" 
+               alt="Home View" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto"
+             />
+          </div>
+
+          {/* branding asset */}
+          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+             <Image 
                src="/art/Render.png" 
                alt="Home View" 
                width={1200} height={800} 
+                unoptimized
                className="w-full h-auto"
              />
           </div>
@@ -151,6 +163,7 @@ export default function ProjectPage({ }) {
                src="/art/Blender_hover.PNG" 
                alt="Home View" 
                width={1200} height={800} 
+                unoptimized
                className="w-full h-auto"
              />
           </div>
@@ -161,6 +174,7 @@ export default function ProjectPage({ }) {
                src="/art/Figure.PNG" 
                alt="Colors View" 
                width={1200} height={800} 
+               unoptimized
                className="w-full h-auto"
              />
           </div>

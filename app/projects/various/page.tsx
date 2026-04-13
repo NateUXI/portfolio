@@ -80,7 +80,7 @@ export default function ProjectPage() {
         </div>
       )}
 
-      <div className="relative pt-[15vw] md:pt-[1vw] pb-[5vw] px-[5vw] flex flex-col items-center z-10" />
+      <div id = "red2"className="relative pt-[15vw] md:pt-[1vw] pb-[5vw] px-[5vw] flex flex-col items-center z-10" />
 
       <div className="relative w-full flex flex-col items-center z-20">
         
