@@ -74,14 +74,13 @@ export default function Home() {
       )}
 
       <div id="red" className="relative z-10 bg-portfolio-red">
-        {/* approach section */}
+        
         <section
           id="approach"
-          className="relative z-10 bg-portfolio-red text-white px-6 md:px-20 py-16 md:py-20 lg:py-0 overflow-hidden min-h-screen flex flex-col"
+          className="relative z-10 bg-portfolio-red text-white px-6 md:px-20 py-8 md:py-20 lg:py-0 overflow-hidden min-h-[80vh] lg:min-h-screen flex flex-col"
         >
-          <div className="w-full lg:w-1/2 flex flex-col gap-6 relative z-30 pt-[15vh] md:pt-20 lg:pt-[20vh] mb-12">
+          <div className="w-full lg:w-1/2 flex flex-col gap-6 relative z-30 pt-10 md:pt-20 lg:pt-[20vh] mb-6 md:mb-12">
             <div className="flex flex-col gap-4">
-              {/* conditional title rendering */}
               {useSmallHero ? (
                 <h2 className="font-anton text-7xl md:text-8xl lg:text-[10rem] uppercase tracking-tight leading-none text-white opacity-100">
                   My Approach
@@ -95,7 +94,6 @@ export default function Home() {
               )}
 
               <div className="max-w-5xl relative">
-                {/* conditional description rendering */}
                 {useSmallHero ? (
                   <p className="font-overpass text-2xl md:text-4xl lg:text-6xl font-bold leading-tight italic text-white opacity-100">
                     Dedicated to redefining the digital landscape through bold engineering and a deep-seated commitment to striking, user-centric design.
@@ -116,8 +114,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* spline container */}
-          <div className="w-full lg:w-[75vw] h-[45vh] lg:h-full relative lg:absolute lg:top-0 lg:right-[-10vw] z-10 lg:z-0">
+          <div className="w-full lg:w-[75vw] h-[40vh] lg:h-full relative lg:absolute lg:top-0 lg:right-[-10vw] z-10 lg:z-0">
             <div className="w-full h-full scale-110 md:scale-100">
               <Spline
                 scene="https://prod.spline.design/ebu4tTsHA2FTAyP7/scene.splinecode"
@@ -127,12 +124,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* portfolio section */}
         <section
           id="portfolio"
-          className="relative z-10 h-auto min-h-screen bg-portfolio-red text-white p-6 md:p-20 overflow-hidden"
+          className="relative z-10 h-auto min-h-screen bg-portfolio-red text-white py-10 px-6 md:p-20 overflow-hidden"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center w-full mt-24 mb-10 px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center w-full mt-8 md:mt-24 mb-6 md:mb-10 px-4">
             <RevealOnScroll animationClass="reveal-left">
               <h2 className="font-anton text-7xl md:text-[12rem] uppercase leading-none tracking-tight">
                 Selected
@@ -145,7 +141,7 @@ export default function Home() {
             </RevealOnScroll>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-10xl mx-auto pb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-10xl mx-auto pb-10 md:pb-20">
             <TransitionLink href="/work/reform">
               <WorkCard
                 title="REFORM"
