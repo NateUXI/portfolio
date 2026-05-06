@@ -174,6 +174,36 @@ export default function ProjectPage({ }) {
              />
           </div>
 
+          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+             <Image 
+               src="/Persona1.png" 
+               alt="Branding Board" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto rounded-4xl"
+             />
+          </div>
+
+          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+             <Image 
+               src="/Persona2.png" 
+               alt="Branding Board" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto rounded-4xl"
+             />
+          </div>
+
+          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+             <Image 
+               src="/UseFlow.png" 
+               alt="Branding Board" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto rounded-4xl"
+             />
+          </div>
+
           <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black">
              <Image 
                src="/Colors.png" 
