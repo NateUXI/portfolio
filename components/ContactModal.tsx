@@ -56,7 +56,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {/* close */}
             <button
               onClick={onClose}
-              className="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-portfolio-red text-white transition-transform duration-300 hover:scale-105 active:scale-95"
+              className="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-portfolio-red text-white transition-transform cursor-pointer duration-300 hover:scale-105 active:scale-95"
               aria-label="Close"
             >
               <HiX className="text-3xl" />
@@ -120,7 +120,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
                     <button
                       type="submit"
-                      className="rounded-full bg-portfolio-red px-8 py-4 font-anton text-3xl uppercase tracking-tight text-white transition-all duration-300 hover:scale-[1.03] hover:bg-white hover:text-portfolio-red hover:outline hover:outline-2 hover:outline-portfolio-red active:scale-95"
+                      className="rounded-full bg-portfolio-red px-8 py-4 font-anton text-3xl uppercase tracking-tight text-white transition-all cursor-pointer duration-300 hover:scale-[1.03] hover:bg-white hover:text-portfolio-red hover:outline hover:outline-portfolio-red active:scale-95"
                     >
                       Send
                     </button>

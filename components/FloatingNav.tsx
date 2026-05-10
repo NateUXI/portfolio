@@ -422,7 +422,7 @@ export default function FloatingNav() {
             onClick={toggleMenu}
             aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isOpen}
-            className={`shrink-0 w-14 h-14 ml-2 rounded-xl flex items-center justify-center text-4xl transition-all active:scale-90 ${textColor} hover:bg-black/5`}
+            className={`shrink-0 w-14 h-14 ml-2 rounded-xl flex items-center justify-center text-4xl cursor-pointer transition-all active:scale-90 ${textColor} hover:bg-black/5`}
           >
             {isOpen ? <HiX /> : <HiMenuAlt4 />}
           </button>

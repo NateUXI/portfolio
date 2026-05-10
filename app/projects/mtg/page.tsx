@@ -115,7 +115,7 @@ export default function ProjectPage() {
       {selectedCard && (
         <div 
           ref={modalRef}
-          className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 backdrop-blur-md cursor-zoom-out p-6"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 backdrop-blur-md p-6"
           onClick={() => setSelectedCard(null)}
           role="dialog"
           aria-modal="true"
@@ -169,7 +169,7 @@ export default function ProjectPage() {
             {mtgCards.map((card, index) => (
               <div 
                 key={index} 
-                className="group relative aspect-5/7 w-full cursor-zoom-in"
+                className="group relative aspect-5/7 w-full cursor-pointer"
                 onClick={() => setSelectedCard(card)}
               >
                 <div className="relative h-full w-full rounded-[1vw] overflow-hidden shadow-lg transition-all duration-500 ease-out group-hover:scale-105 group-hover:shadow-2xl">

@@ -73,6 +73,7 @@ export default function TopNav() {
             className={`
               ${btnClass} 
               px-5 py-2 md:px-8 md:py-3 
+              cursor-pointer
               rounded-full font-anton 
               text-base md:text-xl 
               uppercase tracking-wider 

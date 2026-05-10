@@ -67,7 +67,7 @@ export default function ProjectPage() {
       {selectedArt && (
         <div 
           ref={modalRef}
-          className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 backdrop-blur-md cursor-zoom-out p-4 md:p-10"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 backdrop-blur-md p-4 md:p-10"
           onClick={() => setSelectedArt(null)}
         >
 
@@ -80,7 +80,6 @@ export default function ProjectPage() {
         </div>
       )}
 
-      {/* Your specific layout divs */}
       <div id = "red2" className="relative pt-[15vw] md:pt-[1vw] pb-[5vw] px-[5vw] flex flex-col items-center z-10" />
 
       <div className="relative w-full flex flex-col items-center z-20">
@@ -116,7 +115,7 @@ export default function ProjectPage() {
             {mtgCards.map((card, index) => (
               <div
                 key={index}
-                className="mb-6 md:mb-8 break-inside-avoid cursor-zoom-in"
+                className="mb-6 md:mb-8 break-inside-avoid cursor-pointer"
                 onClick={() => setSelectedArt(card)}
               >
                 <div className="group relative w-full">

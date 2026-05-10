@@ -158,9 +158,9 @@ const Footer = () => {
           <button
             type="button"
             onClick={() => setIsContactOpen(true)}
-            className={`${pillBase} p-[2vw] rounded-full left-[43.5%] bottom-[32%]`}
+            className={`${pillBase} p-[2vw] cursor-pointer rounded-full left-[43.5%] bottom-[32%]`}
             aria-label="Open contact form"
-          >
+            >
             <FaPaperPlane className="w-[7.5vw] h-[7.5vw] shrink-0" />
           </button>
         </div>
