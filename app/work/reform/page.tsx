@@ -152,7 +152,7 @@ export default function ProjectPage({ }) {
           </div>
 
           {/* MOBILE SHOWCASE */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-[6vw] md:mb-[4vw]">
             {["/Reform_characters2.png", "/Reform_login.png", "/Reform_create2.png", "/Reform_board.png"].map((src, i) => (
               <motion.div 
                 key={i}
@@ -164,7 +164,7 @@ export default function ProjectPage({ }) {
           </div>
 
           {/* BRANDING ASSETS - Sync with Berkeleys rounded-4xl and margins */}
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/Reform_promo.png" 
                alt="Branding Board" 
@@ -174,7 +174,7 @@ export default function ProjectPage({ }) {
              />
           </div>
 
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/Persona1.png" 
                alt="Branding Board" 
@@ -184,7 +184,7 @@ export default function ProjectPage({ }) {
              />
           </div>
 
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/Persona2.png" 
                alt="Branding Board" 
@@ -194,7 +194,7 @@ export default function ProjectPage({ }) {
              />
           </div>
 
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/UseFlow.png" 
                alt="Branding Board" 
@@ -204,7 +204,7 @@ export default function ProjectPage({ }) {
              />
           </div>
 
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/Colors.png" 
                alt="Branding Board" 
@@ -216,7 +216,7 @@ export default function ProjectPage({ }) {
 
         </div>
 
-        {/* Bottom Cap - Sync with Berkeleys 105vw */}
+        {/* Bottom Cap*/}
         <div className="w-[105vw] md:w-[106vw] leading-none relative z-30">
           <Image 
             src="/Bottom2.png" 

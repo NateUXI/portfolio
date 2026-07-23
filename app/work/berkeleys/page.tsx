@@ -151,7 +151,7 @@ export default function ProjectPage({ }) {
           </div>
           
           {/* VIDEO ASSET */}
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
             <video 
               src="/menu_preview.mp4" 
               className="w-full h-auto"
@@ -162,7 +162,7 @@ export default function ProjectPage({ }) {
           </div>
 
           {/* BRANDING ASSETS */}
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/Berks_home.png" 
                alt="Home View" 
@@ -172,10 +172,56 @@ export default function ProjectPage({ }) {
              />
           </div>
 
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black">
              <Image 
                src="/Berks_colors.png" 
                alt="Colors View" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto"
+             />
+          </div>
+
+          {/* UX SHOWCASE TITLE */}
+          <h3 className="font-anton text-portfolio-red text-[7vw] md:text-[8vw] uppercase text-center mt-[8vw] md:mt-[5vw] mb-[5vw] md:mb-[3vw]">
+            UX Showcase
+          </h3>
+
+          {/* UX SHOWCASE ASSETS */}
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+             <Image 
+               src="/Berks_Low_Home.png" 
+               alt="Home Page Low Fidelity" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto"
+             />
+          </div>
+
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+             <Image 
+               src="/Berks_Low_About.png" 
+               alt="About Page Low Fidelity" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto"
+             />
+          </div>
+
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+             <Image 
+               src="/Berks_Low_Menu.png" 
+               alt="Menu Page Low Fidelity" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto"
+             />
+          </div>
+
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl">
+             <Image 
+               src="/Berks_Low_Visit.png" 
+               alt="Visit Page Low Fidelity" 
                width={1200} height={800} 
                unoptimized
                className="w-full h-auto"

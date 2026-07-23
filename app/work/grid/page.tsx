@@ -108,7 +108,7 @@ export default function ProjectPage({ }) {
 
       <div className="relative w-full flex flex-col items-center z-20">
         
-        {/* Top Cap - Synced to 115vw / 106vw */}
+        {/* Top Cap */}
         <div className="w-[115vw] md:w-[106vw] leading-none relative z-00">
           <Image 
             src="/Top3.png" 
@@ -155,7 +155,7 @@ export default function ProjectPage({ }) {
           </div>
 
           {/* BRANDING ASSETS */}
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/GRID_app2.png" 
                alt="Branding Board" 
@@ -165,7 +165,7 @@ export default function ProjectPage({ }) {
              />
           </div>
 
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/GRID_colors.PNG" 
                alt="Branding Board" 
@@ -177,7 +177,7 @@ export default function ProjectPage({ }) {
 
         </div>
 
-        {/* Bottom Cap - Synced to 105vw / 106vw */}
+        {/* Bottom Cap */}
         <div className="w-[105vw] md:w-[106vw] leading-none relative z-30">
           <Image 
             src="/Bottom2.png" 

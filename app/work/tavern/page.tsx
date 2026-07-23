@@ -155,8 +155,8 @@ export default function ProjectPage({ }) {
             </div>
           </div>
 
-          {/* ASSETS - Standardized rounded-4xl and margins */}
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+          {/* ASSETS */}
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
              src="/Tavern_top.png" 
              alt="Tavern Top" 
@@ -166,7 +166,7 @@ export default function ProjectPage({ }) {
              className="w-full h-auto" />
           </div>
 
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
              src="/Tavern_philosophy.png" 
              alt="Philosophy" 
@@ -176,7 +176,7 @@ export default function ProjectPage({ }) {
              className="w-full h-auto" />
           </div>
 
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image src="/Tavern_menu.png" 
              alt="Menu" 
              width={1200} 
@@ -185,7 +185,7 @@ export default function ProjectPage({ }) {
              className="w-full h-auto" />
           </div>
 
-          <div className="w-full rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl">
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
              src="/Tavern_colors.png" 
              alt="Colors" 
@@ -197,7 +197,7 @@ export default function ProjectPage({ }) {
 
         </div>
 
-        {/* Bottom Cap - Sync with Berkeleys 105vw */}
+        {/* Bottom Cap */}
         <div className="w-[105vw] md:w-[106vw] leading-none relative z-30">
           <Image 
             src="/Bottom2.png" 
