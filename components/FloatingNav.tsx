@@ -129,6 +129,7 @@ export default function FloatingNav() {
   const [isOpen, setIsOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [activePreview, setActivePreview] = useState<PreviewKind>(null)
+  const [isShrunk, setIsShrunk] = useState(false)
 
   const rootRef = useRef<HTMLDivElement | null>(null)
   const previewRef = useRef<HTMLDivElement | null>(null)
@@ -136,6 +137,7 @@ export default function FloatingNav() {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const marqueeTweenRef = useRef<gsap.core.Tween | null>(null)
   const previousPreviewRef = useRef<PreviewKind>(null)
+  const lastScrollYRef = useRef(0)
 
   useEffect(() => {
     const id1 = requestAnimationFrame(() => {
@@ -167,6 +169,32 @@ export default function FloatingNav() {
     if (footerSection) observer.observe(footerSection)
 
     return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    lastScrollYRef.current = window.scrollY
+
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      const lastY = lastScrollYRef.current
+      const delta = currentY - lastY
+
+      // Ignore tiny jitters, and always stay full-size near the top
+      if (Math.abs(delta) < 6) return
+
+      if (currentY < 80) {
+        setIsShrunk(false)
+      } else if (delta > 0) {
+        setIsShrunk(true) // scrolling down
+      } else {
+        setIsShrunk(false) // scrolling up
+      }
+
+      lastScrollYRef.current = currentY
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const buildMarquee = useCallback(() => {
@@ -300,11 +328,11 @@ export default function FloatingNav() {
   return (
     <div
       ref={rootRef}
-      className={`fixed bottom-10 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center w-[95%] max-w-150 transition-all duration-500 ease-in-out ${
+      className={`fixed bottom-10 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center w-[95%] max-w-150 origin-bottom transition-all duration-500 ease-in-out ${
         mounted && !isHidden
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'
-      }`}
+      } ${isShrunk ? 'scale-90' : 'scale-100'}`}
     >
       <div
         ref={previewRef}

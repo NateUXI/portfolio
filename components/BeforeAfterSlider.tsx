@@ -44,7 +44,7 @@ export default function BeforeAfterSlider({
   // Each side is "dimmed" while its visible share of the frame is under 50%,
   // and clears once it reaches 51%+
   const beforeDimmed = sliderPos < 51
-  const afterDimmed = sliderPos > 50
+  const afterDimmed = sliderPos > 51
 
   return (
     <div

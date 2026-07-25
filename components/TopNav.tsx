@@ -62,7 +62,7 @@ export default function TopNav() {
 
           <div className={`hidden lg:flex flex-col font-overpass text-[9px] md:text-[11px] uppercase tracking-widest font-bold transition-colors duration-500 ${textColor}`}>
             <span className="leading-tight">Availability</span>
-            <span className="opacity-60 font-normal">Q2 2026</span>
+            <span className="opacity-60 font-normal">Q4 2026</span>
           </div>
         </div>
 
