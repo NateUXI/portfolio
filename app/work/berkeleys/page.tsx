@@ -8,6 +8,7 @@ import FloatingNav from '@/components/FloatingNav'
 import TopNav from '@/components/TopNav'
 import Footer from '@/components/Footer'
 import { useScroll, useTransform } from 'framer-motion'
+import BeforeAfterSlider from '@/components/BeforeAfterSlider'
 
 function horizontalLoop(items: any[], config: any) {
   items = gsap.utils.toArray(items);
@@ -150,6 +151,16 @@ export default function ProjectPage({ }) {
             </div>
           </div>
           
+          {/* BRANDING ASSETS - BEFORE/AFTER */}
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+            <BeforeAfterSlider
+              beforeSrc="/Berks_Old.PNG"
+              afterSrc="/Berks_home.png"
+              beforeAlt="Old Design"
+              afterAlt="New Design"
+            />
+          </div>
+
           {/* VIDEO ASSET */}
           <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
             <video 
@@ -176,6 +187,21 @@ export default function ProjectPage({ }) {
              <Image 
                src="/Berks_colors.png" 
                alt="Colors View" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto"
+             />
+          </div>
+
+          {/* UX SHOWCASE TITLE */}
+          <h3 className="font-anton text-portfolio-red text-[7vw] md:text-[8vw] uppercase text-center mt-[8vw] md:mt-[5vw] mb-[5vw] md:mb-[3vw]">
+            Persona Case Study
+          </h3>
+
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl bg-black">
+             <Image 
+               src="/Berks_Persona1.png" 
+               alt="Berks Persona" 
                width={1200} height={800} 
                unoptimized
                className="w-full h-auto"
