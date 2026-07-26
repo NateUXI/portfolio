@@ -105,7 +105,7 @@ export default function ProjectPage({ }) {
 
       <div className="relative w-full flex flex-col items-center z-20">
         
-        {/* Top Cap - Sync with Berkeleys 115vw/106vw */}
+        {/* Top Cap */}
         <div className="w-[115vw] md:w-[106vw] leading-none relative z-00">
           <Image 
             src="/Top3.png" 
@@ -153,7 +153,7 @@ export default function ProjectPage({ }) {
 
           {/* MOBILE SHOWCASE */}
           <div className="w-[92%] md:w-[88%] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-[6vw] md:mb-[4vw]">
-            {["/Reform_characters2.png", "/Reform_login.png", "/Reform_create2.png", "/Reform_board.png"].map((src, i) => (
+            {["/Reform_Home.png", "/Reform_login.png", "/Reform_create2.png", "/Reform_board.png"].map((src, i) => (
               <motion.div 
                 key={i}
                 className="relative aspect-9/19 rounded-4xl overflow-hidden shadow-2xl"
@@ -163,7 +163,7 @@ export default function ProjectPage({ }) {
             ))}
           </div>
 
-          {/* BRANDING ASSETS - Sync with Berkeleys rounded-4xl and margins */}
+          {/* BRANDING ASSETS  */}
           <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/Reform_promo.png" 
