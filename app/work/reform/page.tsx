@@ -153,7 +153,7 @@ export default function ProjectPage({ }) {
 
           {/* MOBILE SHOWCASE */}
           <div className="w-[92%] md:w-[88%] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-[6vw] md:mb-[4vw]">
-            {["/Reform_Home.png", "/Reform_login.png", "/Reform_create2.png", "/Reform_board.png"].map((src, i) => (
+            {["/Reform_Home.png", "/Reform_login.png", "/Reform_Create_Tab.png", "/Reform_board.png"].map((src, i) => (
               <motion.div 
                 key={i}
                 className="relative aspect-9/19 rounded-4xl overflow-hidden shadow-2xl"
