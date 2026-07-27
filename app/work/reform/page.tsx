@@ -178,7 +178,7 @@ export default function ProjectPage({}) {
             <div className="shrink-0 relative w-[67.5vw] md:w-[23.5vw] aspect-9/18.5 rounded-[3.2rem] md:rounded-[4.5rem] p-[2%] bg-[linear-gradient(180deg,var(--color-portfolio-red)_0%,var(--color-portfolio-red)_30%,#33A1D0_100%)] shadow-2xl">
               <div className="relative w-full h-full rounded-[2.6rem] md:rounded-[3.1rem] overflow-hidden">
                 <iframe
-                  src="https://embed.figma.com/proto/uzGiFAB4DvZtWonmYzqDje/RefLow?page-id=205%3A377&node-id=205-388&viewport=-216%2C16%2C1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=205%3A388&embed-host=share&hide-ui=1"
+                  src="https://embed.figma.com/proto/wAQzY4BOvRqzBwqdR2frUx/RefLow--Copy-?node-id=205-388&p=f&viewport=-216%2C16%2C1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=205%3A388&embed-host=share&hide-ui=1"
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[128%] h-[118%] border-0 scale-98 pointer-events-auto"
                   allowFullScreen
                   loading="lazy"
