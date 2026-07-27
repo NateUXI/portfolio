@@ -17,8 +17,8 @@ function horizontalLoop(items: any[], config: any) {
       paused: config.paused,
       defaults: { ease: "none" },
       onReverseComplete: () => {
-      tl.totalTime(tl.rawTime() + tl.duration() * 100);
-    }
+        tl.totalTime(tl.rawTime() + tl.duration() * 100);
+      }
     }),
     length = items.length,
     startX = items[0].offsetLeft,
@@ -32,7 +32,7 @@ function horizontalLoop(items: any[], config: any) {
   gsap.set(items, {
     xPercent: (i, el) => {
       let w = widths[i] = parseFloat(gsap.getProperty(el, "width", "px") as string);
-      xPercents[i] = snap(parseFloat(gsap.getProperty(el, "x", "px") as string) / w * 100 + (gsap.getProperty(el, "xPercent") as number));
+      xPercents[i] = snap(parseFloat(gsap.getProperty(el, "x", "px") as string) / w * 100 + (gsap.getProperty(el, "x") as number));
       return xPercents[i];
     }
   });
@@ -60,7 +60,7 @@ function horizontalLoop(items: any[], config: any) {
   return tl;
 }
 
-export default function ProjectPage({ }) {
+export default function ProjectPage({}) {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], [0, 800])
   const marqueeRef = useRef<HTMLDivElement | null>(null)
@@ -119,7 +119,7 @@ export default function ProjectPage({ }) {
         {/* WHITE CONTENT SECTION */}
         <div className="relative w-[115vw] md:w-[106vw] bg-white z-20 px-[10vw] md:px-[8vw] py-[8vw] md:py-[5vw]">
           
-          {/* HEADER BLOCK - Sync with Berkeleys gap and negative margins */}
+          {/* HEADER BLOCK */}
           <div className="flex flex-col md:flex-row items-center gap-[8vw] md:gap-[4vw] mb-[6vw] md:mb-[3vw] -mt-[24vw] md:-mt-[25vw] md:ml-[2vw] relative z-40">
             {/* Logo Circle */}
             <div className="relative w-[45vw] md:w-[25vw] aspect-square rounded-full overflow-hidden border-[2vw] md:border-[1.5vw] border-portfolio-red shadow-xl bg-white">
@@ -137,7 +137,7 @@ export default function ProjectPage({ }) {
             </div>
           </div>
 
-          {/* TALENTS BAR - Sync with Berkeleys padding/text size */}
+          {/* TALENTS BAR */}
           <div className="w-full bg-portfolio-red rounded-full py-3 md:py-4 px-6 md:px-10 mb-[6vw] md:mb-[3vw] shadow-md overflow-hidden whitespace-nowrap flex items-center relative">
             <div ref={marqueeRef} className="flex items-center whitespace-nowrap will-change-transform">
               {talents.map((talent, idx) => (
@@ -151,15 +151,52 @@ export default function ProjectPage({ }) {
             </div>
           </div>
 
+          {/* LIVE PROTOTYPE SECTION */}
+          <div className="flex flex-col md:flex-row items-center gap-[8vw] md:gap-[4vw] mb-[8vw] md:mb-[5vw]">
+            
+            {/* Left Column: Headings & Text */}
+            <div className="flex-1 text-center md:text-left w-full">
+              <h2 className="font-anton text-[12vw] md:text-[9vw] uppercase leading-none bg-[linear-gradient(180deg,var(--color-portfolio-red)_0%,var(--color-portfolio-red)_30%,#33A1D0_100%)] bg-clip-text text-transparent">
+                Live Prototype
+              </h2>
+              <h3 className="font-bold text-[4vw] md:text-[2vw] uppercase mt-2 mb-4 text-[#33A1D0] tracking-tight">
+                Built in Figma
+              </h3>
+
+              <div className="bg-[#33A1D0] text-white p-6 md:p-8 rounded-3xl md:rounded-3xl shadow-lg mb-6">
+                <p className="text-[3.8vw] md:text-[1.5vw] font-semibold leading-relaxed tracking-tight">
+                  Here is a small presentation of REFORM. This live prototype serves as a working proof of concept for the eventual full release of this user first concepting app.
+                </p>
+              </div>
+
+              <p className="text-[3.5vw] md:text-[1.5vw] font-bold leading-relaxed tracking-tight text-[#33A1D0]">
+                The current version of REFORM is being built out using Expo. Prototyping, UX, and UI design is made in Figma and User Experience testing is being collected from both versions. If you would like to send any feedback on this limited prototype, please send it using the contact modal on the top right of my website.
+              </p>
+            </div>
+
+            {/* Right Column: Mobile Frame Device Wrapper */}
+            <div className="shrink-0 relative w-[67.5vw] md:w-[23.5vw] aspect-9/18.5 rounded-[3.2rem] md:rounded-[4.5rem] p-[2%] bg-[linear-gradient(180deg,var(--color-portfolio-red)_0%,var(--color-portfolio-red)_30%,#33A1D0_100%)] shadow-2xl">
+              <div className="relative w-full h-full rounded-[2.6rem] md:rounded-[3.1rem] overflow-hidden">
+                <iframe
+                  src="https://embed.figma.com/proto/uzGiFAB4DvZtWonmYzqDje/RefLow?page-id=205%3A377&node-id=205-388&viewport=-216%2C16%2C1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=205%3A388&embed-host=share&hide-ui=1"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[128%] h-[118%] border-0 scale-98 pointer-events-auto"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+          </div>
+
           {/* MOBILE SHOWCASE */}
           <div className="w-[92%] md:w-[88%] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-[6vw] md:mb-[4vw]">
             {["/Reform_Home.png", "/Reform_login.png", "/Reform_Create_Tab.png", "/Reform_board.png"].map((src, i) => (
-              <motion.div 
+              <div 
                 key={i}
                 className="relative aspect-9/19 rounded-4xl overflow-hidden shadow-2xl"
               >
-                <Image src={src} alt={`Screen ${i}`} fill className="object-cover" />
-              </motion.div>
+                <Image src={src} alt={`Screen ${i}`} fill unoptimized className="object-cover" />
+              </div>
             ))}
           </div>
 
@@ -173,6 +210,11 @@ export default function ProjectPage({ }) {
                className="w-full h-auto rounded-4xl"
              />
           </div>
+
+          {/* PERSONA TITLE */}
+          <h3 className="font-anton text-[#33A1D0] text-[7vw] md:text-[8vw] uppercase text-center mt-[8vw] md:mt-[5vw] mb-[5vw] md:mb-[3vw]">
+            Persona Case Studies
+          </h3>
 
           <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
@@ -203,6 +245,11 @@ export default function ProjectPage({ }) {
                className="w-full h-auto rounded-4xl"
              />
           </div>
+
+          {/* PERSONA TITLE */}
+          <h3 className="font-anton text-[#33A1D0] text-[7vw] md:text-[8vw] uppercase text-center mt-[8vw] md:mt-[5vw] mb-[5vw] md:mb-[3vw]">
+            Brand Style Board
+          </h3>
 
           <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 

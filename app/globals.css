@@ -5,6 +5,7 @@
 /* --- 1. Variables & Theme --- */
 :root {
   --portfolio-red: #fa0000;
+  --reform-blue: #33A1D0;
   --radius: 0.625rem;
 
   /* Halftone Base Logic */

@@ -19,7 +19,7 @@ const overpass = Overpass({
 
 export const metadata: Metadata = {
   title: "Nate Turner",
-  description: "Pionta themed creative portfolio",
+  description: "Design Engineer Nate Turner's Portfolio. Working with UX/UI design across Figma, Next.js, React and more.",
 };
 
 export default function RootLayout({
