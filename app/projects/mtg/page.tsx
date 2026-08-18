@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import Image from 'next/image'
 import gsap from 'gsap'
 import FloatingNav from '@/components/FloatingNav'
+import ProjectCTA from '@/components/ProjectCTA'
 import TopNav from '@/components/TopNav'
 import Footer from '@/components/Footer'
 
@@ -12,6 +13,7 @@ const mtgCards = [
   { src: '/art/Talion.png', alt: 'Talion' },
   { src: '/art/EleshNorn2.png', alt: 'Elesh Norn' },
   { src: '/art/Pionta_card.png', alt: 'Pionta Card' },
+  { src: '/art/Tarr_MTG_Final.png', alt: 'Slime Rancher' },
   { src: '/art/Pionta_aura.png', alt: 'Pionta Aura' },
   { src: '/art/Razzle.png', alt: 'Razzle' },
   { src: '/art/Lark.png', alt: 'Lark' },
@@ -120,7 +122,49 @@ export default function ProjectPage() {
           role="dialog"
           aria-modal="true"
         >
+          {/* Action buttons */}
+          <div className="fixed top-6 right-6 flex gap-4 z-20">
+            <a
+              href="https://ko-fi.com/nathanion"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center justify-center px-6 h-15 rounded-full bg-white active:scale-95 md:hover:scale-110 backdrop-blur-sm transition-transform"
+            >
+              <span className="font-anton text-2xl uppercase tracking-tight text-[#fa0000]">
+                Support on Ko-fi
+              </span>
+            </a>
 
+            <a
+              href={selectedCard.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              title="Open in new tab"
+              className="flex items-center justify-center w-15 h-15 rounded-full bg-white active:scale-95 md:hover:scale-110 backdrop-blur-sm transition-transform"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fa0000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </a>
+
+            <a
+              href={selectedCard.src}
+              download
+              onClick={(e) => e.stopPropagation()}
+              title="Download image"
+              className="flex items-center justify-center w-15 h-15 rounded-full bg-white active:scale-95 md:hover:scale-110 backdrop-blur-sm transition-transform"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fa0000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </a>
+          </div>
 
           <div 
             ref={cardContainerRef}
@@ -185,6 +229,16 @@ export default function ProjectPage() {
               </div>
             ))}
           </div>
+
+          {/* Ko-fi CTA */}
+          <div className="mt-[10vw] md:mt-[5vw]">
+            <ProjectCTA
+              text="my Ko-fi"
+              href="https://ko-fi.com/nathanion"
+              red
+            />
+          </div>
+
         </div>
 
         {/* Bottom Cap */}

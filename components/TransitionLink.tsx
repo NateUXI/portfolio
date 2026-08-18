@@ -16,6 +16,22 @@ export default function TransitionLink({
   children,
   onNavigate,
 }: TransitionLinkProps) {
+  const isExternal = /^https?:\/\//.test(href)
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        onClick={() => onNavigate?.()}
+      >
+        {children}
+      </a>
+    )
+  }
+
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (
       e.button !== 0 ||
