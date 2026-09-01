@@ -142,6 +142,19 @@ export default function WorkPage() {
               </TransitionLink>
             </div>
 
+            <div className="-rotate-1">
+              <TransitionLink href="/work/synapse">
+                <WorkCard
+                  title="SYNAPSE"
+                  category="DESIGN SYSTEM GOVERNANCE & TOKEN ENGINE"
+                  baseImg="/Synapse_Base.png"
+                  hoverImg="/Synapse_Hover.png"
+                  logoImg="/NDA.png"
+                  talents={["SaaS","Figma", "UX", "UI", "Next.JS", "React", "Branding", "Character Design", "Art Direction", "Prototyping", "Wireframing", "User Flows", "Usability Testing", "Visual Design", "Interaction Design", "Information Architecture"]}
+                />
+              </TransitionLink>
+            </div>
+
             <div className="rotate-2">
               <TransitionLink href="/work/tavern">
                 <WorkCard
