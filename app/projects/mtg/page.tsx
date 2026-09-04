@@ -14,6 +14,7 @@ const mtgCards = [
   { src: '/art/EleshNorn2.png', alt: 'Elesh Norn' },
   { src: '/art/Pionta_card.png', alt: 'Pionta Card' },
   { src: '/art/Tarr_MTG_Final.png', alt: 'Slime Rancher' },
+  { src: '/art/arcanesignet.png', alt: 'Arcane Signet' },
   { src: '/art/Pionta_aura.png', alt: 'Pionta Aura' },
   { src: '/art/Razzle.png', alt: 'Razzle' },
   { src: '/art/Lark.png', alt: 'Lark' },
