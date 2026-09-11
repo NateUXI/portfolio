@@ -15,6 +15,7 @@ const mtgCards = [
   { src: '/art/Pionta_card.png', alt: 'Pionta Card' },
   { src: '/art/Tarr_MTG_Final.png', alt: 'Slime Rancher' },
   { src: '/art/arcanesignet.png', alt: 'Arcane Signet' },
+  { src: '/art/Ravenous_Slime.png', alt: 'Ravenous Slime' },
   { src: '/art/Pionta_aura.png', alt: 'Pionta Aura' },
   { src: '/art/Razzle.png', alt: 'Razzle' },
   { src: '/art/Lark.png', alt: 'Lark' },
