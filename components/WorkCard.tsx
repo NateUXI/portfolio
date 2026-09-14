@@ -72,13 +72,13 @@ export default function WorkCard({
   const marqueeRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsOverRed(entry.isIntersecting),
-      { threshold: 0.2 }
-    )
+  const observer = new IntersectionObserver(
+    ([entry]) => setIsOverRed(entry.isIntersecting),
+    { threshold: 0, rootMargin: '-50% 0px -50% 0px' }
+  )
 
-    const redSection = document.getElementById('red')
-    if (redSection) observer.observe(redSection)
+  const redSection = document.getElementById('red')
+  if (redSection) observer.observe(redSection)
 
     let loop: gsap.core.Timeline | undefined;
     if (marqueeRef.current && talents.length > 0) {

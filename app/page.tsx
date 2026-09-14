@@ -8,7 +8,7 @@ import RevealOnScroll from '../components/RevealOnScroll'
 import Services from '../components/Services'
 import ProjectCTA from '../components/ProjectCTA'
 import Footer from '@/components/Footer'
-import { useLayoutEffect, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import Spline from '@splinetool/react-spline'
 import Lenis from 'lenis'
 import WorkCard from '@/components/WorkCard'
@@ -19,6 +19,8 @@ import TransitionLink from '@/components/TransitionLink'
 
 export default function Home() {
   const [useSmallHero, setUseSmallHero] = useState<boolean | null>(null)
+  const reelSectionRef = useRef<HTMLDivElement>(null)
+  const reelRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
     if ('scrollRestoration' in history) {
@@ -73,8 +75,29 @@ export default function Home() {
         </section>
       )}
 
+
       <div id="red" className="relative z-10 bg-portfolio-red">
         
+        <section
+          id="approach"
+          className="relative z-10 bg-portfolio-red flex justify-center items-start py-10 md:py-16 px-4"
+        >
+          <div className="w-[92%] md:w-[85%] aspect-video rounded-3xl overflow-hidden shadow-2xl">
+            <div ref={reelRef} className="w-full h-full">
+              <video
+                src="/project_reel.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+
         <section
           id="approach"
           className="relative z-10 bg-portfolio-red text-white px-6 md:px-20 py-8 md:py-20 lg:py-0 overflow-hidden min-h-[80vh] lg:min-h-screen flex flex-col"
@@ -96,7 +119,7 @@ export default function Home() {
               <div className="max-w-5xl relative">
                 {useSmallHero ? (
                   <p className="font-overpass text-2xl md:text-4xl lg:text-6xl font-bold leading-tight italic text-white opacity-100">
-                    Dedicated to redefining the digital landscape through bold engineering and a deep-seated commitment to striking, user-centric design.
+                    Passionate about User Experience Design, creating striking digital experiences, and focusing on impact, performance, and accessibility.
                   </p>
                 ) : (
                   <ScrollFloat
@@ -107,7 +130,7 @@ export default function Home() {
                     stagger={0.03}
                     textClassName="font-overpass text-2xl md:text-4xl lg:text-6xl font-bold leading-tight italic text-white"
                   >
-                    Dedicated to redefining the digital landscape through bold engineering and a deep-seated commitment to striking, user-centric design.
+                    Passionate about User Experience Design, creating striking digital experiences, and focusing on impact, performance, and accessibility.
                   </ScrollFloat>
                 )}
               </div>
