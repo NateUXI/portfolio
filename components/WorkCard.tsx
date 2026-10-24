@@ -50,7 +50,7 @@ function horizontalLoop(items: HTMLElement[], config: any) {
 type WorkCardProps = {
   title: string
   category: string
-  baseImg: string
+  baseImg?: string
   hoverImg?: string
   logoImg?: string
   logoWidth?: number
@@ -115,13 +115,20 @@ export default function WorkCard({
       `}>
 
         <div className="relative aspect-16/10 rounded-[18px] md:rounded-[1.5vw] overflow-hidden bg-black">
-          <Image 
-            src={baseImg} 
-            alt={title} 
-            fill 
-            sizes="(max-width: 768px) 100vw, 50vw" 
-            className="object-cover transition-opacity duration-300" 
-          />
+          {baseImg ? (
+            <Image
+              src={baseImg}
+              alt={title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition-opacity duration-300"
+            />
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-portfolio-red text-white">
+              <span className="font-anton text-[10vw] md:text-[5vw] leading-none uppercase">{title}</span>
+              <span className="mt-3 text-[2.5vw] md:text-[0.8vw] font-bold uppercase tracking-[0.25em]">Brand concept</span>
+            </div>
+          )}
           
           {hoverImg && (
             <Image 

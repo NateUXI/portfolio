@@ -8,7 +8,11 @@ import { usePathname } from 'next/navigation'
 import TransitionLink from './TransitionLink'
 import ContactModal from './ContactModal'
 
-const Footer = () => {
+interface FooterProps {
+  gradientStartColor?: string
+}
+
+const Footer = ({ gradientStartColor = '#fa0000' }: FooterProps) => {
   const pathname = usePathname()
   const [isContactOpen, setIsContactOpen] = useState(false)
 
@@ -54,7 +58,7 @@ const Footer = () => {
       <footer
         id="footer"
         className="relative w-full pt-[15vw] pb-[2vw] overflow-hidden"
-        style={{ background: 'linear-gradient(to bottom, #fa0000, #FFFFFF 35%)' }}
+        style={{ background: `linear-gradient(to bottom, ${gradientStartColor}, #FFFFFF 35%)` }}
       >
         <div className="relative w-full max-w-[100vw] h-[10vw] flex items-end justify-center px-[2vw]">
           {/* Home Pot */}

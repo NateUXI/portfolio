@@ -188,7 +188,8 @@
   .reveal-left { opacity: 0; transform: translateX(-150px); }
   .reveal-right { opacity: 0; transform: translateX(150px); }
   .reveal-top { opacity: 0; transform: translateY(-50px); }
-  .reveal-bottom { opacity: 0; transform: translate(-50%, 50px); }
+  .reveal-bottom { opacity: 0; transform: translateY(50px); }
+  .reveal-fade { opacity: 0; }
 
   .reveal-active {
     opacity: 1 !important;
@@ -196,10 +197,9 @@
     transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   }
   
-  .reveal-bottom.reveal-active { transform: translate(-50%, 0) !important; }
-
   .font-anton { font-family: var(--font-anton-sc), sans-serif; }
   .font-overpass { font-family: var(--font-overpass), sans-serif; }
+  .font-inter { font-family: var(--font-inter), sans-serif; }
 }
 
 .page-transition-overlay {

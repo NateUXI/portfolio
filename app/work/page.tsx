@@ -180,6 +180,19 @@ export default function WorkPage() {
                 />
               </TransitionLink>
             </div>
+
+            <div className="rotate-1">
+              <TransitionLink href="/work/billy-buttons">
+                <WorkCard
+                  title="BILLY BUTTONS"
+                  category="BRAND CONCEPT"
+                  baseImg="/Billy_Buttons_base1.png"
+                  hoverImg="/Billy_Buttons_hover1.png"
+                  logoImg="/Billy_Buttons_Logo.png"
+                  talents={["Brand Concept", "Showcase in Progress"]}
+                />
+              </TransitionLink>
+            </div>
           </div>
         </div>
 

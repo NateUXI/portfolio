@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>billybuttons — Drop Vol. No. 04 · Electric Guava &amp; Palm</title>
+<meta name="description" content="billybuttons monthly scent subscription — Drop Vol. No. 04, Electric Guava & Palm. Your monthly vibe, delivered in full color.">
+<style>
+@font-face { font-family: "Inter Tight BB"; src: url("assets/fonts/InterTight-Variable.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Plus Jakarta BB"; src: url("assets/fonts/PlusJakartaSans-Variable.ttf") format("truetype"); font-weight: 200 800; font-display: swap; }
+
+:root{
+  --white:#FFFFFF;
+  --canvas:#F9F9F7;
+  --ink:#2D201C;          /* rich chocolate: text + structure */
+  --plum:#2B1E28;         /* deep warm plum: secondary text */
+  --muted:#6B5A54;        /* warm neutral, 6.2:1 on canvas */
+  --rule:rgba(45,32,28,.16);
+  --rule-strong:rgba(45,32,28,.5);
+  --guava:#D52456;        /* Electric Guava: brand + logo */
+  --hot:#E32359;          /* tagline highlight */
+  --guava-tint:#FBE1E8;
+  --sans:"Inter Tight BB","Inter Tight",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --soft:"Plus Jakarta BB","Plus Jakarta Sans",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --pad: clamp(20px, 4vw, 56px);
+  --maxw: 1440px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--canvas); color:var(--ink);
+  font-family:var(--soft); font-size:16px; line-height:1.5;
+  font-variant-numeric: tabular-nums lining-nums;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--guava); outline-offset:3px; border-radius:6px}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 var(--pad)}
+.label{font-family:var(--soft); font-size:12px; font-weight:600; letter-spacing:.01em; text-transform:uppercase; font-variant-numeric:tabular-nums; line-height:1.4}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- Top bar ---------- */
+.topbar{position:sticky; top:0; z-index:30; background:rgba(249,249,247,.9); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--rule)}
+.topbar .wrap{display:flex; align-items:center; justify-content:space-between; gap:24px; height:72px}
+.brand-sm img{height:38px; width:auto}
+.nav{display:flex; gap:30px; align-items:center}
+.nav a{text-decoration:none; font-size:14px; font-weight:600; padding:6px 0; position:relative}
+.nav .short{display:none}
+.nav a::after{content:""; position:absolute; left:0; right:100%; bottom:0; height:2px; border-radius:2px; background:var(--guava); transition:right .35s cubic-bezier(.2,.7,.2,1)}
+.nav a:hover::after{right:0}
+
+/* ---------- Hero (desktop: headline left, mark right; fits above the fold) ---------- */
+.hero{position:relative; background:var(--canvas); overflow:hidden; padding-top:clamp(14px,2vw,28px)}
+.hero-grid{
+  display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);
+  grid-template-areas:"copy mark" "meta meta";
+  column-gap:clamp(24px,3vw,56px); row-gap:clamp(24px,3vw,40px); align-items:center;
+  padding-bottom:clamp(32px,4vw,56px);
+}
+.hero-copy{grid-area:copy; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(22px,2.6vw,36px)}
+.hero-copy h1{grid-area:h1}
+.hero-lead{grid-area:lead}
+h1.display{
+  font-family:var(--sans); font-weight:800; font-size:clamp(50px, 7.2vw, 112px);
+  line-height:1.0; letter-spacing:-.05em; margin:0; max-width:6.4em; text-wrap:balance;
+  font-feature-settings:"ss01" 1;
+}
+h1.display .hot{color:var(--hot); display:inline-block; position:relative; white-space:nowrap}
+h1.display .hot::after{content:""; position:absolute; left:-.03em; right:-.03em; bottom:.02em; height:.09em; background:var(--hot); border-radius:99px; transform:rotate(-2deg); opacity:.92}
+.hero-lead{display:flex; flex-direction:column; gap:20px; align-items:flex-start}
+.drop-tag{margin:0; font-size:14px; font-weight:600; line-height:1.4; border-left:3px solid var(--guava); padding-left:14px}
+.drop-tag .edition{display:block; font-family:var(--sans); font-size:clamp(22px,2vw,28px); font-weight:700; letter-spacing:-.035em; line-height:1.05; margin-top:6px; color:var(--ink)}
+.drop-tag .no{color:var(--guava)}
+.ctas{display:flex; gap:12px; flex-wrap:wrap}
+.btn{white-space:nowrap; display:inline-flex; align-items:center; gap:10px; padding:15px 24px; border-radius:999px; text-decoration:none; font-weight:700; letter-spacing:-.01em; font-size:16px; border:2px solid var(--ink); transition:transform .25s cubic-bezier(.2,.7,.2,1), background .25s, color .25s}
+.btn-primary{background:var(--guava); border-color:var(--guava); color:#fff}
+.btn-primary:hover{transform:translateY(-2px) rotate(-1deg); background:#B81D48; border-color:#B81D48}
+.btn-ghost{background:transparent; color:var(--ink)}
+.btn-ghost:hover{background:var(--ink); color:var(--white); transform:translateY(-2px)}
+.btn .arrow{transition:transform .3s}
+.btn:hover .arrow{transform:translateX(4px)}
+
+.hero-mark{grid-area:mark; position:relative; margin:0; min-height:clamp(380px,44vw,620px); display:flex; align-items:center; justify-content:center; isolation:isolate}
+.hero-mark .blob{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); height:100%; width:auto; z-index:0; pointer-events:none}
+.hero-mark .blob path{fill:var(--guava-tint)}
+.hero-mark .logo{position:relative; z-index:2; width:82%; height:auto; transform:rotate(-4deg); transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.hero-mark:hover .logo{transform:rotate(-2deg)}
+.hero-mark .ring{position:absolute; right:0; bottom:1%; width:clamp(110px,11.5vw,164px); aspect-ratio:1; z-index:3}
+.hero-mark .ring text{font-family:var(--soft); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.12em; fill:var(--ink)}
+.hero-mark .ring .spin{transform-origin:50% 50%; animation:spin 24s linear infinite}
+.hero-mark .ring .core{fill:var(--hot)}
+.hero-mark .ring .core-t{fill:#fff; font-family:var(--sans); font-weight:800; font-size:30px; letter-spacing:-.04em}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.meta-strip{grid-area:meta; display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--rule-strong); margin:0}
+.meta-strip > div{padding:16px 16px 0 0}
+.meta-strip > div + div{padding-left:18px; border-left:1px solid var(--rule)}
+.meta-strip .k{display:block; font-size:12px; font-weight:600; color:var(--muted); margin-bottom:6px}
+.meta-strip .v{display:block; font-family:var(--sans); font-size:clamp(18px,1.7vw,24px); font-weight:700; letter-spacing:-.03em; line-height:1.1}
+.meta-strip .v.hot{color:var(--hot)}
+
+/* ---------- Dividers (liquid wave edges, authored in place) ---------- */
+.divider{display:block; height:clamp(56px,7vw,104px); background:var(--up, var(--canvas)); position:relative; margin:0}
+.divider svg{display:block; width:100%; height:100%}
+.divider path{fill:var(--down, var(--white))}
+
+/* ---------- Ribbon: text set on a sine-wave textPath (built in JS to the live width) ---------- */
+.ribbon{position:relative; height:clamp(170px,17vw,240px); background:var(--canvas); overflow:hidden; margin-top:-1px}
+.ribbon svg{position:absolute; inset:0; width:100%; height:100%; display:block}
+
+/* ---------- Section scaffolding ---------- */
+section{position:relative}
+.sec-head{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:24px; row-gap:18px; align-items:end; padding: clamp(20px,2.6vw,36px) 0 clamp(22px,2.6vw,36px)}
+.sec-idx{grid-column: 1 / span 3; font-size:13px; font-weight:600; line-height:1.4}
+.sec-idx b{display:block; font-family:var(--sans); font-size:clamp(64px,8vw,120px); letter-spacing:-.06em; line-height:.85; font-weight:800; color:var(--guava); margin-bottom:14px}
+.sec-title{grid-column: 4 / span 7; font-weight:800; font-size:clamp(36px,4.4vw,64px); line-height:.95; letter-spacing:-.045em; margin:0; text-wrap:balance}
+.sec-note{grid-column: 4 / span 6; font-size:clamp(16px,1.3vw,19px); color:var(--plum); max-width:44ch; margin:0; letter-spacing:-.01em}
+.sec-meta{grid-column: 11 / span 2; justify-self:end; text-align:right; font-size:13px; font-weight:600; color:var(--muted); margin:0}
+
+/* ---------- Product showcase ---------- */
+.products{background:var(--white); padding-bottom: clamp(64px,7vw,112px)}
+.products-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,2.2vw,32px); align-items:stretch}
+.sleeve{position:relative; background:var(--white); color:var(--ink); border:1.5px solid var(--ink); border-radius:200px 200px 36px 36px; overflow:hidden; display:flex; flex-direction:column; transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.sleeve:nth-child(2){background:var(--guava); border-color:var(--guava); color:#fff}
+.sleeve:hover{transform:translateY(-6px)}
+.stage{position:relative; margin:0; aspect-ratio: 4 / 3.5; display:grid; place-items:center; overflow:hidden; background:var(--canvas); border-bottom:1.5px solid var(--ink); isolation:isolate; padding:6% 0}
+.sleeve:nth-child(2) .stage{background:var(--guava); border-bottom-color:rgba(255,255,255,.35)}
+.stage svg.die{position:relative; z-index:2; height:84%; width:auto; max-width:92%; transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.sleeve:hover .stage svg.die{transform:translateY(-8px) rotate(-2deg)}
+.stage .bg-blob{position:absolute; z-index:1; inset:-4%; width:108%; height:108%; transition: transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.sleeve:hover .stage .bg-blob{transform:scale(1.05) rotate(3deg)}
+.stage-tag{position:absolute; z-index:3; left:18px; bottom:16px; font-size:12px; font-weight:700; background:var(--white); color:var(--ink); border-radius:999px; padding:6px 12px; margin:0}
+.sleeve-top{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:0 0 2px}
+.sleeve-top .label{color:var(--muted)}
+.sleeve:nth-child(2) .sleeve-top .label{color:rgba(255,255,255,.92)}
+.sleeve-body{padding:20px 24px 24px; display:flex; flex-direction:column; gap:14px; flex:1}
+.sleeve h3{margin:0; font-weight:800; font-size:clamp(22px,1.9vw,28px); line-height:1; letter-spacing:-.04em}
+.sleeve p{margin:0; font-size:15px; line-height:1.5; letter-spacing:-.005em; color:var(--plum); max-width:40ch}
+.sleeve:nth-child(2) p{color:#fff}
+.spec{display:grid; grid-template-columns:auto 1fr; margin:auto 0 0; border-top:1.5px solid var(--rule-strong)}
+.sleeve:nth-child(2) .spec{border-top-color:rgba(255,255,255,.5)}
+.spec dt, .spec dd{padding:10px 0; margin:0; border-bottom:1px solid var(--rule); font-size:13px; font-weight:600; font-variant-numeric:tabular-nums}
+.sleeve:nth-child(2) .spec dt, .sleeve:nth-child(2) .spec dd{border-bottom-color:rgba(255,255,255,.3)}
+.spec dt{color:var(--muted)}
+.sleeve:nth-child(2) .spec dt{color:rgba(255,255,255,.9)}
+.spec dd{text-align:right; color:var(--ink)}
+.sleeve:nth-child(2) .spec dd{color:#fff}
+.spec dd.big{font-family:var(--sans); font-size:19px; font-weight:700; letter-spacing:-.02em}
+
+/* ---------- Scent profile ---------- */
+.scent{background:var(--canvas); padding-bottom: clamp(40px,5vw,80px)}
+.scent-card{
+  --rx:0deg; --ry:0deg;
+  margin-top:clamp(8px,1.5vw,20px);
+  display:grid; grid-template-columns: 1.05fr 1fr; background:var(--white);
+  border:1.5px solid var(--ink); border-radius:44px; overflow:hidden;
+  transform: perspective(1400px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .5s cubic-bezier(.2,.7,.2,1);
+  box-shadow: 14px 14px 0 var(--guava-tint);
+}
+.scent-vis{position:relative; background:var(--guava-tint); min-height:540px; display:grid; place-items:center; overflow:hidden; border-right:1.5px solid var(--ink)}
+.scent-vis svg.morph{position:absolute; inset:0; width:100%; height:100%}
+.scent-vis .morph path.shape{fill:var(--white); transition:d 1s cubic-bezier(.2,.7,.2,1)}
+.scent-vis .morph path.shape-2{fill:none; stroke:var(--guava); stroke-width:1.4; stroke-dasharray:2 7; stroke-linecap:round; transition:d 1.2s cubic-bezier(.2,.7,.2,1); animation:spin 50s linear infinite; transform-origin:200px 200px}
+.scent-vis .readout{position:relative; z-index:2; text-align:center; padding:24px; pointer-events:none}
+.readout .n{font-size:13px; font-weight:700; color:var(--ink)}
+.readout .name{display:block; font-family:var(--sans); font-weight:800; font-size:clamp(30px,3.5vw,52px); letter-spacing:-.05em; line-height:.95; margin:12px 0 0; transition:opacity .35s}
+.readout .name.swap{opacity:0}
+.readout .pos{display:block; font-size:14px; font-weight:600; color:var(--muted); margin-top:14px}
+.scent-panel{padding: clamp(24px,3vw,44px); display:flex; flex-direction:column}
+.panel-head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding-bottom:18px; border-bottom:1.5px solid var(--ink)}
+.panel-head h3{margin:0; font-size:clamp(22px,2vw,28px); font-weight:800; letter-spacing:-.04em; line-height:1.05}
+.panel-head .label{color:var(--muted); text-align:right}
+.note-list{list-style:none; margin:0; padding:0}
+.note-btn{
+  width:100%; display:grid; grid-template-columns: 48px 1fr auto; align-items:center; gap:14px;
+  background:none; border:0; border-bottom:1px solid var(--rule); padding:18px 8px 18px 4px; text-align:left; cursor:pointer; position:relative;
+  border-radius:18px; transition: padding .35s cubic-bezier(.2,.7,.2,1), background .3s;
+}
+.note-btn .num{font-size:13px; font-weight:700; color:var(--muted)}
+.note-btn .nm{display:block; font-family:var(--sans); font-weight:800; font-size:clamp(22px,2.3vw,31px); letter-spacing:-.04em; line-height:1; transition:color .3s}
+.note-btn .tier{display:block; font-size:13px; font-weight:600; color:var(--muted); margin-top:6px}
+.note-btn .lvl{display:flex; gap:5px}
+.note-btn .lvl i{width:11px; height:11px; border-radius:50%; border:1.5px solid var(--ink); transition:background .3s, transform .3s}
+.note-btn .lvl i.on{background:var(--guava); border-color:var(--guava)}
+.note-btn:hover, .note-btn[aria-pressed="true"]{padding-left:16px; background:var(--canvas)}
+.note-btn[aria-pressed="true"] .nm{color:var(--hot)}
+.note-btn[aria-pressed="true"] .lvl i.on{transform:scale(1.18)}
+.note-copy{margin-top:auto; display:block}
+.note-copy p{margin:0; font-size:clamp(16px,1.3vw,18px); line-height:1.5; color:var(--plum); letter-spacing:-.01em; max-width:42ch; min-height:3em; transition:opacity .35s}
+.note-copy .fade{opacity:0}
+
+/* intensity meter: slim, static, rounded */
+.meter-wrap{display:grid; grid-template-columns:1fr auto; gap:16px 28px; align-items:end; margin-top:auto; padding-top:26px}
+.meter-wrap p{margin:0}
+.meter{width:clamp(200px,18vw,260px); margin:0}
+.meter-label{display:block; text-align:right; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px}
+.meter-track{position:relative; height:12px; border-radius:999px; border:1px solid rgba(45,32,28,.45); background:#ECE7E4; overflow:hidden}
+.meter-fill{position:absolute; left:0; top:0; bottom:0; width:0; border-radius:999px; background:linear-gradient(90deg,#F2386E 0%,#D52456 100%); transition:width 1s cubic-bezier(.25,.8,.25,1)}
+
+/* ---------- Manifest: bubble containers ---------- */
+.manifest{background:var(--white); padding-bottom: clamp(56px,7vw,104px)}
+.bubbles{position:relative; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(12px,2vw,28px); align-items:center; padding-top:clamp(12px,2vw,28px)}
+.connector{position:absolute; left:0; top:50%; width:100%; height:120px; transform:translateY(-50%); pointer-events:none; z-index:0}
+.connector path{fill:none; stroke:var(--ink); stroke-opacity:.55; stroke-width:1.5; stroke-dasharray:2 7; stroke-linecap:round; vector-effect:non-scaling-stroke}
+.bubble{position:relative; z-index:1; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; text-align:center; padding:14% 15%; isolation:isolate}
+.bubble .bub-bg{position:absolute; inset:0; width:100%; height:100%; z-index:-1; transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.bubble:hover .bub-bg{transform:rotate(4deg) scale(1.03)}
+.bubble:nth-child(1){margin-top:clamp(0px,4vw,56px)}
+.bubble:nth-child(3){margin-top:clamp(0px,3vw,40px)}
+.bub-copy{display:flex; flex-direction:column; align-items:center; gap:8px; max-width:100%}
+.bub-no{font-family:var(--sans); font-weight:800; font-size:clamp(48px,5vw,76px); letter-spacing:-.06em; line-height:.85}
+.bub-copy h3{max-width:15ch; margin:0; font-family:var(--sans); font-weight:800; font-size:clamp(19px,1.9vw,26px); line-height:1.02; letter-spacing:-.035em; text-wrap:balance}
+.bub-spec{margin:0; font-size:14px; font-weight:600; line-height:1.3}
+.bubble.b1 .bub-no, .bubble.b1 .bub-copy h3{color:var(--ink)}
+.bubble.b1 .bub-spec{color:var(--plum)}
+.bubble.b2{color:#fff}
+.bubble.b2 .bub-spec{color:#fff}
+.bubble.b3 .bub-no, .bubble.b3 .bub-copy h3{color:var(--guava)}
+.bubble.b3 .bub-spec{color:var(--plum)}
+.tally{display:flex; justify-content:center; align-items:center; margin:clamp(20px,3vw,40px) auto 0; gap:14px; flex-wrap:wrap; font-size:14px; font-weight:700}
+.tally .pill-wave{display:inline-flex; align-items:center; gap:12px; background:var(--canvas); border:1.5px solid var(--ink); border-radius:999px; padding:10px 20px 10px 12px}
+.tally .count{display:inline-grid; place-items:center; min-width:44px; height:44px; border-radius:999px; background:var(--hot); color:#fff; font-family:var(--sans); font-weight:800; font-size:18px; letter-spacing:-.02em}
+
+.subscribe-cta{display:flex; flex-direction:column; align-items:center; gap:16px; text-align:center; margin:clamp(32px,4.4vw,56px) auto 0}
+.subscribe-btn{display:inline-flex; align-items:center; gap:14px; background:var(--guava); color:#fff; border:2px solid var(--guava); border-radius:999px; padding:22px 40px; font-family:var(--sans); font-weight:800; font-size:clamp(18px,2vw,24px); letter-spacing:-.02em; text-decoration:none; transition:transform .25s cubic-bezier(.2,.7,.2,1), background .25s, box-shadow .25s; box-shadow:0 0 0 0 rgba(213,36,86,0)}
+.subscribe-btn:hover{transform:translateY(-3px) rotate(-1deg); background:#B81D48; border-color:#B81D48}
+.subscribe-btn .arrow{display:inline-grid; place-items:center; width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.2); font-size:18px; transition:transform .3s}
+.subscribe-btn:hover .arrow{transform:translateX(4px)}
+.subscribe-sub{font-size:13px; font-weight:600; color:var(--muted)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--canvas); padding: clamp(24px,3vw,40px) 0 28px; position:relative}
+.foot-tag{font-family:var(--sans); font-weight:800; font-size:clamp(44px,7.8vw,120px); line-height:1.08; letter-spacing:-.035em; padding:.02em 0 .06em; margin:0 0 clamp(36px,4.4vw,64px); text-wrap:balance; color:var(--ink)}
+.foot-tag .hot{color:var(--hot)}
+.foot-grid{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:24px; row-gap:32px; align-items:center}
+.foot-mark{grid-column:1 / span 5; margin:0}
+.foot-mark img{width:100%; max-width:520px; height:auto}
+.foot-cols{grid-column:7 / span 6; display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1.5px solid var(--ink)}
+.foot-cols > div{padding:18px 20px 18px 0; border-bottom:1px solid var(--rule)}
+.foot-cols > div:nth-child(even){padding-left:20px; border-left:1px solid var(--rule)}
+.foot-cols .k{display:block; font-size:12px; font-weight:600; color:var(--muted); margin-bottom:6px}
+.foot-cols .v{font-family:var(--sans); font-size:clamp(18px,1.8vw,24px); font-weight:700; letter-spacing:-.03em; line-height:1.15}
+.foot-cols a{text-decoration:none; border-bottom:2px solid transparent}
+.foot-cols a:hover{border-bottom-color:var(--hot); color:var(--hot)}
+.legal{grid-column:1/-1; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; font-weight:600; color:var(--muted); padding-top:8px; border-top:1px solid var(--rule)}
+.legal div{padding-top:18px}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0; transform:translateY(22px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1; transform:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px){
+  .sec-idx{grid-column: 1 / span 12}
+  .sec-title{grid-column: 1 / span 12}
+  .sec-note{grid-column: 1 / span 10}
+  .sec-meta{grid-column: 1 / span 12; justify-self:start; text-align:left}
+  .scent-card{grid-template-columns:1fr}
+  .scent-vis{min-height:440px; border-right:0; border-bottom:1.5px solid var(--ink)}
+  .hero-mark .ring{bottom:-2%}
+}
+@media (max-width: 960px){
+  .hero-grid{grid-template-columns:1fr; grid-template-areas:"mark" "h1" "meta" "lead"; row-gap:28px; padding-bottom:40px}
+  .hero-copy{display:contents}
+  .hero-mark{min-height:0; width:100%}
+  .hero-mark .logo{width:100%; transform:rotate(-3deg)}
+  .hero-mark .blob{height:104%}
+  .hero-mark .ring{display:none}
+  .meta-strip{grid-template-columns:repeat(2,1fr)}
+  .meta-strip > div:nth-child(3){padding-left:0; border-left:0}
+  .meta-strip > div:nth-child(n+3){border-top:1px solid var(--rule); margin-top:16px}
+  .meta-strip > div:nth-child(2){padding-left:18px}
+  .products-grid{grid-template-columns:1fr; gap:36px}
+  .stage{aspect-ratio: 4 / 4.3}
+  .bubbles{grid-template-columns:1fr; gap:24px}
+  .bubble{aspect-ratio:auto; padding:28px 20px 36px; min-height:300px}
+  .bubble:nth-child(n){margin-top:0}
+  .connector{display:none}
+  .foot-mark, .foot-cols{grid-column:1 / -1}
+  .foot-cols{margin-top:8px}
+  .meter-wrap{grid-template-columns:1fr}
+  .meter{width:100%}
+  .meter-label{text-align:left}
+}
+@media (max-width: 640px){
+  .topbar .wrap{height:62px; gap:12px}
+  .brand-sm img{height:30px}
+  .nav{gap:16px}
+  .nav a{font-size:13px; white-space:nowrap}
+  .sec-head{padding-top:8px}
+  .sec-idx b{font-size:72px}
+  .note-btn{grid-template-columns: 36px 1fr auto; gap:10px; padding-left:0; padding-right:0}
+  .note-btn:hover, .note-btn[aria-pressed="true"]{padding-left:10px}
+  .note-btn .lvl i{width:8px; height:8px}
+  .scent-card{box-shadow:8px 8px 0 var(--guava-tint)}
+  .scent-vis{min-height:380px}
+  .ctas{width:100%; flex-direction:column}
+  .ctas .btn{width:100%; justify-content:center}
+  .meta-strip .v{font-size:17px}
+  .foot-cols{grid-template-columns:1fr}
+  .foot-cols > div:nth-child(even){padding-left:0; border-left:0}
+}
+@media (max-width: 400px){
+  .nav .long{display:none}
+  .nav .short{display:inline}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important; transition:none!important}
+  .reveal{opacity:1; transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Mounted Logo.svg path, exposed as a recolourable symbol for printed marks on packaging -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="bb-logo" viewBox="0 0 527 272">
+      <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M103.033 141.864C107.443 143.465 113.1 143.952 120.005 143.325C125.96 142.784 131.715 141.478 137.271 139.407C142.905 137.242 147.88 134.527 152.195 131.264C156.59 127.906 159.992 124.159 162.401 120.025C164.803 115.803 165.787 111.319 165.356 106.572C164.768 100.099 162.509 95.3436 158.578 92.3067C154.726 89.1756 149.579 87.598 143.137 87.574L143.09 87.0561C148.771 84.4515 153.263 81.2153 156.567 77.3473C159.862 73.393 161.252 68.5675 160.734 62.871C160.382 58.987 158.989 55.6324 156.557 52.8076C154.125 49.9826 150.414 47.9265 145.423 46.6393C140.512 45.2579 134.129 44.9239 126.274 45.6373C116.176 46.5545 108.467 48.3859 103.146 51.1317C97.8192 53.7912 94.0762 57.1334 91.9174 61.1585C90.2779 64.1792 88.9979 67.8199 88.0795 72.0804C87.1611 76.341 86.6239 81.4371 86.4658 87.3691C86.3087 93.3009 86.5981 100.324 87.335 108.437C87.8288 113.874 88.5228 118.641 89.417 122.737C90.3899 126.739 91.6137 130.152 93.0883 132.977C95.3951 137.293 98.7096 140.255 103.033 141.864ZM133.342 117.703C131.427 118.66 129.175 119.257 126.586 119.492C123.22 119.798 120.662 119.421 118.912 118.361C117.155 117.216 116.154 115.305 115.911 112.629C115.637 109.608 116.509 107.223 118.525 105.474C120.621 103.63 123.265 102.563 126.458 102.273C130.515 101.904 133.563 102.411 135.603 103.792C137.722 105.079 138.882 106.844 139.086 109.089C139.251 110.901 138.792 112.553 137.709 114.043C136.713 115.526 135.257 116.746 133.342 117.703ZM132.345 79.4167C130.07 81.1897 127.033 82.2487 123.235 82.5937C120.473 82.8445 118.217 82.4402 116.467 81.3809C114.718 80.3214 113.733 78.5834 113.513 76.1667C113.27 73.491 114.079 71.3725 115.938 69.8113C117.885 68.2421 120.455 67.3125 123.648 67.0225C127.187 66.701 129.965 67.1014 131.981 68.2237C134.076 69.2517 135.213 70.7584 135.393 72.7435C135.636 75.4192 134.62 77.6436 132.345 79.4167ZM194.352 23.204C192.012 21.124 188.935 20.084 185.122 20.084C181.395 20.084 178.318 21.254 175.892 23.594C173.465 25.8473 171.688 29.6607 170.562 35.034C169.782 39.0207 169.132 44.0473 168.612 50.114C168.092 56.094 167.832 62.464 167.832 69.224C167.832 74.164 167.962 78.7573 168.222 83.004C168.568 87.164 168.915 90.414 169.262 92.754C170.215 98.3007 171.992 102.157 174.592 104.324C177.192 106.491 180.312 107.574 183.952 107.574C187.938 107.574 191.232 106.231 193.832 103.544C196.432 100.771 198.295 96.0907 199.422 89.504C200.028 85.6907 200.505 81.5307 200.852 77.024C201.198 72.5173 201.372 67.7507 201.372 62.724C201.372 57.264 201.155 51.9773 200.722 46.864C200.375 41.664 199.942 37.504 199.422 34.384C198.382 29.0107 196.692 25.284 194.352 23.204ZM223.895 91.7678C228.893 95.7278 235.345 98.214 243.255 99.2266C247.553 99.7768 251.831 99.8004 256.09 99.297C260.348 98.7937 264.253 97.6335 267.806 95.8167C271.359 93.9998 274.307 91.4501 276.649 88.1677C279.077 84.8963 280.606 80.8106 281.233 75.9106C281.937 70.4088 280.983 65.9179 278.371 62.438C275.844 58.969 271.786 56.8769 266.199 56.1616C263.19 55.7763 260.072 55.9015 256.846 56.5369C253.715 57.0972 250.654 58.147 247.661 59.6861C245.735 60.7129 243.894 61.9806 242.136 63.4892C243.055 60.7279 243.924 57.8502 244.741 54.8562C245.903 50.5489 246.949 46.1393 247.876 41.6272C248.889 37.1261 249.677 32.6834 250.238 28.2992C250.854 23.4852 250.942 19.0404 250.503 14.9649C250.063 10.8894 248.875 7.54813 246.937 4.94096C245.01 2.24772 242.069 0.64801 238.115 0.141846C234.074 -0.375496 230.509 0.522293 227.417 2.83508C224.335 5.06177 221.786 9.27891 219.768 15.4863C218.9 18.1711 218.03 21.5546 217.158 25.637C216.297 29.6332 215.505 33.7696 214.783 38.0459C214.071 42.2361 213.491 46.0936 213.04 49.6181C211.752 59.676 212.011 68.2282 213.818 75.2746C215.635 82.235 218.994 87.7328 223.895 91.7678ZM304.702 121.925C308.568 123.099 313.604 123.37 319.812 122.737C323.088 122.403 326.343 121.854 329.575 121.089C332.807 120.324 335.845 119.361 338.689 118.2C341.619 117.03 344.144 115.727 346.262 114.292C350.181 111.714 353.249 108.483 355.467 104.599C357.675 100.627 358.556 96.4433 358.108 92.0461C357.624 87.304 355.871 83.7803 352.849 81.4748C349.818 79.0831 345.715 78.151 340.542 78.6783C337.007 79.0385 333.524 79.9162 330.095 81.311C326.657 82.6197 323.439 84.385 320.442 86.607C319.161 87.5814 317.956 88.6492 316.829 89.8104C318.084 85.1078 319.023 80.1469 319.644 74.9278C320.519 68.1307 320.627 61.4989 319.968 55.0324C319.45 49.9454 318.462 45.3853 317.006 41.3522C315.549 37.3191 313.487 34.1753 310.818 31.921C308.148 29.6667 304.658 28.7592 300.348 29.1986C296.296 29.6115 293.061 31.2044 290.642 33.9772C288.311 36.7412 286.835 41.0731 286.217 46.9729C285.897 50.6644 285.768 55.8173 285.832 62.4316C285.983 69.037 286.423 75.9179 287.152 83.0741C288.04 91.7823 289.126 98.5973 290.412 103.519C291.698 108.441 293.404 112.361 295.531 115.281C297.856 118.441 300.914 120.656 304.702 121.925ZM374.597 110.201C378.13 111.597 382.343 111.721 387.237 110.572C393.227 109.166 397.712 106.467 400.692 102.473C403.652 98.3956 404.429 93.3614 403.023 87.3709C402.488 85.0928 401.617 82.7155 400.414 80.2384C399.189 77.6772 397.774 75.2497 396.167 72.9561C394.851 71.0316 393.497 69.3201 392.106 67.8214C397.621 63.9214 402.273 59.9626 406.061 55.9449C410.565 51.2379 413.714 46.4482 415.508 41.576C417.366 36.5997 417.701 31.5801 416.513 26.5177C415.503 22.2147 413.651 18.6879 410.958 15.9372C408.264 13.1867 405.192 11.2818 401.738 10.2229C398.369 9.14441 395.082 8.98129 391.876 9.73382C388.754 10.4667 386.118 12.5098 383.967 15.8633C381.9 19.1972 380.474 24.1167 379.687 30.622C378.898 37.1276 378.905 45.4943 379.703 55.7225L379.197 55.8413C376.232 48.5251 372.975 42.6131 369.425 38.1051C365.939 33.493 362.295 30.2978 358.495 28.5191C354.759 26.6364 351.035 26.1307 347.323 27.0021C344.369 27.6954 341.763 29.1084 339.505 31.2409C337.226 33.2893 335.601 35.8517 334.632 38.9277C333.728 41.8998 333.711 45.2421 334.582 48.9545C335.513 52.92 337.585 56.4396 340.8 59.5131C344.078 62.4825 348.602 65.0704 354.373 67.2767C359.557 69.1443 365.813 70.7952 373.143 72.2291C371.921 73.9876 370.826 75.9324 369.858 78.0635C368.357 81.5316 367.338 85.1538 366.8 88.9298C366.347 92.6861 366.516 96.2518 367.308 99.6268C368.615 105.195 371.045 108.72 374.597 110.201ZM7.22749 219.257C10.9291 222.139 16.1608 224.346 22.9228 225.878C28.7551 227.199 34.6329 227.73 40.5562 227.472C46.5832 227.149 52.1525 226.1 57.264 224.325C62.4794 222.485 66.8701 219.969 70.4364 216.778C74.0219 213.502 76.3409 209.541 77.3939 204.892C78.8297 198.552 78.1458 193.332 75.3424 189.232C72.6426 185.065 68.2321 181.979 62.1113 179.97L62.2261 179.463C68.4333 178.736 73.7045 177.042 78.0394 174.381C82.3935 171.634 85.2023 167.472 86.4658 161.893C87.3273 158.09 87.0365 154.469 85.5933 151.032C84.1501 147.596 81.2534 144.495 76.9028 141.733C72.6558 138.905 66.6865 136.62 58.9946 134.878C49.1051 132.638 41.2066 132.005 35.2992 132.977C29.4109 133.865 24.82 135.891 21.5265 139.055C19.0352 141.423 16.6961 144.492 14.5094 148.262C12.3226 152.032 10.2401 156.715 8.26222 162.309C6.28432 167.904 4.39558 174.674 2.596 182.619C1.38995 187.945 0.581055 192.693 0.169312 196.865C-0.13868 200.972 -0.026474 204.596 0.505928 207.738C1.36996 212.555 3.61047 216.395 7.22749 219.257ZM43.5072 205.614C41.3909 205.935 39.0648 205.808 36.529 205.233C33.2325 204.487 30.9154 203.34 29.5773 201.793C28.2584 200.161 27.8957 198.036 28.4892 195.415C29.1591 192.457 30.7231 190.456 33.1808 189.413C35.7423 188.304 38.5866 188.105 41.7141 188.813C45.6868 189.713 48.4307 191.134 49.9457 193.077C51.5644 194.954 52.1247 196.992 51.6271 199.189C51.225 200.964 50.2792 202.394 48.7895 203.478C47.3843 204.582 45.6236 205.294 43.5072 205.614ZM54.3586 168.884C51.6473 169.869 48.432 169.941 44.7129 169.099C42.0081 168.486 39.9868 167.406 38.6487 165.859C37.3106 164.312 36.9097 162.355 37.4458 159.988C38.0393 157.368 39.4611 155.602 41.7115 154.69C44.0465 153.796 46.7776 153.704 49.9051 154.413C53.3706 155.198 55.8896 156.435 57.4621 158.124C59.1382 159.747 59.756 161.532 59.3157 163.475C58.7222 166.096 57.0699 167.899 54.3586 168.884ZM83.7418 255.734C88.5833 263.557 96.5341 268.538 107.596 270.68C119.763 273.035 129.865 271.239 137.902 265.291C146.041 259.276 151.444 249.375 154.112 235.591C155.167 230.145 155.949 224.735 156.46 219.361C156.97 213.987 157.186 208.997 157.106 204.391C157.126 199.275 156.353 195.285 154.789 192.423C153.31 189.577 150.273 187.708 145.678 186.819C137.169 185.172 131.951 189.326 130.024 199.281C129.711 200.898 129.342 203.033 128.916 205.687C128.508 208.256 128.057 211.038 127.566 214.033C127.075 217.027 126.591 219.979 126.116 222.889C125.642 225.798 125.19 228.359 124.761 230.571C123.839 235.336 122.39 238.719 120.413 240.72C118.539 242.652 116.028 243.313 112.879 242.704C109.986 242.144 107.937 240.644 106.732 238.204C105.543 235.679 105.427 231.949 106.383 227.013C106.844 224.631 107.598 221.644 108.647 218.05C109.713 214.373 110.802 210.566 111.917 206.634C113.132 202.632 114.24 198.962 115.24 195.625C116.256 192.202 116.936 189.597 117.282 187.81C118.122 183.471 117.821 180.014 116.377 177.439C115.018 174.881 112.68 173.281 109.361 172.638C104.767 171.749 101.006 172.478 98.0803 174.824C95.2559 177.102 92.9144 180.533 91.0561 185.117C89.851 188.15 88.5745 192.008 87.2268 196.69C85.8953 201.288 84.608 206.114 83.3644 211.17C82.1209 216.226 81.0709 220.965 80.2144 225.39C77.8096 237.813 78.9853 247.928 83.7418 255.734ZM187.394 139.618C183.275 139.591 179.114 139.875 174.91 140.472C169.933 141.179 165.097 142.26 160.401 143.715C155.779 145.071 151.666 146.925 148.061 149.275C144.541 151.613 141.849 154.534 139.983 158.038C138.202 161.53 137.666 165.764 138.373 170.741C139.043 175.46 141.369 178.893 145.351 181.042C149.32 183.104 155.681 183.514 164.433 182.271C165.729 182.087 167.219 181.752 168.903 181.266C168.534 182.439 168.177 183.663 167.832 184.939C166.8 188.763 165.957 192.69 165.304 196.722C164.65 200.754 164.243 204.663 164.081 208.45C163.906 212.152 164.02 215.418 164.422 218.25C165.531 226.058 168.118 231.643 172.186 235.005C176.252 238.366 181.717 239.56 188.582 238.585C194.416 237.756 198.322 235.363 200.299 231.406C202.349 227.35 202.899 221.976 201.948 215.284C201.583 212.709 200.886 209.657 199.86 206.126C198.906 202.497 197.665 198.691 196.137 194.706C194.694 190.71 192.999 186.792 191.054 182.954C190.238 181.266 189.391 179.649 188.511 178.104C189.786 178.071 191.003 177.972 192.161 177.807C199.711 176.735 205.149 174.344 208.474 170.632C211.798 166.921 213.101 162.534 212.382 157.472C211.737 152.925 210.225 149.375 207.85 146.823C205.461 144.186 202.485 142.333 198.92 141.264C195.439 140.183 191.598 139.634 187.394 139.618ZM257.474 110.572C253.433 109.412 248.321 108.413 242.138 107.574C235.439 106.665 229.761 106.289 225.105 106.445C220.461 106.514 216.439 107.149 213.04 108.35C208.724 109.864 205.406 112.081 203.085 115.003C200.851 117.936 199.46 121.421 198.912 125.457C198.272 130.181 198.973 134.036 201.017 137.025C203.158 139.939 207.192 141.798 213.117 142.602C214.663 142.811 216.398 142.915 218.322 142.914C220.344 142.838 222.329 142.714 224.277 142.541C225.136 142.437 225.942 142.326 226.695 142.207C225.576 143.88 224.451 145.697 223.32 147.659C221.262 151.227 219.352 154.992 217.591 158.951C215.83 162.91 214.343 166.776 213.132 170.547C211.921 174.319 211.105 177.75 210.686 180.842C209.801 187.369 210.683 192.474 213.332 196.156C215.993 199.753 220.329 201.959 226.34 202.775C233.125 203.695 238.222 202.549 241.631 199.338C245.052 196.041 247.216 191.044 248.125 184.345C248.463 181.855 248.613 178.813 248.575 175.223C248.635 171.558 248.46 167.686 248.051 163.607C247.74 159.454 247.165 155.31 246.327 151.172C245.891 148.781 245.365 146.511 244.749 144.36C246.699 145.198 248.617 145.908 250.504 146.491C253.022 147.27 255.44 147.817 257.759 148.131C263.17 148.865 267.421 147.824 270.515 145.007C273.694 142.202 275.627 138.266 276.314 133.199C276.827 129.421 276.508 125.967 275.358 122.837C274.306 119.633 271.755 116.838 267.706 114.452C265.023 112.951 261.613 111.658 257.474 110.572ZM285.832 219.438C292.678 222.731 300.738 224.378 310.012 224.378C319.458 224.378 327.648 222.645 334.582 219.178C341.602 215.711 347.018 210.641 350.832 203.968C354.732 197.295 356.682 189.235 356.682 179.788C356.682 173.288 355.468 167.308 353.042 161.848C350.702 156.301 347.408 151.491 343.162 147.418C338.915 143.345 333.975 140.181 328.342 137.928C322.795 135.675 316.858 134.548 310.532 134.548C304.205 134.548 298.225 135.761 292.592 138.188C287.045 140.528 282.105 143.865 277.772 148.198C273.525 152.445 270.188 157.515 267.762 163.408C265.422 169.215 264.253 175.585 264.253 182.518C264.253 191.358 266.115 198.898 269.842 205.138C273.655 211.378 278.985 216.145 285.832 219.438ZM292.596 176.05C292.606 175.589 292.634 175.139 292.68 174.7C288.968 170.498 287.77 165.497 290.109 162.355C292.597 159.012 298.29 158.844 303.743 161.626C305.394 155.778 309.392 151.765 313.56 152.235C317.728 152.706 320.731 157.51 321.037 163.578C326.973 162.081 332.485 163.514 334.165 167.327C335.845 171.14 333.156 176.112 328.008 179.398C332.294 183.749 333.808 189.195 331.32 192.538C328.832 195.88 323.139 196.048 317.686 193.266C316.035 199.114 312.037 203.127 307.869 202.657C303.701 202.186 300.698 197.383 300.392 191.314C294.456 192.811 288.944 191.378 287.264 187.565C285.676 183.961 287.991 179.322 292.596 176.05ZM374.867 120.013C371.536 119.465 368.241 119.781 364.98 120.959C361.556 122.196 358.85 124.141 356.86 126.795C354.923 129.338 353.804 132.876 353.506 137.406C353.208 141.937 353.859 147.692 355.458 154.67C357.059 161.649 359.654 170.11 363.247 180.054C367.694 192.362 372.444 200.92 377.499 205.729C382.635 210.508 388.668 211.646 395.596 209.143C400.486 207.376 403.469 204.409 404.544 200.243C405.671 195.965 404.806 189.874 401.95 181.967C401.096 179.604 400.031 177.039 398.756 174.275C397.562 171.481 396.246 168.73 394.808 166.025C393.452 163.29 392.072 160.748 390.67 158.398C389.238 155.966 387.899 153.915 386.651 152.247L387.14 152.07C393.047 160.257 398.248 167.132 402.746 172.695C407.214 178.176 411.148 182.56 414.548 185.847C418.029 189.105 421.144 191.481 423.896 192.975C426.617 194.387 429.145 195.133 431.477 195.212C433.891 195.262 436.32 194.844 438.765 193.961C443.656 192.194 446.853 189.564 448.356 186.073C449.941 182.552 450.154 177.913 448.996 172.158C447.838 166.402 445.713 159.245 442.621 150.686C438.969 140.579 435.084 132.122 430.967 125.317C426.901 118.399 422.787 113.389 418.625 110.286C414.545 107.153 410.67 106.249 407.002 107.574C403.987 108.663 402.123 110.903 401.413 114.293C400.784 117.654 401.573 122.39 403.782 128.503C404.577 130.704 405.487 133.094 406.511 135.673C407.616 138.222 408.806 140.88 410.081 143.644C411.327 146.327 412.558 148.969 413.775 151.57C415.073 154.142 416.297 156.51 417.447 158.675L416.958 158.852C410.157 149.975 404.193 142.776 399.066 137.257C394.02 131.708 389.531 127.57 385.597 124.845C381.746 122.09 378.169 120.479 374.867 120.013ZM463.61 227.024C467.309 228.13 471.049 228.934 474.829 229.439C482.388 230.447 489.207 230.133 495.283 228.495C501.359 226.857 506.274 224.103 510.026 220.232C513.874 216.286 516.183 211.436 516.951 205.68C517.523 201.385 517.088 197.435 515.645 193.833C514.288 190.242 511.628 186.914 507.665 183.85C503.713 180.7 498.201 177.778 491.129 175.087C488.299 174.01 486.109 173.062 484.557 172.243C483.091 171.435 482.097 170.691 481.576 170.009C481.066 169.242 480.858 168.514 480.949 167.827C481.076 166.882 481.639 166.257 482.642 165.954C483.742 165.576 485.322 165.525 487.384 165.8C488.758 165.983 490.588 166.359 492.873 166.926C495.17 167.407 497.595 167.906 500.15 168.421C502.704 168.936 504.968 169.326 506.945 169.59C512.872 170.38 517.437 169.59 520.638 167.22C523.851 164.763 525.756 161.301 526.352 156.834C527.108 151.164 525.27 146.591 520.837 143.114C516.502 139.563 510.296 137.249 502.222 136.172C498.614 135.691 494.745 135.524 490.616 135.673C486.486 135.821 482.386 136.411 478.314 137.442C474.254 138.386 470.467 139.893 466.957 141.96C463.543 143.953 460.65 146.627 458.28 149.983C455.92 153.252 454.419 157.294 453.778 162.104C453.193 166.485 453.51 170.331 454.73 173.641C456.047 176.877 458.421 179.73 461.852 182.198C465.293 184.581 469.946 186.731 475.811 188.65C478.491 189.532 480.618 190.298 482.194 190.945C483.768 191.591 484.908 192.225 485.613 192.843C486.317 193.462 486.606 194.244 486.48 195.189C486.354 196.133 485.73 196.881 484.607 197.431C483.581 197.906 482.081 198.012 480.106 197.748C477.958 197.462 475.157 196.826 471.704 195.84C468.25 194.855 465.02 194.162 462.014 193.761C456.86 193.073 452.974 193.692 450.356 195.616C447.75 197.454 446.144 200.65 445.536 205.203C445.021 209.068 445.536 212.416 447.082 215.245C448.628 218.074 450.845 220.469 453.731 222.427C456.629 224.3 459.921 225.833 463.61 227.024Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand-sm" href="#top" aria-label="billybuttons home"><img src="assets/Logo.svg" alt="billybuttons" width="527" height="272"></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#contents">Contents</a>
+      <a href="#scent"><span class="long">Scent Profile</span><span class="short">Scent</span></a>
+      <a href="#manifest" class="keep">Manifest</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ============ HERO ============ DOM order = mobile order: logo → tagline → metadata → drop lead -->
+  <section class="hero" id="drop">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 class="display reveal">Your monthly vibe, delivered in <span class="hot">full color.</span></h1>
+          <div class="hero-lead reveal">
+            <p class="drop-tag">Monthly Drop Vol: <span class="no">No. 04</span>
+              <span class="edition">“Electric Guava &amp; Palm”</span></p>
+            <div class="ctas">
+              <a class="btn btn-primary" href="#contents">Shop Drop 04 <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn btn-ghost" href="#scent">Scent profile</a>
+            </div>
+          </div>
+        </div>
+
+        <figure class="hero-mark reveal">
+          <svg class="blob" viewBox="0 0 520 500" aria-hidden="true"><path d="M260.0 42.6 C302.3 42.0 352.2 68.6 388.5 96.8 C424.9 125.0 471.2 169.6 478.1 211.5 C485.1 253.5 454.3 308.0 430.3 348.3 C406.3 388.6 374.4 437.1 334.1 453.5 C293.8 469.9 229.1 464.2 188.4 446.6 C147.8 429.0 113.7 387.0 90.3 348.0 C66.8 309.0 40.6 253.9 48.0 212.6 C55.3 171.4 99.2 128.9 134.6 100.5 C169.9 72.2 217.7 43.2 260.0 42.6Z"/></svg>
+          <img class="logo" src="assets/Logo.svg" alt="billybuttons" width="527" height="272">
+          <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="ringPath" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+            <circle cx="100" cy="100" r="98" fill="#FFFFFF"/>
+            <g class="spin"><text><textPath href="#ringPath">Vol. No. 04 · Electric Guava · Palm ·</textPath></text></g>
+            <circle class="core" cx="100" cy="100" r="40"/>
+            <text class="core-t" x="100" y="112" text-anchor="middle">04</text>
+          </svg>
+        </figure>
+
+        <dl class="meta-strip reveal">
+          <div><dt class="k">Monthly Drop</dt><dd class="v" style="margin:0">Vol. No. 04</dd></div>
+          <div><dt class="k">Edition</dt><dd class="v hot" style="margin:0">Electric Guava &amp; Palm</dd></div>
+          <div><dt class="k">Included</dt><dd class="v" style="margin:0">03 Items</dd></div>
+          <div><dt class="k">Key Notes</dt><dd class="v" style="margin:0">04 Scents</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RIBBON: scent notes set on a sine-wave path (JS) ============ -->
+  <div class="ribbon" id="ribbon" role="note" aria-label="Key notes: Pink Guava, Crushed Palm Leaf, Sun-Warmed Sand, Salted Amber"></div>
+
+  <div class="divider" style="--up:var(--canvas); --down:var(--white)" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0.0 28.0 C120.0 28.0 120.0 92.0 240.0 92.0 C360.0 92.0 360.0 28.0 480.0 28.0 C600.0 28.0 600.0 92.0 720.0 92.0 C840.0 92.0 840.0 28.0 960.0 28.0 C1080.0 28.0 1080.0 92.0 1200.0 92.0 C1320.0 92.0 1320.0 28.0 1440.0 28.0 V120 H0 Z"/></svg></div>
+
+  <!-- ============ PRODUCT SHOWCASE ============ -->
+  <section class="products" id="contents">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div class="sec-idx"><b>01</b>Included Items<br>Index 01–03</div>
+        <h2 class="sec-title">Three containers, one full-color drop.</h2>
+      </header>
+
+      <div class="products-grid">
+        <!-- 01 car freshener: white card -->
+        <article class="sleeve reveal" aria-labelledby="p1">
+          <figure class="stage">
+            <svg class="bg-blob" viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path d="M260.0 42.6 C302.3 42.0 352.2 68.6 388.5 96.8 C424.9 125.0 471.2 169.6 478.1 211.5 C485.1 253.5 454.3 308.0 430.3 348.3 C406.3 388.6 374.4 437.1 334.1 453.5 C293.8 469.9 229.1 464.2 188.4 446.6 C147.8 429.0 113.7 387.0 90.3 348.0 C66.8 309.0 40.6 253.9 48.0 212.6 C55.3 171.4 99.2 128.9 134.6 100.5 C169.9 72.2 217.7 43.2 260.0 42.6Z" fill="#FBE1E8" transform="translate(-30 -30) scale(.75)"/>
+            </svg>
+            <svg class="die" viewBox="0 0 320 400" role="img" aria-label="Die-cut gel car freshener sleeve, billybuttons">
+              <path d="M160 20 L160 84" stroke="#2D201C" stroke-width="1.5" fill="none"/>
+              <circle cx="160" cy="104" r="12" fill="#FBE1E8" stroke="#2D201C" stroke-width="1.5"/>
+              <path d="M160.0 110.2 C191.6 109.8 233.4 119.2 255.8 140.2 C278.2 161.2 295.0 204.5 294.5 236.0 C294.0 267.5 275.5 307.9 253.1 329.1 C230.6 350.2 191.7 362.1 160.0 362.8 C128.3 363.4 85.8 354.3 62.8 333.2 C39.9 312.0 21.7 267.8 22.3 236.0 C22.9 204.2 43.6 163.5 66.5 142.5 C89.4 121.5 128.4 110.6 160.0 110.2Z" fill="none" stroke="#2D201C" stroke-width="1.2" stroke-dasharray="4 5" opacity=".7"/>
+              <path d="M160.0 117.8 C189.6 117.5 229.0 126.3 250.0 146.0 C271.1 165.7 286.8 206.4 286.3 236.0 C285.9 265.6 268.5 303.6 247.4 323.4 C226.4 343.3 189.8 354.4 160.0 355.1 C130.2 355.7 90.3 347.1 68.7 327.3 C47.2 307.4 30.1 265.9 30.7 236.0 C31.2 206.1 50.6 167.9 72.2 148.2 C93.7 128.5 130.4 118.2 160.0 117.8Z" fill="#D52456"/>
+              <path d="M96 200 C102 170 130 150 158 150" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" opacity=".5"/>
+              <svg x="74" y="190" width="172" height="88" viewBox="0 0 527 272" style="color:#FFFFFF; overflow:visible"><use href="#bb-logo"/></svg>
+              <text x="160" y="322" text-anchor="middle" font-family="Plus Jakarta BB, sans-serif" font-weight="700" font-size="12" letter-spacing="1.2" fill="#FFFFFF">GEL · CAR FRESHENER</text>
+            </svg>
+            <figcaption class="stage-tag">Fig. 1a</figcaption>
+          </figure>
+          <div class="sleeve-body">
+            <div class="sleeve-top"><span class="label">Item 01 / 03</span><span class="label">Die-cut gel</span></div>
+            <h3 id="p1">Die-Cut Gel Car Freshener</h3>
+            <p>A pebble-shaped gel die-cut that hangs from the rear-view mirror, printed in Electric Guava.</p>
+            <dl class="spec">
+              <dt>Format</dt><dd>Die-cut gel</dd>
+              <dt>Quantity</dt><dd class="big">01 unit</dd>
+              <dt>Finish</dt><dd>Matte gel</dd>
+            </dl>
+          </div>
+        </article>
+
+        <!-- 02 booster beads: guava card, white type -->
+        <article class="sleeve reveal" aria-labelledby="p2">
+          <figure class="stage">
+            <svg class="bg-blob" viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <circle cx="200" cy="220" r="170" fill="#E0336A"/>
+              <circle cx="200" cy="220" r="120" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-dasharray="2 6" opacity=".6"/>
+            </svg>
+            <svg class="die" viewBox="0 0 320 400" role="img" aria-label="12 ounce laundry scent booster beads tub, billybuttons">
+              <path d="M96 128 C88 200 94 300 102 352 C110 372 210 372 218 352 C226 300 232 200 224 128 Z" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-dasharray="4 5" transform="translate(160 0) scale(1.08 1) translate(-160 0)" opacity=".8"/>
+              <path d="M96 128 C88 200 94 300 102 352 C110 372 210 372 218 352 C226 300 232 200 224 128 Z" fill="#FFFFFF"/>
+              <clipPath id="jarClip"><path d="M96 128 C88 200 94 300 102 352 C110 372 210 372 218 352 C226 300 232 200 224 128 Z"/></clipPath>
+              <g clip-path="url(#jarClip)"><circle cx="183.7" cy="191.2" r="7" fill="#FBE1E8"/>
+<circle cx="124.3" cy="203.8" r="4" fill="#D52456"/>
+<circle cx="203.6" cy="197.7" r="5" fill="#FBE1E8"/>
+<circle cx="200.8" cy="184.5" r="4" fill="#F6C9D5"/>
+<circle cx="153.1" cy="199.3" r="7" fill="#F6C9D5"/>
+<circle cx="141.8" cy="176.3" r="6" fill="#D52456"/>
+<circle cx="161.8" cy="170.2" r="7" fill="#F6C9D5"/>
+<circle cx="135.3" cy="190.2" r="4" fill="#F6C9D5"/>
+<circle cx="123.4" cy="169.0" r="7" fill="#D52456"/>
+<circle cx="158.0" cy="211.1" r="4" fill="#F6C9D5"/>
+<circle cx="178.6" cy="165.4" r="5" fill="#FBE1E8"/>
+<circle cx="199.1" cy="166.6" r="4" fill="#F6C9D5"/>
+<circle cx="155.0" cy="183.8" r="5" fill="#D52456"/>
+<circle cx="119.5" cy="182.1" r="4" fill="#F6C9D5"/>
+<circle cx="170.9" cy="200.6" r="4" fill="#F6C9D5"/>
+<circle cx="196.1" cy="343.8" r="6" fill="#FBE1E8"/>
+<circle cx="177.7" cy="339.4" r="5" fill="#D52456"/>
+<circle cx="163.8" cy="343.7" r="4" fill="#F6C9D5"/>
+<circle cx="183.0" cy="206.9" r="6" fill="#D52456"/>
+<circle cx="121.8" cy="338.9" r="4" fill="#D52456"/>
+<circle cx="136.8" cy="213.5" r="7" fill="#F6C9D5"/>
+<circle cx="135.7" cy="341.3" r="4" fill="#D52456"/>
+<circle cx="153.3" cy="340.4" r="5" fill="#F6C9D5"/>
+<circle cx="167.7" cy="186.1" r="5" fill="#FBE1E8"/>
+<circle cx="143.5" cy="335.4" r="4" fill="#F6C9D5"/>
+<circle cx="188.2" cy="174.0" r="4" fill="#FBE1E8"/>
+<circle cx="135.3" cy="163.8" r="4" fill="#FBE1E8"/>
+<circle cx="203.8" cy="210.6" r="4" fill="#FBE1E8"/>
+<circle cx="134.6" cy="200.7" r="4" fill="#F6C9D5"/>
+<circle cx="170.5" cy="211.5" r="5" fill="#D52456"/>
+<circle cx="125.9" cy="192.6" r="4" fill="#FBE1E8"/>
+<circle cx="177.2" cy="177.0" r="4" fill="#F6C9D5"/>
+<circle cx="116.6" cy="213.3" r="5" fill="#D52456"/>
+<circle cx="149.2" cy="160.8" r="6" fill="#F6C9D5"/>
+<circle cx="187.9" cy="335.3" r="4" fill="#D52456"/>
+<circle cx="116.4" cy="194.2" r="4" fill="#D52456"/>
+<circle cx="129.8" cy="181.5" r="4" fill="#D52456"/>
+<circle cx="189.8" cy="162.8" r="4" fill="#F6C9D5"/>
+<circle cx="167.2" cy="334.3" r="4" fill="#D52456"/>
+<circle cx="195.3" cy="204.6" r="4" fill="#FBE1E8"/>
+<circle cx="205.1" cy="175.2" r="4" fill="#F6C9D5"/></g>
+              <path d="M82 96 C82 84 90 78 102 78 L218 78 C230 78 238 84 238 96 L238 124 C238 132 232 136 224 136 L96 136 C88 136 82 132 82 124 Z" fill="#2D201C"/>
+              <rect x="98" y="226" width="124" height="104" rx="30" fill="#FBE1E8"/>
+              <svg x="116" y="246" width="88" height="44" viewBox="0 0 527 272" style="color:#D52456; overflow:visible"><use href="#bb-logo"/></svg>
+              <text x="160" y="312" text-anchor="middle" font-family="Plus Jakarta BB, sans-serif" font-weight="700" font-size="11" letter-spacing="1" fill="#2D201C">12 OZ · BEADS</text>
+            </svg>
+            <figcaption class="stage-tag">Fig. 2b</figcaption>
+          </figure>
+          <div class="sleeve-body">
+            <div class="sleeve-top"><span class="label">Item 02 / 03</span><span class="label">12oz</span></div>
+            <h3 id="p2">Laundry Scent Booster Beads</h3>
+            <p>Sun-bright beads in a wide, tactile tub. Scent that lasts through the wash, in a lid you can’t miss.</p>
+            <dl class="spec">
+              <dt>Format</dt><dd>Beads, tub</dd>
+              <dt>Net weight</dt><dd class="big">12oz</dd>
+              <dt>Finish</dt><dd>Gloss lid</dd>
+            </dl>
+          </div>
+        </article>
+
+        <!-- 03 room spray: white card -->
+        <article class="sleeve reveal" aria-labelledby="p3">
+          <figure class="stage">
+            <svg class="bg-blob" viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path d="M260.0 42.6 C302.3 42.0 352.2 68.6 388.5 96.8 C424.9 125.0 471.2 169.6 478.1 211.5 C485.1 253.5 454.3 308.0 430.3 348.3 C406.3 388.6 374.4 437.1 334.1 453.5 C293.8 469.9 229.1 464.2 188.4 446.6 C147.8 429.0 113.7 387.0 90.3 348.0 C66.8 309.0 40.6 253.9 48.0 212.6 C55.3 171.4 99.2 128.9 134.6 100.5 C169.9 72.2 217.7 43.2 260.0 42.6Z" fill="#FBE1E8" transform="translate(60 10) scale(.62)"/>
+            </svg>
+            <svg class="die" style="width:70%; margin-top:14px" viewBox="0 0 320 400" role="img" aria-label="50 millilitre fine mist room spray bottle, billybuttons">
+              <g fill="none" stroke="#D52456" stroke-width="2.5" stroke-linecap="round" opacity=".85">
+                <path d="M209.0 17.5 A26 26 0 0 1 220.4 31.1"/><path d="M216.0 5.4 A40 40 0 0 1 233.6 26.3"/><path d="M223.0 -6.8 A54 54 0 0 1 246.7 21.5"/>
+              </g>
+              <path d="M124 132 C96 126 70 156 70 236 C70 322 98 380 160 382 C222 380 250 322 250 236 C250 156 224 126 196 132 Z" fill="none" stroke="#2D201C" stroke-width="1.2" stroke-dasharray="4 5" opacity=".7" transform="translate(160 0) scale(1.05 1) translate(-160 0)"/>
+              <path d="M124 132 C96 126 70 156 70 236 C70 322 98 380 160 382 C222 380 250 322 250 236 C250 156 224 126 196 132 Z" fill="#FFFFFF" stroke="#2D201C" stroke-width="1.5" stroke-opacity=".35"/>
+              <clipPath id="bottleClip"><path d="M124 132 C96 126 70 156 70 236 C70 322 98 380 160 382 C222 380 250 322 250 236 C250 156 224 126 196 132 Z"/></clipPath>
+              <g clip-path="url(#bottleClip)"><path d="M40 214 C80 196 110 232 160 214 C210 196 240 232 280 214 L280 400 L40 400 Z" fill="#D52456"/>
+                <path d="M40 214 C80 196 110 232 160 214 C210 196 240 232 280 214" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".7"/>
+              </g>
+              <path d="M144 96 L176 96 L180 132 L140 132 Z" fill="#FFFFFF" stroke="#2D201C" stroke-width="1.5" stroke-opacity=".35"/>
+              <path d="M132 40 C132 30 138 26 146 26 L174 26 C182 26 188 30 188 40 L190 74 C190 80 186 84 180 84 L140 84 C134 84 130 80 130 74 Z" fill="#2D201C"/>
+              <svg x="110" y="262" width="100" height="50" viewBox="0 0 527 272" style="color:#FFFFFF; overflow:visible"><use href="#bb-logo"/></svg>
+              <text x="160" y="334" text-anchor="middle" font-family="Plus Jakarta BB, sans-serif" font-weight="700" font-size="10.5" letter-spacing="1" fill="#FFFFFF">50ML · FINE MIST</text>
+            </svg>
+            <figcaption class="stage-tag">Fig. 3c</figcaption>
+          </figure>
+          <div class="sleeve-body">
+            <div class="sleeve-top"><span class="label">Item 03 / 03</span><span class="label">50ml</span></div>
+            <h3 id="p3">50ml Fine Mist Room Spray</h3>
+            <p>A pebble bottle with a liquid fill line and a fine, even mist. Carry the drop from the car to every room.</p>
+            <dl class="spec">
+              <dt>Format</dt><dd>Fine mist</dd>
+              <dt>Net volume</dt><dd class="big">50ml</dd>
+              <dt>Nozzle</dt><dd>Fine spray</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" style="--up:var(--white); --down:var(--canvas)" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0.0 28.0 C120.0 28.0 120.0 92.0 240.0 92.0 C360.0 92.0 360.0 28.0 480.0 28.0 C600.0 28.0 600.0 92.0 720.0 92.0 C840.0 92.0 840.0 28.0 960.0 28.0 C1080.0 28.0 1080.0 92.0 1200.0 92.0 C1320.0 92.0 1320.0 28.0 1440.0 28.0 V120 H0 Z"/></svg></div>
+
+  <!-- ============ SCENT PROFILE ============ -->
+  <section class="scent" id="scent">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div class="sec-idx"><b>02</b>Scent Profile<br>Key notes 01–04</div>
+        <h2 class="sec-title">Hover a note. Watch the drop shift.</h2>
+        <p class="sec-note">Four notes, one warm afternoon. Each note reshapes the profile card above it.</p>
+      </header>
+
+      <article class="scent-card reveal" id="scentCard" aria-label="Interactive scent profile card">
+        <div class="scent-vis">
+          <svg class="morph" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <path class="shape-2" id="ringShape" d="M200.0 42.0 C241.0 42.7 295.4 53.0 320.7 79.3 C345.9 105.7 351.3 159.4 351.7 200.0 C352.1 240.6 348.2 298.1 322.9 322.9 C297.6 347.6 240.0 349.5 200.0 348.5 C160.0 347.6 108.5 342.1 82.7 317.3 C56.9 292.6 46.5 240.4 45.2 200.0 C43.9 159.6 49.1 101.2 74.9 74.9 C100.7 48.5 159.0 41.3 200.0 42.0Z" transform="translate(200 200) scale(1.22) translate(-200 -200)"/>
+            <path class="shape" id="noteShape" d="M200.0 42.0 C241.0 42.7 295.4 53.0 320.7 79.3 C345.9 105.7 351.3 159.4 351.7 200.0 C352.1 240.6 348.2 298.1 322.9 322.9 C297.6 347.6 240.0 349.5 200.0 348.5 C160.0 347.6 108.5 342.1 82.7 317.3 C56.9 292.6 46.5 240.4 45.2 200.0 C43.9 159.6 49.1 101.2 74.9 74.9 C100.7 48.5 159.0 41.3 200.0 42.0Z"/>
+          </svg>
+          <div class="readout" aria-live="polite">
+            <span class="n" id="noteNum">Note 01 / 04</span>
+            <span class="name" id="noteName">Pink Guava</span>
+            <span class="pos" id="notePos">Top note</span>
+          </div>
+        </div>
+
+        <div class="scent-panel">
+          <div class="panel-head">
+            <h3>Scent profile<br>Drop 04 — Electric Guava &amp; Palm</h3>
+            <span class="label">Scale<br>01–05</span>
+          </div>
+
+          <ul class="note-list" role="list">
+            <li><button class="note-btn" type="button" data-i="0" aria-pressed="true">
+              <span class="num">01</span>
+              <span><span class="nm">Pink Guava</span><span class="tier">Top · Bright</span></span>
+              <span class="lvl" aria-label="Intensity 4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+            </button></li>
+            <li><button class="note-btn" type="button" data-i="1" aria-pressed="false">
+              <span class="num">02</span>
+              <span><span class="nm">Crushed Palm Leaf</span><span class="tier">Heart · Green</span></span>
+              <span class="lvl" aria-label="Intensity 3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+            </button></li>
+            <li><button class="note-btn" type="button" data-i="2" aria-pressed="false">
+              <span class="num">03</span>
+              <span><span class="nm">Sun-Warmed Sand</span><span class="tier">Heart · Dry</span></span>
+              <span class="lvl" aria-label="Intensity 2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>
+            </button></li>
+            <li><button class="note-btn" type="button" data-i="3" aria-pressed="false">
+              <span class="num">04</span>
+              <span><span class="nm">Salted Amber</span><span class="tier">Base · Warm</span></span>
+              <span class="lvl" aria-label="Intensity 4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+            </button></li>
+          </ul>
+
+          <div class="note-copy">
+            <div class="meter-wrap">
+              <p id="noteDesc">Juicy, sun-ripe guava with a sharp, sweet edge. It opens the drop and stays bright.</p>
+              <div class="meter" role="meter" aria-label="Note intensity" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" id="meter">
+                <span class="meter-label">Intensity</span>
+                <div class="meter-track"><div class="meter-fill" id="meterFill"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="divider" style="--up:var(--canvas); --down:var(--white)" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0.0 28.0 C120.0 28.0 120.0 92.0 240.0 92.0 C360.0 92.0 360.0 28.0 480.0 28.0 C600.0 28.0 600.0 92.0 720.0 92.0 C840.0 92.0 840.0 28.0 960.0 28.0 C1080.0 28.0 1080.0 92.0 1200.0 92.0 C1320.0 92.0 1320.0 28.0 1440.0 28.0 V120 H0 Z"/></svg></div>
+
+  <!-- ============ MANIFEST: bubble containers ============ -->
+  <section class="manifest" id="manifest">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div class="sec-idx"><b>03</b>Manifest<br>Drop Vol. No. 04</div>
+        <h2 class="sec-title">What arrives in the box.</h2>
+        <p class="sec-meta">Ships monthly · 03 items</p>
+      </header>
+
+      <div class="bubbles">
+        <svg class="connector" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 18 C100.0 18.0 100.0 102.0 200.0 102.0 C300.0 102.0 300.0 18.0 400.0 18.0 C500.0 18.0 500.0 102.0 600.0 102.0 C700.0 102.0 700.0 18.0 800.0 18.0 C900.0 18.0 900.0 102.0 1000.0 102.0 C1100.0 102.0 1100.0 18.0 1200.0 18.0"/></svg>
+        <article class="bubble b1 reveal">
+          <svg class="bub-bg" viewBox="0 0 400 400" aria-hidden="true"><path d="M200.0 43.1 C240.1 45.5 285.0 60.7 313.1 86.9 C341.3 113.0 366.6 160.2 368.7 200.0 C370.8 239.8 353.8 298.8 325.6 325.6 C297.5 352.4 239.8 362.9 200.0 360.8 C160.2 358.7 114.1 339.9 86.9 313.1 C59.6 286.3 38.7 240.1 36.3 200.0 C33.9 159.9 45.5 98.9 72.7 72.7 C100.0 46.6 159.9 40.7 200.0 43.1Z" fill="#FBE1E8"/></svg>
+          <div class="bub-copy"><span class="bub-no">01</span><h3>Die-Cut Gel Car Freshener</h3><p class="bub-spec">Die-cut gel · 01 unit</p></div>
+        </article>
+        <article class="bubble b2 reveal">
+          <svg class="bub-bg" viewBox="0 0 400 400" aria-hidden="true"><path d="M200.0 29.2 C240.9 29.2 293.7 48.8 322.7 77.3 C351.8 105.8 374.7 159.5 374.4 200.0 C374.0 240.5 349.6 291.1 320.6 320.6 C291.5 350.0 240.4 376.2 200.0 376.4 C159.6 376.6 104.9 351.2 78.2 321.8 C51.6 292.4 40.3 240.7 40.2 200.0 C40.1 159.3 50.9 106.0 77.6 77.6 C104.2 49.1 159.1 29.3 200.0 29.2Z" fill="#D52456"/></svg>
+          <div class="bub-copy"><span class="bub-no">02</span><h3>Laundry Scent Booster Beads</h3><p class="bub-spec">12oz · tub</p></div>
+        </article>
+        <article class="bubble b3 reveal">
+          <svg class="bub-bg" viewBox="0 0 400 400" aria-hidden="true"><path d="M200.0 27.5 C238.2 27.8 284.8 57.4 313.8 86.2 C342.9 114.9 371.7 159.4 374.3 200.0 C377.0 240.6 358.9 303.9 329.9 329.9 C300.8 355.9 241.5 357.8 200.0 356.0 C158.5 354.2 108.5 345.1 80.9 319.1 C53.3 293.1 33.9 239.1 34.5 200.0 C35.1 160.9 56.8 113.1 84.4 84.4 C112.0 55.6 161.8 27.2 200.0 27.5Z" fill="#FFFFFF" stroke="#2D201C" stroke-width="1.5" stroke-opacity=".35"/></svg>
+          <div class="bub-copy"><span class="bub-no">03</span><h3>Fine Mist Room Spray</h3><p class="bub-spec">50ml · fine spray</p></div>
+        </article>
+      </div>
+
+      <div class="tally reveal">
+        <span class="pill-wave"><span class="count">03</span>Items in Drop Vol. No. 04</span>
+      </div>
+
+      <div class="subscribe-cta reveal">
+        <a class="subscribe-btn" href="#top">Subscribe to Monthly Drops <span class="arrow" aria-hidden="true">→</span></a>
+        <span class="subscribe-sub">Cancel anytime · a new scent story every month</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" style="--up:var(--white); --down:var(--canvas)" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0.0 28.0 C120.0 28.0 120.0 92.0 240.0 92.0 C360.0 92.0 360.0 28.0 480.0 28.0 C600.0 28.0 600.0 92.0 720.0 92.0 C840.0 92.0 840.0 28.0 960.0 28.0 C1080.0 28.0 1080.0 92.0 1200.0 92.0 C1320.0 92.0 1320.0 28.0 1440.0 28.0 V120 H0 Z"/></svg></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-tag reveal">Your monthly vibe, delivered in <span class="hot">full color.</span></p>
+    <div class="foot-grid">
+      <figure class="foot-mark reveal" style="margin:0"><img src="assets/Logo.svg" alt="billybuttons" width="527" height="272"></figure>
+      <div class="foot-cols reveal">
+        <div><span class="k">Drop</span><span class="v">Vol. No. 04</span></div>
+        <div><span class="k">Edition</span><span class="v">Electric Guava &amp; Palm</span></div>
+        <div><span class="k">Contents</span><span class="v"><a href="#contents">03 Items</a></span></div>
+        <div><span class="k">Scent</span><span class="v"><a href="#scent">04 Key notes</a></span></div>
+      </div>
+      <div class="legal"><div>© billybuttons</div><div>Monthly scent subscription</div><div>Drop Vol. No. 04</div></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Reveal on scroll ----
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12}) : null;
+  document.querySelectorAll('.reveal').forEach(function(el, i){
+    el.style.transitionDelay = ((i % 3) * 90) + 'ms';
+    if(io) io.observe(el); else el.classList.add('in');
+  });
+
+  // ---- Ribbon: scent notes run along a sine-wave path (text follows the curve) ----
+  var NS = 'http://www.w3.org/2000/svg';
+  var host = document.getElementById('ribbon');
+  var unitText = 'Pink Guava  ✦  Crushed Palm Leaf  ✦  Sun-Warmed Sand  ✦  Salted Amber  ✦  ';
+  var REPEATS = 6;
+  var unit = 0, textEl = null, tpEl = null, t0 = performance.now(), speed = 56;
+
+  function build(){
+    var W = host.clientWidth, H = host.clientHeight;
+    if(!W || !H) return;
+    host.innerHTML = '';
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.setAttribute('aria-hidden', 'true');
+
+    var amp = H * 0.16, lam = Math.max(W * 0.6, 460), yc = H / 2;
+    var x0 = -W * 0.15, x1 = W * 1.15, d = '';
+    for(var x = x0; x <= x1 + 0.5; x += 5){
+      var y = yc + amp * Math.sin(2 * Math.PI * x / lam);
+      d += (x === x0 ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+    }
+    var defs = document.createElementNS(NS, 'defs');
+    var path = document.createElementNS(NS, 'path');
+    path.setAttribute('id', 'ribbonPath'); path.setAttribute('d', d); path.setAttribute('fill', 'none');
+    defs.appendChild(path); svg.appendChild(defs);
+
+    var bandW = H * 0.46, fs = H * 0.25;
+    var band = document.createElementNS(NS, 'use');
+    band.setAttribute('href', '#ribbonPath');
+    band.setAttribute('stroke', '#D52456'); band.setAttribute('stroke-width', bandW);
+    band.setAttribute('fill', 'none'); band.setAttribute('stroke-linecap', 'butt');
+    svg.appendChild(band);
+
+    textEl = document.createElementNS(NS, 'text');
+    textEl.setAttribute('fill', '#FFFFFF');
+    textEl.setAttribute('font-family', '"Inter Tight BB", "Inter Tight", sans-serif');
+    textEl.setAttribute('font-weight', '800');
+    textEl.setAttribute('font-size', fs.toFixed(1));
+    textEl.setAttribute('letter-spacing', (-fs * 0.01).toFixed(2));
+    textEl.setAttribute('dy', (fs * 0.36).toFixed(1));
+    tpEl = document.createElementNS(NS, 'textPath');
+    tpEl.setAttribute('href', '#ribbonPath');
+    tpEl.setAttribute('startOffset', '0');
+    tpEl.textContent = new Array(REPEATS + 1).join(unitText);
+    textEl.appendChild(tpEl);
+    svg.appendChild(textEl);
+
+    host.appendChild(svg);
+    // the text string is REPEATS copies of one unit: measure one unit so the loop is seamless
+    unit = textEl.getComputedTextLength() / REPEATS;
+  }
+
+  function tick(now){
+    if(tpEl && unit){
+      var t = ((now - t0) / 1000 * speed) % unit;
+      tpEl.setAttribute('startOffset', (-t).toFixed(2));
+    }
+    requestAnimationFrame(tick);
+  }
+
+  var rt;
+  function boot(){
+    build();
+    if(!reduce) requestAnimationFrame(tick);
+  }
+  window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(build, 150); });
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(boot); } else { boot(); }
+
+  // ---- Scent profile: note data ----
+  var notes = [
+    { n:'Pink Guava',        pos:'Top note',   lvl:4, desc:'Juicy, sun-ripe guava with a sharp, sweet edge. It opens the drop and stays bright.', d:'M200.0 42.0 C241.0 42.7 295.4 53.0 320.7 79.3 C345.9 105.7 351.3 159.4 351.7 200.0 C352.1 240.6 348.2 298.1 322.9 322.9 C297.6 347.6 240.0 349.5 200.0 348.5 C160.0 347.6 108.5 342.1 82.7 317.3 C56.9 292.6 46.5 240.4 45.2 200.0 C43.9 159.6 49.1 101.2 74.9 74.9 C100.7 48.5 159.0 41.3 200.0 42.0Z' },
+    { n:'Crushed Palm Leaf', pos:'Heart note', lvl:3, desc:'Green, cool and slightly bruised. Palm leaf keeps the fruit from going syrupy.', d:'M200.0 62.0 C235.4 57.8 292.8 58.2 318.8 81.2 C344.8 104.2 359.9 164.3 356.0 200.0 C352.1 235.7 321.5 267.0 295.5 295.5 C269.5 324.0 232.7 370.1 200.0 371.0 C167.3 371.9 125.7 329.3 99.2 300.8 C72.7 272.3 39.8 232.4 41.0 200.0 C42.2 167.6 80.2 129.7 106.7 106.7 C133.2 83.7 164.6 66.2 200.0 62.0Z' },
+    { n:'Sun-Warmed Sand',   pos:'Heart note', lvl:2, desc:'Dry, dusty warmth, like a beach towel left out in the afternoon. Quiet and close.', d:'M200.0 49.5 C233.1 49.8 272.4 76.5 298.4 101.6 C324.4 126.7 355.5 166.5 356.2 200.0 C356.9 233.5 328.5 280.6 302.4 302.4 C276.4 324.2 235.1 329.6 200.0 330.6 C164.9 331.6 114.3 330.2 91.6 308.4 C68.8 286.7 62.3 234.8 63.7 200.0 C65.0 165.2 76.9 124.7 99.6 99.6 C122.3 74.5 166.9 49.1 200.0 49.5Z' },
+    { n:'Salted Amber',      pos:'Base note',  lvl:4, desc:'Resinous amber with a salt-air lift. The warm base that stays after the spray.', d:'M200.0 42.6 C239.0 41.4 295.5 53.2 320.6 79.4 C345.8 105.6 349.3 158.3 350.9 200.0 C352.4 241.7 355.0 302.5 329.9 329.9 C304.7 357.2 239.0 368.3 200.0 364.0 C161.0 359.7 125.7 331.7 95.6 304.4 C65.6 277.0 21.1 236.3 19.6 200.0 C18.1 163.7 56.3 112.6 86.4 86.4 C116.4 60.1 161.0 43.7 200.0 42.6Z' }
+  ];
+  var shape = document.getElementById('noteShape');
+  var ring  = document.getElementById('ringShape');
+  var btns  = Array.prototype.slice.call(document.querySelectorAll('.note-btn'));
+  var nNum = document.getElementById('noteNum');
+  var nName = document.getElementById('noteName');
+  var nPos = document.getElementById('notePos');
+  var nDesc = document.getElementById('noteDesc');
+  var meter = document.getElementById('meter');
+  var meterFill = document.getElementById('meterFill');
+  var current = -1;
+
+  function setNote(i){
+    if(i === current) return;
+    current = i;
+    var x = notes[i];
+    btns.forEach(function(b, j){ b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    shape.setAttribute('d', x.d);
+    ring.setAttribute('d', x.d);
+    nNum.textContent = 'Note 0' + (i+1) + ' / 04';
+    nPos.textContent = x.pos;
+    nName.classList.add('swap');
+    nDesc.classList.add('fade');
+    setTimeout(function(){
+      nName.textContent = x.n;
+      nDesc.textContent = x.desc;
+      nName.classList.remove('swap');
+      nDesc.classList.remove('fade');
+    }, 180);
+    meterFill.style.width = (x.lvl / 5 * 100) + '%';
+    meter.setAttribute('aria-valuenow', String(x.lvl));
+  }
+  btns.forEach(function(b, i){
+    b.addEventListener('mouseenter', function(){ if(window.matchMedia('(hover:hover)').matches) setNote(i); });
+    b.addEventListener('focus', function(){ setNote(i); });
+    b.addEventListener('click', function(){ setNote(i); });
+  });
+  document.querySelector('.note-list').addEventListener('keydown', function(e){
+    if(e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+    e.preventDefault();
+    var next = (current + (e.key === 'ArrowDown' ? 1 : -1) + notes.length) % notes.length;
+    btns[next].focus();
+  });
+
+  var card = document.getElementById('scentCard');
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce){
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - .5;
+      var py = (e.clientY - r.top) / r.height - .5;
+      card.style.setProperty('--ry', (px * 5).toFixed(2) + 'deg');
+      card.style.setProperty('--rx', (-py * 4).toFixed(2) + 'deg');
+    });
+    card.addEventListener('pointerleave', function(){
+      card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg');
+    });
+  }
+  setNote(0);
+})();
+</script>
+</body>
+</html>

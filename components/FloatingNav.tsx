@@ -64,6 +64,13 @@ const ICON_DATA: IconItem[] = [
   { icon: SiGodotengine, url: 'https://godotengine.org', label: 'Godot Engine' },
 ]
 
+// How many identical copies of the icon strip are rendered. The marquee moves
+// exactly one copy's width per loop, so the seam is always invisible. Keep this
+// at 2+ and raise it to 3 if the strip ever becomes narrower than the viewport.
+const MARQUEE_COPIES = 2
+// Seconds for one full copy to scroll past.
+const MARQUEE_DURATION = 20
+
 const PreviewCards = memo(function PreviewCards() {
   return (
     <>
@@ -104,16 +111,25 @@ const PreviewCards = memo(function PreviewCards() {
   )
 })
 
-const IconLoop = memo(function IconLoop({ textColor }: { textColor: string }) {
+const IconLoop = memo(function IconLoop({
+  textColor,
+  duplicate = false,
+}: {
+  textColor: string
+  duplicate?: boolean
+}) {
   return (
     <>
-      {ICON_DATA.map(({ icon: Icon, url, label }, i) => (
+      {ICON_DATA.map(({ icon: Icon, url, label }) => (
         <a
-          key={`${label}-${i}`}
+          key={label}
           href={url}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
+          // Duplicates are decorative: keep them out of the tab order so
+          // keyboard users don't tab through every icon twice.
+          tabIndex={duplicate ? -1 : undefined}
           className={`shrink-0 text-2xl transition-transform duration-200 hover:scale-120 active:scale-95 ${textColor}`}
         >
           <Icon />
@@ -197,44 +213,86 @@ export default function FloatingNav() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const buildMarquee = useCallback(() => {
+  // Marquee: built once. Using xPercent (relative to the strip's own width,
+  // which is `w-max`) means there is nothing to measure, so no resize handler
+  // and no animation restarts/jumps when the window changes size.
+  useEffect(() => {
     const scrollEl = scrollRef.current
-    if (!scrollEl) return
+    const containerEl = containerRef.current
+    if (!scrollEl || !containerEl) return
 
-    marqueeTweenRef.current?.kill()
-
-    const distance = scrollEl.scrollWidth / 2
-
-    marqueeTweenRef.current = gsap.to(scrollEl, {
-      x: -distance,
-      duration: 20,
+    const tween = gsap.to(scrollEl, {
+      xPercent: -100 / MARQUEE_COPIES,
+      duration: MARQUEE_DURATION,
       ease: 'none',
       repeat: -1,
       force3D: true,
     })
-  }, [])
+    marqueeTweenRef.current = tween
 
-  useLayoutEffect(() => {
-    const containerEl = containerRef.current
-    if (!containerEl || !scrollRef.current) return
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
+    if (prefersReducedMotion) tween.pause()
 
-    buildMarquee()
+    // Ease the speed to/from a stop instead of freezing abruptly.
+    let hovered = false
+    let focused = false
+    const updateSpeed = () => {
+      gsap.to(tween, {
+        timeScale: hovered || focused ? 0 : 1,
+        duration: 0.4,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      })
+    }
 
-    const pause = () => marqueeTweenRef.current?.pause()
-    const play = () => marqueeTweenRef.current?.play()
+    // Mouse only: touch fires emulated enter events with no matching leave,
+    // which used to leave the marquee stuck paused after a tap.
+    const onPointerEnter = (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse') return
+      hovered = true
+      updateSpeed()
+    }
+    const onPointerLeave = () => {
+      hovered = false
+      updateSpeed()
+    }
+    const onFocusIn = () => {
+      focused = true
+      updateSpeed()
+    }
+    const onFocusOut = () => {
+      focused = false
+      updateSpeed()
+    }
 
-    containerEl.addEventListener('mouseenter', pause)
-    containerEl.addEventListener('mouseleave', play)
-    window.addEventListener('resize', buildMarquee)
+    containerEl.addEventListener('pointerenter', onPointerEnter)
+    containerEl.addEventListener('pointerleave', onPointerLeave)
+    containerEl.addEventListener('focusin', onFocusIn)
+    containerEl.addEventListener('focusout', onFocusOut)
 
     return () => {
-      containerEl.removeEventListener('mouseenter', pause)
-      containerEl.removeEventListener('mouseleave', play)
-      window.removeEventListener('resize', buildMarquee)
-      marqueeTweenRef.current?.kill()
+      containerEl.removeEventListener('pointerenter', onPointerEnter)
+      containerEl.removeEventListener('pointerleave', onPointerLeave)
+      containerEl.removeEventListener('focusin', onFocusIn)
+      containerEl.removeEventListener('focusout', onFocusOut)
+      gsap.killTweensOf(tween)
+      tween.kill()
       marqueeTweenRef.current = null
     }
-  }, [buildMarquee])
+  }, [])
+
+  // Don't burn frames animating a nav that's faded out over the footer.
+  useEffect(() => {
+    const tween = marqueeTweenRef.current
+    if (!tween) return
+
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
+    tween.paused(isHidden || prefersReducedMotion)
+  }, [isHidden])
 
   // set initial hidden state once
   useLayoutEffect(() => {
@@ -430,17 +488,21 @@ export default function FloatingNav() {
                   'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
               }}
             >
+              {/* w-max is required: xPercent is relative to this element's own
+                  width, so it must size to its content, not its container. */}
               <div
                 ref={scrollRef}
-                className="flex items-center whitespace-nowrap will-change-transform"
+                className="flex items-center w-max whitespace-nowrap will-change-transform"
               >
-                <div className="flex items-center gap-10 pr-10">
-                  <IconLoop textColor={textColor} />
-                </div>
-
-                <div className="flex items-center gap-10 pr-10" aria-hidden="true">
-                  <IconLoop textColor={textColor} />
-                </div>
+                {Array.from({ length: MARQUEE_COPIES }, (_, copy) => (
+                  <div
+                    key={copy}
+                    className="flex items-center gap-10 pr-10"
+                    aria-hidden={copy > 0 ? true : undefined}
+                  >
+                    <IconLoop textColor={textColor} duplicate={copy > 0} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>

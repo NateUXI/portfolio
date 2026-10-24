@@ -82,7 +82,10 @@ export default function Home() {
           id="approach"
           className="relative z-10 bg-portfolio-red flex justify-center items-start py-10 md:py-16 px-4"
         >
-          <div className="w-[92%] md:w-[85%] aspect-video rounded-3xl overflow-hidden shadow-2xl">
+          <RevealOnScroll
+            animationClass="reveal-fade"
+            className="w-[92%] md:w-[85%] aspect-video rounded-3xl overflow-hidden shadow-2xl"
+          >
             <div ref={reelRef} className="w-full h-full">
               <video
                 src="/project_reel.mp4"
@@ -94,7 +97,7 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-          </div>
+          </RevealOnScroll>
         </section>
 
 
@@ -165,28 +168,34 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-10xl mx-auto pb-10 md:pb-20">
-            <TransitionLink href="/work/reform">
-              <WorkCard
-                title="REFORM"
-                category="Character Design App"
-                baseImg="/Reform_base.png"
-                hoverImg="/Reform_hover2.png"
-                logoImg="/Reform_logo.png"
-                talents={["Figma", "UX", "UI", "Next.JS", "React", "Product Design", "Branding", "Character Design", "Art Direction", "User Research", "Prototyping", "Wireframing", "User Flows", "Usability Testing", "Visual Design", "Interaction Design", "Information Architecture"]}
-              />
-            </TransitionLink>
-            <TransitionLink href="/work/berkeleys">
-              <WorkCard
-                title="BERKELEYS"
-                category="RESTAURANT WEBSITE"
-                baseImg="/Berks_Base.PNG"
-                hoverImg="/Berks_Background.PNG"
-                logoImg="/berkeleys_Logo.png"
-                talents={["Figma", "UX", "UI", "Next.JS", "React", "Branding", "Character Design", "Art Direction", "Prototyping", "Wireframing", "User Flows", "Usability Testing", "Visual Design", "Interaction Design", "Information Architecture"]}
-              />
-            </TransitionLink>
+            <RevealOnScroll animationClass="reveal-bottom" threshold={0.4}>
+              <TransitionLink href="/work/reform">
+                <WorkCard
+                  title="REFORM"
+                  category="Character Design App"
+                  baseImg="/Reform_base.png"
+                  hoverImg="/Reform_hover2.png"
+                  logoImg="/Reform_logo.png"
+                  talents={["Figma", "UX", "UI", "Next.JS", "React", "Product Design", "Branding", "Character Design", "Art Direction", "User Research", "Prototyping", "Wireframing", "User Flows", "Usability Testing", "Visual Design", "Interaction Design", "Information Architecture"]}
+                />
+              </TransitionLink>
+            </RevealOnScroll>
+            <RevealOnScroll animationClass="reveal-bottom">
+              <TransitionLink href="/work/berkeleys">
+                <WorkCard
+                  title="BERKELEYS"
+                  category="RESTAURANT WEBSITE"
+                  baseImg="/Berks_Base.PNG"
+                  hoverImg="/Berks_Background.PNG"
+                  logoImg="/berkeleys_Logo.png"
+                  talents={["Figma", "UX", "UI", "Next.JS", "React", "Branding", "Character Design", "Art Direction", "Prototyping", "Wireframing", "User Flows", "Usability Testing", "Visual Design", "Interaction Design", "Information Architecture"]}
+                />
+              </TransitionLink>
+            </RevealOnScroll>
           </div>
-          <ProjectCTA text="ALL WORK" />
+          <RevealOnScroll animationClass="reveal-bottom" threshold={0.4}>
+            <ProjectCTA text="ALL WORK" />
+          </RevealOnScroll>
         </section>
 
         <section id="services" className="relative z-10">

@@ -2,75 +2,29 @@
 
 import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
-import gsap from 'gsap'
 import Image from 'next/image'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import FloatingNav from '@/components/FloatingNav'
 import TopNav from '@/components/TopNav'
 import Footer from '@/components/Footer'
-import { motion, useScroll, useTransform } from 'framer-motion'
-
-function horizontalLoop(items: any[], config: any) {
-  items = gsap.utils.toArray(items);
-  config = config || {};
-  let tl = gsap.timeline({
-      repeat: config.repeat,
-      paused: config.paused,
-      defaults: { ease: "none" },
-      onReverseComplete: () => {
-        tl.totalTime(tl.rawTime() + tl.duration() * 100);
-      }
-    }),
-    length = items.length,
-    startX = items[0].offsetLeft,
-    times: number[] = [],
-    widths: number[] = [],
-    xPercents: number[] = [],
-    pixelsPerSecond = (config.speed || 1) * 100,
-    snap = config.snap === false ? (v: any) => v : gsap.utils.snap(config.snap || 1),
-    totalWidth: number, curX: number, distanceToStart: number, distanceToLoop: number, item: any, i: number;
-
-  gsap.set(items, {
-    xPercent: (i, el) => {
-      let w = widths[i] = parseFloat(gsap.getProperty(el, "width", "px") as string);
-      xPercents[i] = snap(parseFloat(gsap.getProperty(el, "x", "px") as string) / w * 100 + (gsap.getProperty(el, "x") as number));
-      return xPercents[i];
-    }
-  });
-
-  gsap.set(items, { x: 0 });
-
-  totalWidth = items[length - 1].offsetLeft + xPercents[length - 1] / 100 * widths[length - 1] - startX + items[length - 1].offsetWidth * (gsap.getProperty(items[length - 1], "scaleX") as number) + (parseFloat(config.paddingRight) || 0);
-
-  for (i = 0; i < length; i++) {
-    item = items[i];
-    curX = xPercents[i] / 100 * widths[i];
-    distanceToStart = item.offsetLeft + curX - startX;
-    distanceToLoop = distanceToStart + widths[i] * (gsap.getProperty(item, "scaleX") as number);
-    tl.to(item, { xPercent: snap((curX - distanceToLoop) / widths[i] * 100), duration: distanceToLoop / pixelsPerSecond }, 0)
-      .fromTo(item, { xPercent: snap((curX - distanceToLoop + totalWidth) / widths[i] * 100) }, { xPercent: xPercents[i], duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond, immediateRender: false }, distanceToLoop / pixelsPerSecond)
-      .add("label" + i, distanceToStart / pixelsPerSecond);
-    times[i] = distanceToStart / pixelsPerSecond;
-  }
-  tl.progress(1, true).progress(0, true);
-  if (config.reversed) {
-    const onReverseComplete = tl.vars.onReverseComplete as (() => void) | undefined;
-    onReverseComplete?.();
-    tl.reverse();
-  }
-  return tl;
-}
+import LinkBanner from '@/components/LinkBanner'
+import TalentBar from '@/components/TalentBar'
+import RevealOnScroll from '@/components/RevealOnScroll'
 
 export default function ProjectPage({}) {
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], [0, 800])
-  const marqueeRef = useRef<HTMLDivElement | null>(null)
+  const problemSectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress: problemProgress } = useScroll({
+    target: problemSectionRef,
+    offset: ['start end', 'end start'],
+  })
+  const referenceOpacity = useTransform(problemProgress, [0, 0.4, 0.6, 1], [1, 1, 0, 0])
+  const resultOpacity = useTransform(problemProgress, [0, 0.4, 0.6, 1], [0, 0, 1, 1])
 
   const talents = [
-    "Art Direction", "Character Design", "Illustration", "Concept Art", "UI", "UX", 
-    "Prototyping", "Interaction Design", "Motion Design", "Animation", "3D Modeling", 
-    "Shaders", "Web Design", "Front-end", "React", "Next.js", "TypeScript", 
-    "Image Processing", "Scanning", "Tooling", "Product Strategy", "Research", 
-    "Branding", "Photography", "Accessibility"
+    "Design Direction", "Illustration", "UI", "UX", 
+    "Prototyping", "Interaction Design", "Motion Design", "Web Design", "Front-end", "React", "Tailwind CSS", "Next.js", "TypeScript", 
+    "Image Processing", "Account Management", "SAAS", "Product Strategy", "Research", 
+    "Branding", "Accessibility", "Cloud Management", "Mobile Design", "Responsive Interfaces", "User Testing", "Figma"
   ]
 
   useEffect(() => {
@@ -78,24 +32,11 @@ export default function ProjectPage({}) {
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual' }
     window.scrollTo(0, 0)
 
-    let loop: any;
-    if (marqueeRef.current) {
-      const items = Array.from(marqueeRef.current.children) as HTMLElement[];
-      loop = horizontalLoop(items, {
-        repeat: -1,
-        speed: 0.9,
-        paddingRight: 0,
-      });
-    }
-
-    return () => { 
-      lenis.destroy() 
-      if (loop) loop.kill()
-    }
+    return () => lenis.destroy()
   }, [])
 
   return (
-    <main className="min-h-screen bg-portfolio-red overflow-x-hidden">
+    <main className="min-h-screen bg-linear-to-b from-portfolio-red from-1% to-[#33A1D0] md: to-4% overflow-x-hidden">
       <TopNav />
       <FloatingNav />
 
@@ -122,14 +63,14 @@ export default function ProjectPage({}) {
           {/* HEADER BLOCK */}
           <div className="flex flex-col md:flex-row items-center gap-[8vw] md:gap-[4vw] mb-[6vw] md:mb-[3vw] -mt-[24vw] md:-mt-[25vw] md:ml-[2vw] relative z-40">
             {/* Logo Circle */}
-            <div className="relative w-[45vw] md:w-[25vw] aspect-square rounded-full overflow-hidden border-[2vw] md:border-[1.5vw] border-portfolio-red shadow-xl bg-white">
+            <div className="relative w-[45vw] md:w-[25vw] aspect-square rounded-full overflow-hidden border-[2vw] md:border-[1.5vw] border-[#33A1D0] shadow-xl bg-white">
               <Image src="/Reform_icon.png" alt="Reform Logo" fill className="object-cover p-0" />
             </div>
             
             <div className="flex-1 text-center md:text-left w-full">
-              <h2 className="font-anton text-[18vw] md:text-[13.5vw] text-portfolio-red leading-none -mt-[4vw] md:-mt-[1vw] uppercase">Reform</h2>
-              <h3 className="font-bold text-[4vw] md:text-[1.8vw] uppercase mb-2 text-portfolio-red tracking-tight">Summary</h3>
-              <div className="bg-portfolio-red text-white p-6 md:p-8 rounded-4xl md:rounded-3xl shadow-lg">
+              <h2 className="font-anton text-[18vw] md:text-[13vw] font-inter font-black tracking-tighter text-[#33A1D0] leading-none -mt-[4vw] md:-mt-[1vw] uppercase">Reform</h2>
+              <h3 className="font-bold text-[4vw] md:text-[1.8vw] uppercase mb-2 text-[#33A1D0] tracking-tight">Summary</h3>
+              <div className="bg-linear-to-b from-[#33A1D0] to-[#33A470] text-white p-6 md:p-8 rounded-4xl md:rounded-3xl shadow-lg">
                 <p className="text-[3.8vw] md:text-[1.2vw] leading-snug">
                   A character design focused image board app created to help writers design and create across platforms, enabling writing and reference both on the go and in the studio. Currently being built with EXPO with releases for IOS, Android, and Web.
                 </p>
@@ -137,45 +78,50 @@ export default function ProjectPage({}) {
             </div>
           </div>
 
-          {/* TALENTS BAR */}
-          <div className="w-full bg-portfolio-red rounded-full py-3 md:py-4 px-6 md:px-10 mb-[6vw] md:mb-[3vw] shadow-md overflow-hidden whitespace-nowrap flex items-center relative">
-            <div ref={marqueeRef} className="flex items-center whitespace-nowrap will-change-transform">
-              {talents.map((talent, idx) => (
-                <span 
-                  key={idx} 
-                  className="text-white font-bold uppercase text-[3vw] md:text-sm tracking-widest pr-[8vw] md:pr-[4vw] whitespace-nowrap"
-                >
-                  {talent}
-                </span>
-              ))}
-            </div>
-          </div>
+          <TalentBar
+            talents={talents}
+            background="linear-gradient(to right, #33A1D0, #33A470)"
+          />
+
+          <RevealOnScroll
+            animationClass="reveal-fade"
+            className="mb-[6vw] md:mb-[3vw]"
+          >
+            <LinkBanner
+              href="https://use-reform.com"
+              logoSrc="/REFORM_LOGO.svg"
+              title="REFORM"
+              backgroundImage="/Reform_hover.png"
+            />
+          </RevealOnScroll>
 
           {/* LIVE PROTOTYPE SECTION */}
           <div className="flex flex-col md:flex-row items-center gap-[8vw] md:gap-[4vw] mb-[8vw] md:mb-[5vw]">
             
             {/* Left Column: Headings & Text */}
             <div className="flex-1 text-center md:text-left w-full">
-              <h2 className="font-anton text-[12vw] md:text-[9vw] uppercase leading-none bg-[linear-gradient(180deg,var(--color-portfolio-red)_0%,var(--color-portfolio-red)_30%,#33A1D0_100%)] bg-clip-text text-transparent">
-                Live Prototype
-              </h2>
+              <RevealOnScroll animationClass="reveal-left">
+                <h2 className="font-anton text-[12vw] md:text-[9vw] uppercase leading-none bg-linear-to-b from-[#33A1D0] to-[#33A470] bg-clip-text text-transparent">
+                  Live Prototype
+                </h2>
+              </RevealOnScroll>
               <h3 className="font-bold text-[4vw] md:text-[2vw] uppercase mt-2 mb-4 text-[#33A1D0] tracking-tight">
                 Built in Figma
               </h3>
 
               <div className="bg-[#33A1D0] text-white p-6 md:p-8 rounded-3xl md:rounded-3xl shadow-lg mb-6">
                 <p className="text-[3.8vw] md:text-[1.5vw] font-semibold leading-relaxed tracking-tight">
-                  Here is a small presentation of REFORM. This live prototype serves as a working proof of concept for the eventual full release of this user first concepting app.
+                  This interactive Figma prototype captures the earliest version of REFORM's user experience and interface design. It was the starting point for a much more ambitious product: a flexible, cross-platform creative workspace built for designers. Since this initial prototype, REFORM has evolved significantly, with expanded functionality, and a working application built for web, desktop, and mobile.
                 </p>
               </div>
 
               <p className="text-[3.5vw] md:text-[1.5vw] font-bold leading-relaxed tracking-tight text-[#33A1D0]">
-                The current version of REFORM is being built out using Expo. Prototyping, UX, and UI design is made in Figma and User Experience testing is being collected from both versions. If you would like to send any feedback on this limited prototype, please send it using the contact modal on the top right of my website.
+                REFORM is now approaching launch, with mobile app approvals underway. The current product is built with React Native across platforms, bringing the same creative workspace to wherever inspiration happens.
               </p>
             </div>
 
             {/* Right Column: Mobile Frame Device Wrapper */}
-            <div className="shrink-0 relative w-[67.5vw] md:w-[23.5vw] aspect-9/18.5 rounded-[3.2rem] md:rounded-[4.5rem] p-[2%] bg-[linear-gradient(180deg,var(--color-portfolio-red)_0%,var(--color-portfolio-red)_30%,#33A1D0_100%)] shadow-2xl">
+            <div className="shrink-0 relative w-[67.5vw] md:w-[23.5vw] aspect-9/18.5 rounded-[3.2rem] md:rounded-[4.5rem] p-[2%] bg-linear-to-b from-[#33A1D0] to-[#33A470] shadow-2xl">
               <div className="relative w-full h-full rounded-[2.6rem] md:rounded-[3.1rem] overflow-hidden">
                 <iframe
                   src="https://embed.figma.com/proto/wAQzY4BOvRqzBwqdR2frUx/RefLow--Copy-?node-id=205-388&p=f&viewport=-216%2C16%2C1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=205%3A388&embed-host=share&hide-ui=1"
@@ -188,12 +134,56 @@ export default function ProjectPage({}) {
 
           </div>
 
+          {/* THE PROBLEM SECTION */}
+          <section
+            ref={problemSectionRef}
+            className="mb-[8vw] md:mb-[5vw] grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr] items-center gap-[8vw] md:gap-[4vw]"
+          >
+            <div className="relative w-full max-w-[78vw] md:max-w-none aspect-4/5 mx-auto md:mx-0 overflow-hidden rounded-4xl md:rounded-[3rem] shadow-2xl">
+              <motion.div className="absolute inset-0" style={{ opacity: referenceOpacity }}>
+                <Image
+                  src="/Reference.png"
+                  alt="Original reference image"
+                  fill
+                  sizes="(max-width: 768px) 78vw, 34vw"
+                  className="object-cover"
+                />
+              </motion.div>
+              <motion.div className="absolute inset-0" style={{ opacity: resultOpacity }}>
+                <Image
+                  src="/Result.png"
+                  alt="Artwork created from the reference"
+                  fill
+                  sizes="(max-width: 768px) 78vw, 34vw"
+                  className="object-cover"
+                />
+              </motion.div>
+            </div>
+
+            <div className="text-right">
+              <RevealOnScroll animationClass="reveal-right">
+                <h2 className="font-anton text-[12vw] md:text-[9vw] mb-5 uppercase leading-none bg-linear-to-b from-[#33A1D0] to-[#33A470] bg-clip-text text-transparent">
+                  The Problem
+                </h2>
+              </RevealOnScroll>
+            {/* REFORM was created to bridge that gap, giving designers a way to use their reference boards on the go and have their ideas ready when they return to the studio. */}
+              <div className="bg-[#33A1D0] text-white p-6 md:p-8 rounded-3xl shadow-lg mb-5">
+                <p className="text-[3.8vw] md:text-[1.5vw] font-semibold leading-relaxed tracking-tight">
+                  As a character and narrative designer, I draw inspiration from the real world and the things I notice on hikes. But I often found myself forgetting the photos I took—or struggling to get them from my phone onto my computer and into my image boards.
+                </p>
+              </div>
+              <p className="text-[3.5vw] md:text-[1.5vw] font-bold leading-relaxed tracking-tight text-[#33A1D0]">
+                REFORM was created to bridge that gap, giving designers a way to use their reference boards on the go and have their ideas ready when they return to the studio.
+              </p>
+            </div>
+          </section>
+
           {/* MOBILE SHOWCASE */}
           <div className="w-[92%] md:w-[88%] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-[6vw] md:mb-[4vw]">
             {["/Reform_Home.png", "/Reform_login.png", "/Reform_Create_Tab.png", "/Reform_board.png"].map((src, i) => (
               <div 
                 key={i}
-                className="relative aspect-9/19 rounded-4xl overflow-hidden shadow-2xl"
+                className="relative aspect-9/19 rounded-4xl overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 ease-out"
               >
                 <Image src={src} alt={`Screen ${i}`} fill unoptimized className="object-cover" />
               </div>
@@ -274,7 +264,7 @@ export default function ProjectPage({}) {
         </div>
 
         <section id="footer" className="w-full mt-[10vw] md:mt-[5vw]">
-          <Footer />
+          <Footer gradientStartColor="#33A1D0" />
         </section>
       </div>
     </main>

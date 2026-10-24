@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 
 interface RevealOnScrollProps {
   children: React.ReactNode;
-  animationClass: 'reveal-left' | 'reveal-right' | 'reveal-bottom' | 'reveal-top';
+  animationClass: 'reveal-left' | 'reveal-right' | 'reveal-bottom' | 'reveal-top' | 'reveal-fade';
   threshold?: number;
   className?: string;
 }

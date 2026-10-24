@@ -1,73 +1,14 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import Lenis from 'lenis'
-import gsap from 'gsap'
 import Image from 'next/image'
 import FloatingNav from '@/components/FloatingNav'
 import TopNav from '@/components/TopNav'
 import Footer from '@/components/Footer'
-import { motion, useScroll, useTransform } from 'framer-motion'
-
-/**
- * GSAP Helper: Horizontal Loop
- * Essential for the "foolproof" infinite scroll effect.
- */
-function horizontalLoop(items: any[], config: any) {
-  items = gsap.utils.toArray(items);
-  config = config || {};
-  let tl = gsap.timeline({
-      repeat: config.repeat,
-      paused: config.paused,
-      defaults: { ease: "none" },
-      onReverseComplete: () => {
-      tl.totalTime(tl.rawTime() + tl.duration() * 100);
-    }
-    }),
-    length = items.length,
-    startX = items[0].offsetLeft,
-    times: number[] = [],
-    widths: number[] = [],
-    xPercents: number[] = [],
-    pixelsPerSecond = (config.speed || 1) * 100,
-    snap = config.snap === false ? (v: any) => v : gsap.utils.snap(config.snap || 1),
-    totalWidth: number, curX: number, distanceToStart: number, distanceToLoop: number, item: any, i: number;
-
-  gsap.set(items, {
-    xPercent: (i, el) => {
-      let w = widths[i] = parseFloat(gsap.getProperty(el, "width", "px") as string);
-      xPercents[i] = snap(parseFloat(gsap.getProperty(el, "x", "px") as string) / w * 100 + (gsap.getProperty(el, "xPercent") as number));
-      return xPercents[i];
-    }
-  });
-
-  gsap.set(items, { x: 0 });
-
-  totalWidth = items[length - 1].offsetLeft + xPercents[length - 1] / 100 * widths[length - 1] - startX + items[length - 1].offsetWidth * (gsap.getProperty(items[length - 1], "scaleX") as number) + (parseFloat(config.paddingRight) || 0);
-
-  for (i = 0; i < length; i++) {
-    item = items[i];
-    curX = xPercents[i] / 100 * widths[i];
-    distanceToStart = item.offsetLeft + curX - startX;
-    distanceToLoop = distanceToStart + widths[i] * (gsap.getProperty(item, "scaleX") as number);
-    tl.to(item, { xPercent: snap((curX - distanceToLoop) / widths[i] * 100), duration: distanceToLoop / pixelsPerSecond }, 0)
-      .fromTo(item, { xPercent: snap((curX - distanceToLoop + totalWidth) / widths[i] * 100) }, { xPercent: xPercents[i], duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond, immediateRender: false }, distanceToLoop / pixelsPerSecond)
-      .add("label" + i, distanceToStart / pixelsPerSecond);
-    times[i] = distanceToStart / pixelsPerSecond;
-  }
-  tl.progress(1, true).progress(0, true);
-  if (config.reversed) {
-    const onReverseComplete = tl.vars.onReverseComplete as (() => void) | undefined;
-    onReverseComplete?.();
-    tl.reverse();
-  }
-  return tl;
-}
+import TalentBar from '@/components/TalentBar'
 
 export default function ProjectPage({ }) {
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], [0, 800])
-  const marqueeRef = useRef<HTMLDivElement | null>(null)
 
   const talents = [
     "Art Direction", "Character Design", "Illustration", "Concept Art", "UI", "UX",
@@ -82,24 +23,11 @@ export default function ProjectPage({ }) {
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual' }
     window.scrollTo(0, 0)
 
-    let loop: any;
-    if (marqueeRef.current) {
-      const items = Array.from(marqueeRef.current.children) as HTMLElement[];
-      loop = horizontalLoop(items, {
-        repeat: -1,
-        speed: 1.2, 
-        paddingRight: 0,
-      });
-    }
-
-    return () => { 
-      lenis.destroy() 
-      if (loop) loop.kill()
-    }
+    return () => lenis.destroy()
   }, [])
 
   return (
-    <main className="min-h-screen bg-portfolio-red overflow-x-hidden">
+    <main className="min-h-screen bg-linear-to-b from-portfolio-red from-1% to-[#000000] to-4% overflow-x-hidden">
       <TopNav />
       <FloatingNav />
 
@@ -126,14 +54,14 @@ export default function ProjectPage({ }) {
           {/* HEADER BLOCK - Sync with Berkeleys layout and margins */}
           <div className="flex flex-col md:flex-row items-center gap-[8vw] md:gap-[4vw] mb-[6vw] md:mb-[3vw] -mt-[24vw] md:-mt-[25vw] md:ml-[2vw] relative z-40">
             {/* Logo Circle */}
-            <div className="relative w-[45vw] md:w-[25vw] aspect-square rounded-full overflow-hidden border-[2vw] md:border-[1.5vw] border-portfolio-red shadow-xl bg-white">
+            <div className="relative w-[45vw] md:w-[25vw] aspect-square rounded-full overflow-hidden border-[2vw] md:border-[1.5vw] border-[#000000] shadow-xl bg-[#000000]">
               <Image src="/Tavern_icon.png" alt="Tavern Logo" fill className="object-cover p-0" />
             </div>
             
             <div className="flex-1 text-center md:text-left w-full">
-              <h2 className="font-anton text-[18vw] md:text-[13.5vw] text-portfolio-red leading-none -mt-[4vw] md:-mt-[1vw] uppercase">tavern</h2>
-              <h3 className="font-bold text-[4vw] md:text-[1.8vw] uppercase mb-2 text-portfolio-red tracking-tight">Summary</h3>
-              <div className="bg-portfolio-red text-white p-6 md:p-8 rounded-4xl md:rounded-3xl shadow-lg">
+              <h2 className="font-anton text-[18vw] md:text-[13.5vw] text-[#000000] leading-none -mt-[4vw] md:-mt-[1vw] uppercase">tavern</h2>
+              <h3 className="font-bold text-[4vw] md:text-[1.8vw] uppercase mb-2 text-[#000000] tracking-tight">Summary</h3>
+              <div className="bg-[#000000] text-white p-6 md:p-8 rounded-4xl md:rounded-3xl shadow-lg">
                 <p className="text-[3.8vw] md:text-[1.2vw] leading-snug">
                   A fantasy metal inspired bar website concept built to establish an artistic and functional delivery of all things magic for The Tavern. Includes full branding suite and mobile-first design.
                 </p>
@@ -141,19 +69,10 @@ export default function ProjectPage({ }) {
             </div>
           </div>
 
-          {/* TALENTS BAR - Sync with Berkeleys rhythm */}
-          <div className="w-full bg-portfolio-red rounded-full py-3 md:py-4 px-6 md:px-10 mb-[6vw] md:mb-[3vw] shadow-md overflow-hidden whitespace-nowrap flex items-center relative">
-            <div ref={marqueeRef} className="flex items-center whitespace-nowrap will-change-transform">
-              {talents.map((talent, idx) => (
-                <span 
-                  key={idx} 
-                  className="text-white font-bold uppercase text-[3vw] md:text-sm tracking-widest pr-[8vw] md:pr-[4vw] whitespace-nowrap"
-                >
-                  {talent}
-                </span>
-              ))}
-            </div>
-          </div>
+          <TalentBar
+            talents={talents}
+            background="#000000"
+          />
 
           {/* ASSETS */}
           <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
@@ -208,7 +127,7 @@ export default function ProjectPage({ }) {
         </div>
 
         <section id="footer" className="w-full mt-[10vw] md:mt-[5vw]">
-          <Footer />
+          <Footer gradientStartColor="#000000" />
         </section>
       </div>
     </main>
