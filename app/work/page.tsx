@@ -189,7 +189,7 @@ export default function WorkPage() {
                   baseImg="/Billy_Buttons_base1.png"
                   hoverImg="/Billy_Buttons_hover1.png"
                   logoImg="/Billy_Buttons_Logo.png"
-                  talents={["Brand Concept", "Showcase in Progress"]}
+                  talents={['Brand Concept', 'Showcase in Progress', 'Visual Identity', 'Ecommerce Design', 'Brand Design', 'Subscription Service Concept', 'Figma', 'Web Design', 'Illustration', 'React', 'User Experience Researching']}
                 />
               </TransitionLink>
             </div>
