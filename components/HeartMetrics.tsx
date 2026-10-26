@@ -43,9 +43,9 @@ export default function HeartMetrics() {
   return (
     <div
       ref={ref}
-      className="w-full rounded-3xl bg-white p-[4%] shadow-[0_8px_0_0_rgba(0,0,0,0.25)] md:rounded-[3rem]"
+      className="w-full rounded-3xl bg-white p-4 shadow-[0_8px_0_0_rgba(0,0,0,0.25)] md:rounded-[3rem] md:p-[4%]"
     >
-      <div className="mb-[3%] flex items-center justify-between px-[4%] py-[1.5%] text-portfolio-red">
+      <div className="mb-4 flex flex-col items-start gap-3 px-2 text-portfolio-red sm:flex-row sm:items-center sm:justify-between md:mb-[3%] md:px-[4%] md:py-[1.5%]">
         <span className="flex items-center gap-2 md:gap-[1.5vw]">
           <span
             aria-hidden="true"
@@ -55,20 +55,20 @@ export default function HeartMetrics() {
             REFORM
           </span>
         </span>
-        <span className="flex items-center gap-2 font-anton text-[clamp(1.4rem,4.2vw,4.2rem)] uppercase leading-none">
+        <span className="flex items-center gap-2 whitespace-nowrap font-anton text-[clamp(1.75rem,4.2vw,4.2rem)] uppercase leading-none">
           Heart Metrics
           <Heart className="size-[1.1em]" aria-hidden="true" />
         </span>
       </div>
 
-      <ul className="flex flex-col gap-[2.5%] md:gap-[1.2vw]">
+      <ul className="flex flex-col gap-3 md:gap-[1.2vw]">
         {metrics.map((metric, i) => {
           const isFilled = filled && metric.value !== undefined
           const delay = `${i * STAGGER_MS}ms`
           return (
             <li
               key={metric.label}
-              className="relative flex h-[clamp(2.5rem,5.5vw,5.5rem)] items-center overflow-hidden rounded-full bg-[#D4D3D4] font-anton text-[clamp(1.1rem,2.8vw,2.8rem)] uppercase leading-none"
+              className="relative flex h-[clamp(3rem,5.5vw,5.5rem)] items-center overflow-hidden rounded-full bg-[#D4D3D4] font-anton text-[clamp(1.25rem,2.8vw,2.8rem)] uppercase leading-none"
             >
               <div
                 className="absolute inset-y-0 left-0 rounded-full bg-portfolio-red transition-[width] ease-out motion-reduce:transition-none"

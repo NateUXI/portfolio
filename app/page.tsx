@@ -209,7 +209,7 @@ export default function Home() {
           className="relative z-10 bg-portfolio-red text-white px-6 md:px-20 py-10 md:py-20"
         >
           <RevealOnScroll animation="left">
-            <h2 className="font-anton text-7xl md:text-[10rem] uppercase leading-none tracking-tight mb-8 md:mb-14 text-center">
+            <h2 className="font-anton text-6xl md:text-[10rem] uppercase leading-none tracking-tight mb-8 md:mb-14 text-center">
               UX Health &amp; Performance
             </h2>
           </RevealOnScroll>
@@ -225,6 +225,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        
 
         <section id="footer">
           <Footer />
