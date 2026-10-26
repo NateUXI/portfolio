@@ -84,7 +84,7 @@ export default function ProjectPage({}) {
           />
 
           <RevealOnScroll
-            animationClass="reveal-fade"
+            animation="fade"
             className="mb-[6vw] md:mb-[3vw]"
           >
             <LinkBanner
@@ -100,7 +100,7 @@ export default function ProjectPage({}) {
             
             {/* Left Column: Headings & Text */}
             <div className="flex-1 text-center md:text-left w-full">
-              <RevealOnScroll animationClass="reveal-left">
+              <RevealOnScroll animation="left">
                 <h2 className="font-anton text-[12vw] md:text-[9vw] uppercase leading-none bg-linear-to-b from-[#33A1D0] to-[#33A470] bg-clip-text text-transparent">
                   Live Prototype
                 </h2>
@@ -161,7 +161,7 @@ export default function ProjectPage({}) {
             </div>
 
             <div className="text-right">
-              <RevealOnScroll animationClass="reveal-right">
+              <RevealOnScroll animation="right">
                 <h2 className="font-anton text-[12vw] md:text-[9vw] mb-5 uppercase leading-none bg-linear-to-b from-[#33A1D0] to-[#33A470] bg-clip-text text-transparent">
                   The Problem
                 </h2>
@@ -177,6 +177,84 @@ export default function ProjectPage({}) {
               </p>
             </div>
           </section>
+
+          {/* UNDERSTANDING USER NEEDS */}
+          <section className="mb-[8vw] md:mb-[5vw]">
+            <RevealOnScroll animation="left">
+              <h2 className="font-anton text-left text-[12vw] md:text-[9vw] mb-[5vw] md:mb-[3vw] uppercase leading-none bg-linear-to-b from-[#33A1D0] to-[#33A470] bg-clip-text text-transparent">
+                USER NEEDS
+              </h2>
+            </RevealOnScroll>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 items-stretch gap-[8vw] md:gap-[4vw]">
+              <div className="rounded-3xl bg-[#33A1D0] p-6 md:p-8 text-white shadow-lg">
+                <p className="mb-5 text-[3.8vw] md:text-[1.5vw] font-semibold leading-relaxed tracking-tight">
+                  Through speaking and collaborating with designers across multiple creative mediums, REFORM&apos;s capabilities and focus expanded to be the best for any artistic endeavor.
+                </p>
+                <p className="mb-5 text-[3.8vw] md:text-[1.5vw] font-semibold leading-relaxed tracking-tight">
+                  The goal was to make collecting references, shaping a personal workspace, and returning to your work across devices feel simple without getting in the way of the creative process.
+                </p>
+                <p className="mb-5 text-[3.8vw] md:text-[1.5vw] font-semibold leading-relaxed tracking-tight">
+                  Alongside these identifiers with the survey work done, User personas were developed to keep track of user needs and behaviors throughout the design process.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-[4vw] md:text-[2vw] uppercase mb-4 text-[#33A1D0] tracking-tight">
+                  Key User Needs
+                </h3>
+                <ul className="space-y-3 text-[3.8vw] md:text-[1.5vw] font-semibold leading-relaxed tracking-tight">
+                  <li className="rounded-3xl bg-linear-to-r from-[#33A1D0] to-[#33A470] p-5 md:p-6 text-white shadow-lg transition-transform duration-300 ease-out hover:translate-x-2">
+                    Quickly collect and organize references
+                  </li>
+                  <li className="rounded-3xl bg-linear-to-r from-[#33A1D0] to-[#33A470] p-5 md:p-6 text-white shadow-lg transition-transform duration-300 ease-out hover:translate-x-2">
+                    Full creative control over board layout and style
+                  </li>
+                  <li className="rounded-3xl bg-linear-to-r from-[#33A1D0] to-[#33A470] p-5 md:p-6 text-white shadow-lg transition-transform duration-300 ease-out hover:translate-x-2">
+                    Access work across all devices
+                  </li>
+                  <li className="rounded-3xl bg-linear-to-r from-[#33A1D0] to-[#33A470] p-5 md:p-6 text-white shadow-lg transition-transform duration-300 ease-out hover:translate-x-2">
+                    Retain easy navigation and light menus
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+             <Image 
+               src="/Persona1.png" 
+               alt="Branding Board" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto rounded-4xl"
+             />
+          </div>
+
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+             <Image 
+               src="/Persona2.png" 
+               alt="Branding Board" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto rounded-4xl"
+             />
+          </div>
+
+          {/* DESIGN DECISIONS */}
+          <h2 className="font-anton text-center text-[12vw] md:text-[9vw] mb-[5vw] md:mb-[3vw] uppercase leading-none bg-linear-to-b from-[#33A1D0] to-[#33A470] bg-clip-text text-transparent">
+            Design Decisions
+          </h2>
+
+          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
+             <Image 
+               src="/modal_showcase.png" 
+               alt="Branding Board" 
+               width={1200} height={800} 
+               unoptimized
+               className="w-full h-auto rounded-4xl"
+             />
+          </div>
 
           {/* MOBILE SHOWCASE */}
           <div className="w-[92%] md:w-[88%] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-[6vw] md:mb-[4vw]">
@@ -194,31 +272,6 @@ export default function ProjectPage({}) {
           <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
              <Image 
                src="/Reform_promo.png" 
-               alt="Branding Board" 
-               width={1200} height={800} 
-               unoptimized
-               className="w-full h-auto rounded-4xl"
-             />
-          </div>
-
-          {/* PERSONA TITLE */}
-          <h3 className="font-anton text-[#33A1D0] text-[7vw] md:text-[8vw] uppercase text-center mt-[8vw] md:mt-[5vw] mb-[5vw] md:mb-[3vw]">
-            Persona Case Studies
-          </h3>
-
-          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
-             <Image 
-               src="/Persona1.png" 
-               alt="Branding Board" 
-               width={1200} height={800} 
-               unoptimized
-               className="w-full h-auto rounded-4xl"
-             />
-          </div>
-
-          <div className="w-[92%] md:w-[88%] mx-auto rounded-4xl md:rounded-[3rem] overflow-hidden shadow-2xl mb-[6vw] md:mb-[4vw]">
-             <Image 
-               src="/Persona2.png" 
                alt="Branding Board" 
                width={1200} height={800} 
                unoptimized

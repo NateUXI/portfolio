@@ -87,7 +87,7 @@ export default function Services() {
         </h2>
 
         <div className="hidden md:block">
-          <RevealOnScroll animationClass="reveal-right">
+          <RevealOnScroll animation="right">
             <h2 className="font-anton text-white text-[10vw] uppercase leading-none tracking-tight text-right">
               What I Do
             </h2>
@@ -100,7 +100,7 @@ export default function Services() {
           {services.map((service) => (
             <RevealOnScroll
               key={service.id}
-              animationClass="reveal-left"
+              animation="left"
               threshold={0.7}
               className="w-full"
             >

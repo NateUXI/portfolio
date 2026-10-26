@@ -83,7 +83,7 @@ export default function Home() {
           className="relative z-10 bg-portfolio-red flex justify-center items-start py-10 md:py-16 px-4"
         >
           <RevealOnScroll
-            animationClass="reveal-fade"
+            animation="fade"
             className="w-[92%] md:w-[85%] aspect-video rounded-3xl overflow-hidden shadow-2xl"
           >
             <div ref={reelRef} className="w-full h-full">
@@ -112,7 +112,7 @@ export default function Home() {
                   My Approach
                 </h2>
               ) : (
-                <RevealOnScroll animationClass="reveal-left">
+                <RevealOnScroll animation="left">
                   <h2 className="font-anton text-5xl md:text-8xl lg:text-[10rem] uppercase tracking-tight leading-none text-white">
                     My Approach
                   </h2>
@@ -155,12 +155,12 @@ export default function Home() {
           className="relative z-10 h-auto min-h-screen bg-portfolio-red text-white py-10 px-6 md:p-20 overflow-hidden"
         >
           <div className="flex flex-col md:flex-row justify-between items-center w-full mt-8 md:mt-24 mb-6 md:mb-10 px-4">
-            <RevealOnScroll animationClass="reveal-left">
+            <RevealOnScroll animation="left">
               <h2 className="font-anton text-7xl md:text-[12rem] uppercase leading-none tracking-tight">
                 Selected
               </h2>
             </RevealOnScroll>
-            <RevealOnScroll animationClass="reveal-right">
+            <RevealOnScroll animation="right">
               <h2 className="font-anton text-7xl md:text-[12rem] uppercase leading-none tracking-tight">
                 Works
               </h2>
@@ -168,7 +168,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-10xl mx-auto pb-10 md:pb-20">
-            <RevealOnScroll animationClass="reveal-bottom" threshold={0.4}>
+            <RevealOnScroll animation="bottom" threshold={0.4}>
               <TransitionLink href="/work/reform">
                 <WorkCard
                   title="REFORM"
@@ -180,7 +180,7 @@ export default function Home() {
                 />
               </TransitionLink>
             </RevealOnScroll>
-            <RevealOnScroll animationClass="reveal-bottom">
+            <RevealOnScroll animation="bottom">
               <TransitionLink href="/work/berkeleys">
                 <WorkCard
                   title="BERKELEYS"
@@ -193,7 +193,7 @@ export default function Home() {
               </TransitionLink>
             </RevealOnScroll>
           </div>
-          <RevealOnScroll animationClass="reveal-bottom" threshold={0.4}>
+          <RevealOnScroll animation="bottom" threshold={0.4}>
             <ProjectCTA text="ALL WORK" />
           </RevealOnScroll>
         </section>
