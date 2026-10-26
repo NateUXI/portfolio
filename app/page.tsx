@@ -7,6 +7,8 @@ import ScrollFloat from '../components/ScrollFloat'
 import RevealOnScroll from '../components/RevealOnScroll'
 import Services from '../components/Services'
 import ProjectCTA from '../components/ProjectCTA'
+import HeartMetrics from '@/components/HeartMetrics'
+import LinkBanner from '@/components/LinkBanner'
 import Footer from '@/components/Footer'
 import { useLayoutEffect, useRef, useState } from 'react'
 import Spline from '@splinetool/react-spline'
@@ -133,7 +135,7 @@ export default function Home() {
                     stagger={0.03}
                     textClassName="font-overpass text-2xl md:text-4xl lg:text-6xl font-bold leading-tight italic text-white"
                   >
-                    Passionate about User Experience Design, creating striking digital experiences, and focusing on impact, performance, and accessibility.
+                    I’m a Design Engineer bridging UI/UX design and front-end code. I transform complex ideas into high-performance, accessible digital products using modern web frameworks, 3D interaction, and scalable design systems.
                   </ScrollFloat>
                 )}
               </div>
@@ -148,6 +150,10 @@ export default function Home() {
               />
             </div>
           </div>
+        </section>
+
+        <section id="services" className="relative z-10">
+          <Services />
         </section>
 
         <section
@@ -198,8 +204,26 @@ export default function Home() {
           </RevealOnScroll>
         </section>
 
-        <section id="services" className="relative z-10">
-          <Services />
+        <section
+          id="ux-health"
+          className="relative z-10 bg-portfolio-red text-white px-6 md:px-20 py-10 md:py-20"
+        >
+          <RevealOnScroll animation="left">
+            <h2 className="font-anton text-7xl md:text-[10rem] uppercase leading-none tracking-tight mb-8 md:mb-14 text-center">
+              UX Health &amp; Performance
+            </h2>
+          </RevealOnScroll>
+          <div className="mx-auto w-full">
+            <HeartMetrics />
+            <div className="mt-6 md:mt-10 rounded-3xl bg-white p-3 shadow-[0_8px_0_0_rgba(0,0,0,0.25)] md:rounded-[3rem] md:p-5">
+              <LinkBanner
+                href="https://use-reform.com"
+                logoSrc="/REFORM_LOGO.svg"
+                title="REFORM"
+                backgroundImage="/Reform_hover.png"
+              />
+            </div>
+          </div>
         </section>
 
         <section id="footer">
