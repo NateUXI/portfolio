@@ -83,14 +83,14 @@ export default function SmallHero() {
                 }}
                 className="relative z-10 inline-block pl-[3vw] md:pl-0 md:mx-auto md:text-center"
                 >
-                <div className="font-anton uppercase text-portfolio-red leading-none tracking-medium md:tracking-[-0.03em]">
+                <div className="font-anton uppercase text-portfolio-red                 leading-none tracking-medium md:tracking-[-0.03em] [-webkit-text-stroke:6px_white] [paint-order:stroke_fill]">
                     
                     <div className="text-[12vw] md:text-[7vw] md:mb-[0.5vw] ml-[4vw] md:mr-[54vw] leading-[0.9]">
                     your future
                     </div>
 
                     <div className="mt-[0.2vw] text-[24vw] md:text-[14vw] ml-[4vw] md:mr-[4vw] leading-[.9]">
-                    web designer
+                                    design engineer
                     </div>
 
                 </div>
