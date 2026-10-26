@@ -140,7 +140,7 @@ const Footer = ({ gradientStartColor = '#fa0000' }: FooterProps) => {
 
           {/* LinkedIn */}
           <a
-            href="https://www.linkedin.com/in/nathaniel-turner-454375232/"
+            href="https://www.linkedin.com/in/nathaniel-turner-design/"
             target="_blank"
             rel="noopener noreferrer"
             className={`${pillBase} px-[4vw] py-[0.7vw] rounded-full text-[6vw] right-[22.6%] top-[54%]`}
