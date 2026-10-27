@@ -202,6 +202,92 @@
   .font-inter { font-family: var(--font-inter), sans-serif; }
 }
 
+/* Registered so --peel can animate. Must be global, not scoped. */
+@property --peel {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 0%;
+}
+
+.sticker {
+  --peel: 0%;         /* flat at rest */
+  --peel-hover: 34%;  /* fold size on hover/press */
+  --radius: 10cqw;    /* matches the sticker's rounded corners */
+  --paper: #fff;      /* sticker face; override per sticker if you like */
+
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 1;    /* square box = true 45° fold */
+  rotate: var(--r, 0deg);
+  /* Shadow on the wrapper so it follows the peeled silhouette */
+  filter: drop-shadow(0 6px 0 rgb(0 0 0 / 0.25));
+  transition:
+    rotate 300ms ease-out,
+    scale 300ms ease-out,
+    --peel 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The sticker face, with the corner cut off along the fold line */
+.sticker-peel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20%;
+  border-radius: var(--radius);
+  background: var(--paper);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--peel)),
+    calc(100% - var(--peel)) 100%,
+    0 100%
+  );
+}
+
+/* The folded-back corner: the cut triangle reflected across the fold */
+.sticker-flap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--peel);
+  aspect-ratio: 1;
+  pointer-events: none;
+  /* Shadow falls up-left onto the face. It lives here, not on ::after,
+     because clip-path would clip a filter on the same element. */
+  filter: drop-shadow(-2px -2px 3px rgb(0 0 0 / 0.28));
+}
+
+.sticker-flap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Rounded tip (the folded-over original corner), matching the face corners */
+  border-top-left-radius: var(--radius);
+  /* 0.5px overshoot hides the hairline seam at the fold */
+  clip-path: polygon(0 0, calc(100% + 0.5px) 0, 0 calc(100% + 0.5px));
+  background: #d9d9d9;
+}
+
+@media (hover: hover) {
+  .group:hover .sticker {
+    scale: 1.1;
+    --peel: var(--peel-hover);
+  }
+}
+
+/* Touch: preview the bigger peel while pressed */
+@media (hover: none) {
+  .sticker:active {
+    scale: 1.05;
+    --peel: var(--peel-hover);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker { transition: none; }
+}
+
 .page-transition-overlay {
   position: fixed;
   inset: 0;

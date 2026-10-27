@@ -9,7 +9,7 @@ interface Metric {
 }
 
 const metrics: Metric[] = [
-  { label: 'Happyness', value: 94 },
+  { label: 'Happiness', value: 94 },
   { label: 'Engagement', value: 85 },
   { label: 'Adoption', value: 96 },
   { label: 'Retention', value: 90 },
@@ -43,13 +43,13 @@ export default function HeartMetrics() {
   return (
     <div
       ref={ref}
-      className="w-full rounded-3xl bg-white p-4 shadow-[0_8px_0_0_rgba(0,0,0,0.25)] md:rounded-[3rem] md:p-[4%]"
+      className="w-full rounded-3xl bg-white p-4 shadow-[0_8px_0_0_rgba(0,0,0,0.25)] md:rounded-[3rem] md:p-[2%]"
     >
-      <div className="mb-4 flex flex-col items-start gap-3 px-2 text-portfolio-red sm:flex-row sm:items-center sm:justify-between md:mb-[3%] md:px-[4%] md:py-[1.5%]">
+      <div className="mb-4 flex flex-col items-start gap-3 px-2 text-portfolio-red sm:flex-row sm:items-center sm:justify-between md:mb-[1%] md:py-[1.0%]">
         <span className="flex items-center gap-2 md:gap-[1.5vw]">
           <span
             aria-hidden="true"
-            className="block aspect-558/717 h-[clamp(2.5rem,6vw,6rem)] bg-portfolio-red [mask-image:url(/REFORM_LOGO.svg)] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
+            className="block aspect-558/717 h-[clamp(2.5rem,6vw,6rem)] bg-portfolio-red mask-[url(/REFORM_LOGO.svg)] mask-center mask-no-repeat mask-contain"
           />
           <span className="font-inter text-[clamp(1.75rem,5vw,5rem)] font-black leading-none tracking-tight">
             REFORM
@@ -60,6 +60,10 @@ export default function HeartMetrics() {
           <Heart className="size-[1.1em]" aria-hidden="true" />
         </span>
       </div>
+
+      <p className="mb-4 px-2 font-overpass text-base font-semibold leading-snug text-portfolio-red md:mb-[2vw] md:text-[1.5vw]">
+        Evaluated across live remote and in-person usability testing cycles for REFORM.
+      </p>
 
       <ul className="flex flex-col gap-3 md:gap-[1.2vw]">
         {metrics.map((metric, i) => {

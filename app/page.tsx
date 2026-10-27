@@ -8,6 +8,7 @@ import RevealOnScroll from '../components/RevealOnScroll'
 import Services from '../components/Services'
 import ProjectCTA from '../components/ProjectCTA'
 import HeartMetrics from '@/components/HeartMetrics'
+import StickerBoard from '@/components/StickerBoard'
 import LinkBanner from '@/components/LinkBanner'
 import Footer from '@/components/Footer'
 import { useLayoutEffect, useRef, useState } from 'react'
@@ -226,7 +227,17 @@ export default function Home() {
           </div>
         </section>
 
-        
+        <section
+          id="tech-stack"
+          className="relative z-10 bg-portfolio-red text-white px-6 md:px-20 py-10 md:py-20"
+        >
+          <RevealOnScroll animation="right">
+            <h2 className="font-anton text-center text-7xl md:text-[12rem] uppercase leading-none tracking-tight mb-8 md:mb-14">
+              Modern Tech Stack
+            </h2>
+          </RevealOnScroll>
+          <StickerBoard />
+        </section>
 
         <section id="footer">
           <Footer />
